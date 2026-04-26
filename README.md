@@ -64,15 +64,29 @@ When you change a lesson's `.rs` file, rerun `npm run build:lessons` to refresh 
 
 ## Adding a translation
 
-Open `src/i18n/locales/en.json` — that's the source of truth. Copy it to e.g. `src/i18n/locales/ja.json`, translate strings, and import + register it in `src/i18n/index.ts`:
+`src/i18n/locales/en.json` is the source of truth. Use the scaffold script to generate or update a locale's file with `__TODO__` markers for any missing keys — translated entries are preserved.
+
+```bash
+# Find missing/stubbed keys in an existing locale
+npm run i18n:check ja
+
+# Generate (or refresh) a locale file from en.json. Each missing leaf
+# becomes "__TODO__ <english value>" so you can grep and fill them in.
+npm run i18n:scaffold ja
+
+# Reset every value back to a stub (use sparingly).
+npm run i18n:scaffold ja -- --force
+```
+
+After scaffolding, register the new file in `src/i18n/index.ts`:
 
 ```ts
 import ja from "./locales/ja.json";
 // ...
-const resources = { en: { translation: en }, ko: { translation: ko }, ja: { translation: ja } };
+const resources = { en: ..., ja: { translation: ja } };
 ```
 
-Untranslated keys automatically fall back to English.
+Untranslated keys automatically fall back to English at runtime.
 
 ## Publishing (free, on GitHub Pages)
 

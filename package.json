@@ -7,7 +7,9 @@
     "dev": "vite",
     "build:lessons": "node scripts/build-lessons.mjs",
     "build": "npm run build:lessons && tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "i18n:scaffold": "node scripts/scaffold-locale.mjs",
+    "i18n:check": "node scripts/scaffold-locale.mjs --check-only"
   },
   "dependencies": {
     "@codemirror/lang-rust": "^6.0.1",
