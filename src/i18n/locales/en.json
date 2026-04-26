@@ -1,0 +1,76 @@
+{
+  "ui": {
+    "appName": "Learning Rust",
+    "lessons": "Lessons",
+    "quizzes": "Quizzes",
+    "check": "Check",
+    "correct": "Correct!",
+    "tryAgain": "Try again",
+    "tryInPlayground": "Try in Playground",
+    "lessonNotFound": "Lesson not found.",
+    "predictPlaceholder": "Type the program's exact output...",
+    "heroTitle": "Learn Rust by solving quizzes",
+    "heroBody": "Work through bite-size lessons. Each one runs real Rust code and asks you to predict its output or pick the correct answer. Free, no account, in your browser.",
+    "startLearning": "Start learning"
+  },
+  "topics": {
+    "basics": "Basics",
+    "ownership": "Ownership"
+  },
+  "lessons": {
+    "01_hello": {
+      "title": "Hello, world!",
+      "description": "Your first Rust program. The println! macro prints to standard output. Variables can be interpolated directly inside the format string.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "What is println! ?",
+          "options": [
+            "A function",
+            "A macro",
+            "A trait",
+            "A keyword"
+          ]
+        }
+      }
+    },
+    "02_variables": {
+      "title": "Variables and mutability",
+      "description": "Variables are immutable by default. Add `mut` to allow reassignment. Type annotations are optional when the compiler can infer them.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Given `let y: i32 = 10;` (without `mut`), which line below would still compile if added afterward?",
+          "options": [
+            "y = y + 1;",
+            "y += 1;",
+            "let y = y + 1;",
+            "y.set(11);"
+          ]
+        }
+      }
+    },
+    "03_ownership": {
+      "title": "Ownership and borrowing",
+      "description": "Every value in Rust has exactly one owner. Passing a value by reference (&) borrows it without taking ownership. Once a value has been moved, the original binding can no longer be used.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "After `takes_ownership(owned)` is called, what happens if we try to use `owned` again?",
+          "options": [
+            "Compile error: value moved",
+            "Runtime panic",
+            "Prints an empty string",
+            "Works fine"
+          ]
+        }
+      }
+    }
+  }
+}
