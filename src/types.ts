@@ -1,4 +1,9 @@
-export type QuizType = "predict-output" | "multiple-choice";
+export type QuizType =
+  | "predict-output"
+  | "multiple-choice"
+  | "fill-in-blank"
+  | "spot-the-bug"
+  | "order-statements";
 
 export interface QuizPredictOutput {
   id: string;
@@ -11,7 +16,32 @@ export interface QuizMultipleChoice {
   answer: number;
 }
 
-export type Quiz = QuizPredictOutput | QuizMultipleChoice;
+export interface QuizFillInBlank {
+  id: string;
+  type: "fill-in-blank";
+  template: string; // code containing one or more "___" placeholders
+  blanks: string[]; // accepted answer per blank, in order
+}
+
+export interface QuizSpotTheBug {
+  id: string;
+  type: "spot-the-bug";
+  code: string; // multi-line code, user picks a buggy line
+  buggyLine: number; // 1-indexed
+}
+
+export interface QuizOrderStatements {
+  id: string;
+  type: "order-statements";
+  answer: number[]; // expected order; each entry is an index into the options array (from i18n)
+}
+
+export type Quiz =
+  | QuizPredictOutput
+  | QuizMultipleChoice
+  | QuizFillInBlank
+  | QuizSpotTheBug
+  | QuizOrderStatements;
 
 export interface Lesson {
   id: string;

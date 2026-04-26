@@ -5,6 +5,9 @@ import type { Lesson as LessonT } from "@/types";
 import { CodeBlock } from "@/components/CodeBlock";
 import { PredictOutput } from "@/components/quiz/PredictOutput";
 import { MultipleChoice } from "@/components/quiz/MultipleChoice";
+import { FillInBlank } from "@/components/quiz/FillInBlank";
+import { SpotTheBug } from "@/components/quiz/SpotTheBug";
+import { OrderStatements } from "@/components/quiz/OrderStatements";
 
 interface Props {
   lessons: LessonT[];
@@ -17,10 +20,10 @@ export function Lesson({ lessons }: Props) {
   const lesson = lessons.find((l) => l.id === id);
 
   if (!lesson) {
-    return (
-      <div className="p-8 text-stone-500">{t("ui.lessonNotFound")}</div>
-    );
+    return <div className="p-8 text-stone-500">{t("ui.lessonNotFound")}</div>;
   }
+
+  const refresh = () => setRefresh((n) => n + 1);
 
   return (
     <main className="flex-1 overflow-y-auto">
@@ -44,29 +47,60 @@ export function Lesson({ lessons }: Props) {
             {t("ui.quizzes")}
           </h2>
           {lesson.quizzes.map((q) => {
-            if (q.type === "predict-output") {
-              return (
-                <PredictOutput
-                  key={q.id}
-                  lessonId={lesson.id}
-                  quizId={q.id}
-                  expectedOutput={lesson.expectedOutput}
-                  onSolved={() => setRefresh((n) => n + 1)}
-                />
-              );
+            switch (q.type) {
+              case "predict-output":
+                return (
+                  <PredictOutput
+                    key={q.id}
+                    lessonId={lesson.id}
+                    quizId={q.id}
+                    expectedOutput={lesson.expectedOutput}
+                    onSolved={refresh}
+                  />
+                );
+              case "multiple-choice":
+                return (
+                  <MultipleChoice
+                    key={q.id}
+                    lessonId={lesson.id}
+                    quizId={q.id}
+                    answer={q.answer}
+                    onSolved={refresh}
+                  />
+                );
+              case "fill-in-blank":
+                return (
+                  <FillInBlank
+                    key={q.id}
+                    lessonId={lesson.id}
+                    quizId={q.id}
+                    template={q.template}
+                    blanks={q.blanks}
+                    onSolved={refresh}
+                  />
+                );
+              case "spot-the-bug":
+                return (
+                  <SpotTheBug
+                    key={q.id}
+                    lessonId={lesson.id}
+                    quizId={q.id}
+                    code={q.code}
+                    buggyLine={q.buggyLine}
+                    onSolved={refresh}
+                  />
+                );
+              case "order-statements":
+                return (
+                  <OrderStatements
+                    key={q.id}
+                    lessonId={lesson.id}
+                    quizId={q.id}
+                    answer={q.answer}
+                    onSolved={refresh}
+                  />
+                );
             }
-            if (q.type === "multiple-choice") {
-              return (
-                <MultipleChoice
-                  key={q.id}
-                  lessonId={lesson.id}
-                  quizId={q.id}
-                  answer={q.answer}
-                  onSolved={() => setRefresh((n) => n + 1)}
-                />
-              );
-            }
-            return null;
           })}
         </div>
       </div>

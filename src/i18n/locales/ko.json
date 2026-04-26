@@ -11,7 +11,10 @@
     "predictPlaceholder": "프로그램의 출력을 정확히 입력하세요...",
     "heroTitle": "퀴즈로 러스트를 배우세요",
     "heroBody": "짧은 레슨을 따라가며 학습합니다. 각 레슨은 실제 러스트 코드를 실행하고 출력 결과를 예측하거나 정답을 고르는 퀴즈를 제공합니다. 무료, 계정 불필요, 브라우저에서 바로.",
-    "startLearning": "시작하기"
+    "startLearning": "시작하기",
+    "yourOrder": "나의 답",
+    "available": "선택 가능",
+    "tapItemsBelow": "아래 항목을 눌러 답을 구성하세요."
   },
   "topics": {
     "basics": "기초",

@@ -11,7 +11,10 @@
     "predictPlaceholder": "Type the program's exact output...",
     "heroTitle": "Learn Rust by solving quizzes",
     "heroBody": "Work through bite-size lessons. Each one runs real Rust code and asks you to predict its output or pick the correct answer. Free, no account, in your browser.",
-    "startLearning": "Start learning"
+    "startLearning": "Start learning",
+    "yourOrder": "Your order",
+    "available": "Available",
+    "tapItemsBelow": "Tap items below to build your answer."
   },
   "topics": {
     "basics": "Basics",
