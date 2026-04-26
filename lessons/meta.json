@@ -25,5 +25,294 @@
       { "id": "q1", "type": "predict-output" },
       { "id": "q2", "type": "multiple-choice", "answer": 0 }
     ]
+  },
+  {
+    "id": "04_control_flow",
+    "bin": "04_control_flow",
+    "topic": "basics",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+    ]
+  },
+  {
+    "id": "05_functions",
+    "bin": "05_functions",
+    "topic": "basics",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "06_strings",
+    "bin": "06_strings",
+    "topic": "basics",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "07_tuples_arrays",
+    "bin": "07_tuples_arrays",
+    "topic": "basics",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q2",
+        "type": "fill-in-blank",
+        "template": "let pair = (1, \"two\");\nlet (a, b) = ___;\nprintln!(\"{a} {b}\");",
+        "blanks": ["pair"]
+      }
+    ]
+  },
+  {
+    "id": "08_enums",
+    "bin": "08_enums",
+    "topic": "basics",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+    ]
+  },
+  {
+    "id": "09_structs",
+    "bin": "09_structs",
+    "topic": "basics",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+    ]
+  },
+  {
+    "id": "10_closures_basic",
+    "bin": "10_closures_basic",
+    "topic": "closures",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "11_closures_capture",
+    "bin": "11_closures_capture",
+    "topic": "closures",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+    ]
+  },
+  {
+    "id": "12_iter_map",
+    "bin": "12_iter_map",
+    "topic": "iterators",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q2",
+        "type": "fill-in-blank",
+        "template": "let doubled: Vec<i32> = nums.iter().___(|x| x * 2).collect();",
+        "blanks": ["map"]
+      }
+    ]
+  },
+  {
+    "id": "13_iter_filter",
+    "bin": "13_iter_filter",
+    "topic": "iterators",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+    ]
+  },
+  {
+    "id": "14_iter_fold",
+    "bin": "14_iter_fold",
+    "topic": "iterators",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+    ]
+  },
+  {
+    "id": "15_iter_sum",
+    "bin": "15_iter_sum",
+    "topic": "iterators",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q2",
+        "type": "spot-the-bug",
+        "code": "fn main() {\n    let nums = vec![1, 2, 3];\n    let total = nums.iter().sum();\n    println!(\"{total}\");\n}",
+        "buggyLine": 3
+      }
+    ]
+  },
+  {
+    "id": "16_traits_basic",
+    "bin": "16_traits_basic",
+    "topic": "traits",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "17_traits_default",
+    "bin": "17_traits_default",
+    "topic": "traits",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "18_traits_derive",
+    "bin": "18_traits_derive",
+    "topic": "traits",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+    ]
+  },
+  {
+    "id": "19_generics_basic",
+    "bin": "19_generics_basic",
+    "topic": "generics",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+    ]
+  },
+  {
+    "id": "20_lifetimes_basic",
+    "bin": "20_lifetimes_basic",
+    "topic": "lifetimes",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "21_lifetimes_struct",
+    "bin": "21_lifetimes_struct",
+    "topic": "lifetimes",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q2",
+        "type": "spot-the-bug",
+        "code": "struct Borrower {\n    name: &str,\n}\n\nfn main() {\n    let s = String::from(\"hi\");\n    let b = Borrower { name: &s };\n    println!(\"{}\", b.name);\n}",
+        "buggyLine": 2
+      }
+    ]
+  },
+  {
+    "id": "22_result_basic",
+    "bin": "22_result_basic",
+    "topic": "error_handling",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+    ]
+  },
+  {
+    "id": "23_option_basic",
+    "bin": "23_option_basic",
+    "topic": "error_handling",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+    ]
+  },
+  {
+    "id": "24_error_propagation",
+    "bin": "24_error_propagation",
+    "topic": "error_handling",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q2",
+        "type": "order-statements",
+        "answer": [0, 1, 2, 3]
+      }
+    ]
+  },
+  {
+    "id": "25_panic_unwrap",
+    "bin": "25_panic_unwrap",
+    "topic": "error_handling",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "26_async_basic",
+    "bin": "26_async_basic",
+    "topic": "async",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+    ]
+  },
+  {
+    "id": "27_box_basic",
+    "bin": "27_box_basic",
+    "topic": "smart_pointers",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "28_rc_basic",
+    "bin": "28_rc_basic",
+    "topic": "smart_pointers",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+    ]
+  },
+  {
+    "id": "29_refcell_basic",
+    "bin": "29_refcell_basic",
+    "topic": "smart_pointers",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q2",
+        "type": "order-statements",
+        "answer": [0, 1, 2, 3]
+      }
+    ]
+  },
+  {
+    "id": "30_macros_basic",
+    "bin": "30_macros_basic",
+    "topic": "macros",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+    ]
+  },
+  {
+    "id": "31_macros_custom",
+    "bin": "31_macros_custom",
+    "topic": "macros",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "32_unsafe_basic",
+    "bin": "32_unsafe_basic",
+    "topic": "unsafe",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+    ]
   }
 ]

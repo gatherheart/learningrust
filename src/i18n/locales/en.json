@@ -24,24 +24,27 @@
   },
   "topics": {
     "basics": "Basics",
-    "ownership": "Ownership"
+    "ownership": "Ownership",
+    "closures": "Closures",
+    "iterators": "Iterators",
+    "traits": "Traits",
+    "generics": "Generics",
+    "lifetimes": "Lifetimes",
+    "error_handling": "Error handling",
+    "async": "Async",
+    "smart_pointers": "Smart pointers",
+    "macros": "Macros",
+    "unsafe": "Unsafe"
   },
   "lessons": {
     "01_hello": {
       "title": "Hello, world!",
       "description": "Your first Rust program. The println! macro prints to standard output. Variables can be interpolated directly inside the format string.",
       "quizzes": {
-        "q1": {
-          "question": "What does this program print? (Type the exact output.)"
-        },
+        "q1": { "question": "What does this program print? (Type the exact output.)" },
         "q2": {
           "question": "What is println! ?",
-          "options": [
-            "A function",
-            "A macro",
-            "A trait",
-            "A keyword"
-          ]
+          "options": ["A function", "A macro", "A trait", "A keyword"]
         }
       }
     },
@@ -49,17 +52,10 @@
       "title": "Variables and mutability",
       "description": "Variables are immutable by default. Add `mut` to allow reassignment. Type annotations are optional when the compiler can infer them.",
       "quizzes": {
-        "q1": {
-          "question": "Predict the program's output:"
-        },
+        "q1": { "question": "Predict the program's output:" },
         "q2": {
           "question": "Given `let y: i32 = 10;` (without `mut`), which line below would still compile if added afterward?",
-          "options": [
-            "y = y + 1;",
-            "y += 1;",
-            "let y = y + 1;",
-            "y.set(11);"
-          ]
+          "options": ["y = y + 1;", "y += 1;", "let y = y + 1;", "y.set(11);"]
         }
       }
     },
@@ -67,9 +63,7 @@
       "title": "Ownership and borrowing",
       "description": "Every value in Rust has exactly one owner. Passing a value by reference (&) borrows it without taking ownership. Once a value has been moved, the original binding can no longer be used.",
       "quizzes": {
-        "q1": {
-          "question": "Predict the program's output:"
-        },
+        "q1": { "question": "Predict the program's output:" },
         "q2": {
           "question": "After `takes_ownership(owned)` is called, what happens if we try to use `owned` again?",
           "options": [
@@ -77,6 +71,441 @@
             "Runtime panic",
             "Prints an empty string",
             "Works fine"
+          ]
+        }
+      }
+    },
+    "04_control_flow": {
+      "title": "Control flow",
+      "description": "if/else, while, and for. The range `0..3` is half-open: it yields 0, 1, 2 — and stops before 3.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "How many times does `for x in 0..3` iterate?",
+          "options": ["0 times", "2 times", "3 times", "4 times"]
+        }
+      }
+    },
+    "05_functions": {
+      "title": "Functions and expressions",
+      "description": "Functions take typed parameters and return a typed value. The last expression in a block — the one without a trailing semicolon — is the block's value, including the function's return value.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Why does `fn add(a, b) -> i32 { a + b }` return `a + b` without a `return` keyword?",
+          "options": [
+            "All Rust functions auto-return their last variable",
+            "The last expression without a semicolon is the block's value",
+            "`return` is illegal in Rust",
+            "The compiler inserts a return at the end"
+          ]
+        }
+      }
+    },
+    "06_strings": {
+      "title": "Strings: String vs &str",
+      "description": "`&str` is a borrowed view into UTF-8 data (often a literal). `String` is a heap-allocated, growable, owned UTF-8 buffer. `format!` builds a `String`.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Which statement is true?",
+          "options": [
+            "&str owns its data",
+            "String is heap-allocated and growable",
+            "String is always shorter than &str",
+            "&str cannot hold UTF-8"
+          ]
+        }
+      }
+    },
+    "07_tuples_arrays": {
+      "title": "Tuples and arrays",
+      "description": "Tuples group different types together; you destructure them with `let (a, b) = ...`. Arrays have a fixed size known at compile time.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Fill in the blank to destructure the tuple."
+        }
+      }
+    },
+    "08_enums": {
+      "title": "Enums and match",
+      "description": "Enums let a value be one of several variants — and each variant can carry its own data. `match` is the idiomatic way to react to each case, and it must be exhaustive.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Which statement about `match` on an enum is true?",
+          "options": [
+            "Enums can't carry data",
+            "match needs exhaustiveness only for primitive types",
+            "match must cover every variant",
+            "All variants must share the same data type"
+          ]
+        }
+      }
+    },
+    "09_structs": {
+      "title": "Structs and methods",
+      "description": "Structs bundle named fields. An `impl` block attaches methods (those that take `&self`) and associated functions (those that don't).",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "What does an `impl` block do for a struct?",
+          "options": [
+            "Attaches methods and associated functions",
+            "Hides all fields from outside code",
+            "Replaces the struct's fields",
+            "Runs at program startup"
+          ]
+        }
+      }
+    },
+    "10_closures_basic": {
+      "title": "Closures",
+      "description": "A closure is an anonymous function value. It can be passed around and called. Parameter and return types can usually be inferred from how it's used.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Which best describes `let add = |a: i32, b: i32| a + b;` ?",
+          "options": [
+            "A type alias",
+            "A closure value bound to `add`",
+            "A trait implementation",
+            "A macro invocation"
+          ]
+        }
+      }
+    },
+    "11_closures_capture": {
+      "title": "Closures: capturing state",
+      "description": "Closures capture variables from the surrounding scope. A closure that mutates captured state must itself be declared `mut`.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Why must `increment` be declared `mut`?",
+          "options": [
+            "Because it mutates the captured `counter`",
+            "Because all closures must be `mut`",
+            "Because `counter` is copied each call",
+            "Removing `mut` would still compile"
+          ]
+        }
+      }
+    },
+    "12_iter_map": {
+      "title": "Iterators: map",
+      "description": "`Iterator::map` lazily transforms each element. Nothing actually happens until the iterator is consumed — for example, by `collect()`.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Which iterator method transforms each element? Fill in the blank."
+        }
+      }
+    },
+    "13_iter_filter": {
+      "title": "Iterators: filter",
+      "description": "`Iterator::filter` keeps only the elements for which the predicate returns true. Like `map`, it's lazy until you collect or consume it.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "When does `filter`'s predicate run?",
+          "options": [
+            "Immediately when filter is called",
+            "Once per element, eagerly into a Vec",
+            "Lazily, only when the iterator is consumed",
+            "Filter requires a boolean array as input"
+          ]
+        }
+      }
+    },
+    "14_iter_fold": {
+      "title": "Iterators: fold",
+      "description": "`fold` reduces an iterator to a single value, threading an accumulator through each step. The first argument is the initial accumulator.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Which statement is true about `fold`?",
+          "options": [
+            "It takes an initial accumulator and combines elements",
+            "It cannot produce an i32",
+            "Its initial value must always be 0",
+            "It runs in parallel"
+          ]
+        }
+      }
+    },
+    "15_iter_sum": {
+      "title": "Iterators: sum and max",
+      "description": "`sum()` and `max()` are convenience methods that consume an iterator. `sum()` needs to know the result type, so it often requires a type annotation.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "The snippet below has one line that won't compile. Which line is it?"
+        }
+      }
+    },
+    "16_traits_basic": {
+      "title": "Traits",
+      "description": "A trait is a set of methods a type can implement. Other code can then operate on \"any type that implements this trait.\"",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "What does `impl Greet for Person` do?",
+          "options": [
+            "Defines a free function called `greet`",
+            "Provides the `Greet` trait's methods for `Person`",
+            "Removes the `Greet` trait from `Person`",
+            "Renames Person to Greet"
+          ]
+        }
+      }
+    },
+    "17_traits_default": {
+      "title": "Traits: default methods",
+      "description": "A trait method can have a default body. Implementors may override it, or fall back to the default by simply not defining it.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Why does `Dog` print `dog: ...`?",
+          "options": [
+            "Both Cat and Dog override `sound()`",
+            "Dog uses the default `sound()` because it doesn't override it",
+            "Default methods cannot be overridden",
+            "Cat doesn't implement the trait"
+          ]
+        }
+      }
+    },
+    "18_traits_derive": {
+      "title": "Traits: derive",
+      "description": "`#[derive(...)]` auto-generates implementations of common traits like `Debug`, `Clone`, and `PartialEq` — provided every field also implements them.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "What does `#[derive(Debug, Clone, PartialEq)]` do?",
+          "options": [
+            "Auto-generates implementations of those traits",
+            "Only works on enums",
+            "Replaces the struct's fields",
+            "Runs at runtime"
+          ]
+        }
+      }
+    },
+    "19_generics_basic": {
+      "title": "Generics",
+      "description": "Generic functions take a type parameter, optionally bounded by traits. `T: PartialOrd + Copy` means \"any type that can be ordered and trivially copied.\"",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Which is the correct syntax for a bounded generic?",
+          "options": [
+            "T must be a number",
+            "T = PartialOrd + Copy",
+            "T: PartialOrd + Copy",
+            "T :: PartialOrd, Copy"
+          ]
+        }
+      }
+    },
+    "20_lifetimes_basic": {
+      "title": "Lifetimes",
+      "description": "A lifetime parameter `'a` ties references together so the compiler can guarantee no reference outlives its data. The function below promises that the result lives at least as long as both inputs.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "What does the `'a` in `fn longest<'a>(x: &'a str, y: &'a str) -> &'a str` mean?",
+          "options": [
+            "'a is a runtime variable",
+            "The returned reference lives at least as long as both inputs",
+            "'a is required for every function",
+            "'a only applies to Strings"
+          ]
+        }
+      }
+    },
+    "21_lifetimes_struct": {
+      "title": "Lifetimes in structs",
+      "description": "If a struct holds a reference, it must declare a lifetime. Otherwise the compiler can't tell how long the reference must remain valid.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Which line below has the missing lifetime that prevents this from compiling?"
+        }
+      }
+    },
+    "22_result_basic": {
+      "title": "Result and match",
+      "description": "`Result<T, E>` is the standard \"this might fail\" type. It has two variants — `Ok(T)` and `Err(E)` — and you destructure them with `match`.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Which is true about Result?",
+          "options": [
+            "It's an enum with Ok and Err variants",
+            "It's a struct",
+            "Err always panics",
+            "match cannot pattern-match Result"
+          ]
+        }
+      }
+    },
+    "23_option_basic": {
+      "title": "Option and unwrap_or",
+      "description": "`Option<T>` is `Some(T)` or `None`. `unwrap_or(default)` gives you the inner value, or a default if it's `None`.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "What does `unwrap_or(\"none\")` do when called on `None`?",
+          "options": [
+            "Panics",
+            "Returns the empty string",
+            "Returns the default \"none\"",
+            "Calls the function again"
+          ]
+        }
+      }
+    },
+    "24_error_propagation": {
+      "title": "Error propagation with ?",
+      "description": "The `?` operator returns early from a function if the value is an `Err`, otherwise unwraps the `Ok`. It only works in functions that return `Result` (or `Option`).",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Order what happens when `parse_and_double(\"21\")` is called, in execution order.",
+          "options": [
+            "Try to parse \"21\" as i32",
+            "Parsing succeeds; `?` unwraps Ok(21) into n",
+            "Multiply 21 by 2 to get 42",
+            "Wrap 42 in Ok and return"
+          ]
+        }
+      }
+    },
+    "25_panic_unwrap": {
+      "title": "panic, unwrap, expect",
+      "description": "`unwrap()` and `expect(...)` extract the inner value of an `Option` or `Result`, but **panic** at runtime if the value is `None` / `Err`. Use them when failure is genuinely impossible — or you want to fail loudly.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "What happens if `value.unwrap()` is called when `value` is `None`?",
+          "options": [
+            "Returns a default",
+            "Panics at runtime",
+            "Returns Err",
+            "Returns 0"
+          ]
+        }
+      }
+    },
+    "26_async_basic": {
+      "title": "async / await",
+      "description": "`async fn` returns a future that doesn't run until something polls it. Here, `pollster::block_on` is a tiny blocking executor that drives the future to completion.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "What does calling an `async fn` actually do?",
+          "options": [
+            "Runs the body immediately",
+            "Polls the OS scheduler",
+            "Returns a future that needs to be awaited or polled",
+            "Spawns an OS thread"
+          ]
+        }
+      }
+    },
+    "27_box_basic": {
+      "title": "Smart pointers: Box",
+      "description": "`Box<T>` puts a value on the heap. Useful when you need an owned value of unknown size at compile time, or to keep a large value out of stack frames.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Where does Box<T> store its data?",
+          "options": [
+            "On the stack",
+            "On the heap",
+            "In thread-local storage",
+            "In a static segment"
+          ]
+        }
+      }
+    },
+    "28_rc_basic": {
+      "title": "Smart pointers: Rc",
+      "description": "`Rc<T>` enables multiple owners by counting references. The data is dropped only when the last `Rc` goes out of scope. Single-threaded only — use `Arc` across threads.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Which best describes Rc<T>?",
+          "options": [
+            "Multiple owners via reference counting",
+            "Thread-safe across threads",
+            "Deep-copies on clone",
+            "Can't hold strings"
+          ]
+        }
+      }
+    },
+    "29_refcell_basic": {
+      "title": "Smart pointers: RefCell",
+      "description": "`RefCell<T>` lets you mutate data through an immutable reference, with the borrow rules checked at **runtime** instead of compile time. Pair with `Rc` for shared mutable state.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Order the steps the program performs.",
+          "options": [
+            "Create a RefCell holding the value 5",
+            "Borrow mutably and add 10 to the inner value",
+            "Drop the mutable borrow when its scope ends",
+            "Borrow immutably to print the final value"
+          ]
+        }
+      }
+    },
+    "30_macros_basic": {
+      "title": "Macros: built-in",
+      "description": "Macros end with `!`. They're expanded at **compile time** into real code, which is how `println!`, `vec!`, and `format!` accept variadic arguments and check format strings statically.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "When do macros run?",
+          "options": [
+            "When the binary starts up",
+            "On every function call",
+            "At compile time, expanding into code",
+            "Lazily, on first use"
+          ]
+        }
+      }
+    },
+    "31_macros_custom": {
+      "title": "Macros: macro_rules!",
+      "description": "`macro_rules!` defines a *declarative* macro: a set of pattern → expansion rules. Patterns can match nothing, an expression, a list, etc.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "What does `macro_rules!` define?",
+          "options": [
+            "A regular function",
+            "A declarative macro",
+            "An unsafe block",
+            "A trait"
+          ]
+        }
+      }
+    },
+    "32_unsafe_basic": {
+      "title": "Unsafe Rust",
+      "description": "Inside `unsafe { }`, you can do things the compiler can't verify: dereference raw pointers, call unsafe functions, implement unsafe traits. The borrow checker is still active — `unsafe` opens *additional* powers, not a free-for-all.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Which is true about `unsafe { }`?",
+          "options": [
+            "Inside it you can dereference raw pointers",
+            "It disables the type system",
+            "It makes Rust as memory-safe as Java",
+            "Raw pointers are checked at runtime"
           ]
         }
       }

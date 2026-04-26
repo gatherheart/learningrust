@@ -24,7 +24,17 @@
   },
   "topics": {
     "basics": "기초",
-    "ownership": "소유권"
+    "ownership": "소유권",
+    "closures": "클로저",
+    "iterators": "이터레이터",
+    "traits": "트레이트",
+    "generics": "제네릭",
+    "lifetimes": "라이프타임",
+    "error_handling": "에러 처리",
+    "async": "비동기",
+    "smart_pointers": "스마트 포인터",
+    "macros": "매크로",
+    "unsafe": "Unsafe"
   },
   "lessons": {
     "01_hello": {
