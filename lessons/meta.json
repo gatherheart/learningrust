@@ -1,0 +1,29 @@
+[
+  {
+    "id": "01_hello",
+    "bin": "01_hello",
+    "topic": "basics",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "02_variables",
+    "bin": "02_variables",
+    "topic": "basics",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+    ]
+  },
+  {
+    "id": "03_ownership",
+    "bin": "03_ownership",
+    "topic": "ownership",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+    ]
+  }
+]
