@@ -32,8 +32,8 @@ export function PredictOutput({ lessonId, quizId, expectedOutput, onSolved }: Pr
   }
 
   return (
-    <div className="border border-stone-200 rounded-lg p-4 bg-white">
-      <div className="text-sm font-semibold text-stone-700 mb-2">
+    <div className="border border-stone-200 dark:border-stone-700 rounded-lg p-4 bg-white dark:bg-stone-900">
+      <div className="text-sm font-semibold text-stone-700 dark:text-stone-200 mb-2">
         {t(`lessons.${lessonId}.quizzes.${quizId}.question`)}
       </div>
       <textarea
@@ -41,7 +41,7 @@ export function PredictOutput({ lessonId, quizId, expectedOutput, onSolved }: Pr
         onChange={(e) => setValue(e.target.value)}
         readOnly={alreadyDone}
         rows={Math.max(3, expectedOutput.split("\n").length)}
-        className="w-full font-mono text-sm border border-stone-300 rounded p-2 focus:outline-none focus:border-rust-500"
+        className="w-full font-mono text-sm border border-stone-300 dark:border-stone-600 rounded p-2 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-rust-500"
         placeholder={t("ui.predictPlaceholder") ?? ""}
       />
       <div className="flex items-center gap-3 mt-3">
@@ -54,12 +54,12 @@ export function PredictOutput({ lessonId, quizId, expectedOutput, onSolved }: Pr
           </button>
         )}
         {state === "right" && (
-          <span className="text-emerald-600 text-sm font-medium">
+          <span className="text-emerald-600 dark:text-emerald-400 text-sm font-medium">
             ✓ {t("ui.correct")}
           </span>
         )}
         {state === "wrong" && (
-          <span className="text-red-600 text-sm font-medium">
+          <span className="text-red-600 dark:text-red-400 text-sm font-medium">
             ✗ {t("ui.tryAgain")}
           </span>
         )}

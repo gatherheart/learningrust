@@ -33,11 +33,11 @@ export function FillInBlank({ lessonId, quizId, template, blanks, onSolved }: Pr
   }
 
   return (
-    <div className="border border-stone-200 rounded-lg p-4 bg-white">
-      <div className="text-sm font-semibold text-stone-700 mb-3">
+    <div className="border border-stone-200 dark:border-stone-700 rounded-lg p-4 bg-white dark:bg-stone-900">
+      <div className="text-sm font-semibold text-stone-700 dark:text-stone-200 mb-3">
         {t(`lessons.${lessonId}.quizzes.${quizId}.question`)}
       </div>
-      <pre className="font-mono text-sm bg-stone-50 border border-stone-200 rounded p-3 whitespace-pre-wrap leading-6">
+      <pre className="font-mono text-sm bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 rounded p-3 whitespace-pre-wrap leading-6">
         {segments.map((seg, i) => (
           <span key={i}>
             {seg}
@@ -49,7 +49,7 @@ export function FillInBlank({ lessonId, quizId, template, blanks, onSolved }: Pr
                 }
                 readOnly={alreadyDone}
                 size={Math.max(blanks[i].length + 2, 4)}
-                className="inline-block px-1 mx-0.5 font-mono border-b-2 border-rust-500 bg-rust-50 focus:outline-none focus:bg-white"
+                className="inline-block px-1 mx-0.5 font-mono border-b-2 border-rust-500 bg-rust-50 dark:bg-rust-900/30 text-stone-900 dark:text-stone-100 focus:outline-none focus:bg-white dark:focus:bg-stone-700"
               />
             )}
           </span>
@@ -65,10 +65,14 @@ export function FillInBlank({ lessonId, quizId, template, blanks, onSolved }: Pr
           </button>
         )}
         {state === "right" && (
-          <span className="text-emerald-600 text-sm font-medium">✓ {t("ui.correct")}</span>
+          <span className="text-emerald-600 dark:text-emerald-400 text-sm font-medium">
+            ✓ {t("ui.correct")}
+          </span>
         )}
         {state === "wrong" && (
-          <span className="text-red-600 text-sm font-medium">✗ {t("ui.tryAgain")}</span>
+          <span className="text-red-600 dark:text-red-400 text-sm font-medium">
+            ✗ {t("ui.tryAgain")}
+          </span>
         )}
       </div>
     </div>

@@ -4,6 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import { App } from "@/App";
 import "@/i18n";
 import "@/index.css";
+import { initTheme } from "@/lib/theme";
+
+initTheme();
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 

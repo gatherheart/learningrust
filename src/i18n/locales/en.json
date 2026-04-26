@@ -14,7 +14,13 @@
     "startLearning": "Start learning",
     "yourOrder": "Your order",
     "available": "Available",
-    "tapItemsBelow": "Tap items below to build your answer."
+    "tapItemsBelow": "Tap items below to build your answer.",
+    "search": "Search lessons...",
+    "theme": "Theme",
+    "lessonComplete": "Lesson complete — every quiz solved!",
+    "courseComplete": "You've completed every lesson. Congratulations!",
+    "courseCompleteBadge": "Course complete",
+    "keyboardHint": "Tip: use ↑/↓ or j/k to move between lessons."
   },
   "topics": {
     "basics": "Basics",

@@ -14,7 +14,13 @@
     "startLearning": "시작하기",
     "yourOrder": "나의 답",
     "available": "선택 가능",
-    "tapItemsBelow": "아래 항목을 눌러 답을 구성하세요."
+    "tapItemsBelow": "아래 항목을 눌러 답을 구성하세요.",
+    "search": "레슨 검색...",
+    "theme": "테마",
+    "lessonComplete": "레슨 완료 — 모든 퀴즈를 풀었습니다!",
+    "courseComplete": "모든 레슨을 끝냈습니다. 축하합니다!",
+    "courseCompleteBadge": "전 과정 완료",
+    "keyboardHint": "팁: ↑/↓ 또는 j/k 키로 레슨 사이를 이동할 수 있습니다."
   },
   "topics": {
     "basics": "기초",
