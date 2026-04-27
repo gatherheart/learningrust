@@ -32,8 +32,8 @@ export function MultipleChoice({ lessonId, quizId, answer, onSolved }: Props) {
   }
 
   return (
-    <div className="border border-stone-200 dark:border-stone-700 rounded-lg p-4 bg-white dark:bg-stone-900">
-      <div className="text-sm font-semibold text-stone-700 dark:text-stone-200 mb-3">
+    <div className="rounded-[24px] border border-white/10 bg-zinc-950/80 p-4">
+      <div className="mb-3 text-sm font-semibold text-zinc-100">
         {t(`lessons.${lessonId}.quizzes.${quizId}.question`)}
       </div>
       <div className="space-y-2">
@@ -43,8 +43,8 @@ export function MultipleChoice({ lessonId, quizId, answer, onSolved }: Props) {
               key={i}
               className={`flex items-start gap-2 p-2 rounded border cursor-pointer text-sm ${
                 selected === i
-                  ? "border-rust-500 bg-rust-50 dark:bg-rust-900/20"
-                  : "border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-600"
+                  ? "border-orange-400/60 bg-orange-500/10"
+                  : "border-white/10 bg-white/[0.03] hover:border-orange-400/30"
               } ${alreadyDone ? "cursor-default" : ""}`}
             >
               <input
@@ -55,7 +55,7 @@ export function MultipleChoice({ lessonId, quizId, answer, onSolved }: Props) {
                 onChange={() => setSelected(i)}
                 className="mt-0.5"
               />
-              <span className="font-mono whitespace-pre-wrap text-stone-800 dark:text-stone-100">
+              <span className="font-mono whitespace-pre-wrap text-zinc-100">
                 {opt}
               </span>
             </label>
@@ -66,18 +66,18 @@ export function MultipleChoice({ lessonId, quizId, answer, onSolved }: Props) {
           <button
             onClick={check}
             disabled={selected === null}
-            className="px-4 py-1.5 bg-rust-500 hover:bg-rust-600 disabled:bg-stone-300 dark:disabled:bg-stone-600 text-white text-sm rounded font-medium"
+            className="rounded-2xl bg-orange-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-orange-400 disabled:bg-zinc-700"
           >
             {t("ui.check")}
           </button>
         )}
         {state === "right" && (
-          <span className="text-emerald-600 dark:text-emerald-400 text-sm font-medium">
+          <span className="text-sm font-medium text-emerald-300">
             ✓ {t("ui.correct")}
           </span>
         )}
         {state === "wrong" && (
-          <span className="text-red-600 dark:text-red-400 text-sm font-medium">
+          <span className="text-sm font-medium text-red-300">
             ✗ {t("ui.tryAgain")}
           </span>
         )}

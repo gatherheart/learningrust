@@ -48,17 +48,17 @@ export function OrderStatements({ lessonId, quizId, answer, onSolved }: Props) {
   if (!Array.isArray(items)) return null;
 
   return (
-    <div className="border border-stone-200 dark:border-stone-700 rounded-lg p-4 bg-white dark:bg-stone-900">
-      <div className="text-sm font-semibold text-stone-700 dark:text-stone-200 mb-3">
+    <div className="rounded-[24px] border border-white/10 bg-zinc-950/80 p-4">
+      <div className="mb-3 text-sm font-semibold text-zinc-100">
         {t(`lessons.${lessonId}.quizzes.${quizId}.question`)}
       </div>
 
-      <div className="text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
+      <div className="mb-2 text-xs uppercase tracking-wide text-zinc-500">
         {t("ui.yourOrder")}
       </div>
-      <ol className="min-h-[2.5rem] mb-3 border border-dashed border-stone-300 dark:border-stone-600 rounded p-2 space-y-1.5">
+      <ol className="mb-3 min-h-[2.5rem] space-y-1.5 rounded-2xl border border-dashed border-white/15 p-2">
         {order.length === 0 && (
-          <li className="text-stone-400 text-sm italic">{t("ui.tapItemsBelow")}</li>
+          <li className="text-sm italic text-zinc-500">{t("ui.tapItemsBelow")}</li>
         )}
         {order.map((itemIdx, pos) => (
           <li key={`${itemIdx}-${pos}`}>
@@ -66,19 +66,19 @@ export function OrderStatements({ lessonId, quizId, answer, onSolved }: Props) {
               type="button"
               onClick={() => remove(itemIdx)}
               disabled={alreadyDone}
-              className="w-full text-left flex items-start gap-2 px-3 py-1.5 rounded bg-rust-50 dark:bg-rust-900/30 border border-rust-200 dark:border-rust-800 text-sm font-mono text-stone-800 dark:text-stone-100"
+              className="flex w-full items-start gap-2 rounded-2xl border border-orange-400/25 bg-orange-500/10 px-3 py-1.5 text-left font-mono text-sm text-zinc-100"
             >
-              <span className="text-rust-600 dark:text-rust-400 font-semibold w-6 shrink-0">
+              <span className="w-6 shrink-0 font-semibold text-orange-200">
                 {pos + 1}.
               </span>
               <span className="flex-1">{items[itemIdx]}</span>
-              {!alreadyDone && <span className="text-stone-400 text-xs">×</span>}
+              {!alreadyDone && <span className="text-xs text-zinc-500">×</span>}
             </button>
           </li>
         ))}
       </ol>
 
-      <div className="text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
+      <div className="mb-2 text-xs uppercase tracking-wide text-zinc-500">
         {t("ui.available")}
       </div>
       <div className="space-y-1.5">
@@ -92,8 +92,8 @@ export function OrderStatements({ lessonId, quizId, answer, onSolved }: Props) {
               disabled={used || alreadyDone}
               className={`w-full text-left px-3 py-1.5 rounded border text-sm font-mono ${
                 used
-                  ? "bg-stone-100 dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-300 dark:text-stone-600"
-                  : "bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-600 text-stone-800 dark:text-stone-100 hover:border-rust-500 hover:bg-rust-50 dark:hover:bg-rust-900/20"
+                  ? "border-white/10 bg-white/[0.04] text-zinc-600"
+                  : "border-white/10 bg-white/[0.03] text-zinc-100 hover:border-orange-400/40 hover:bg-orange-500/10"
               }`}
             >
               {label}
@@ -107,18 +107,18 @@ export function OrderStatements({ lessonId, quizId, answer, onSolved }: Props) {
           <button
             onClick={check}
             disabled={order.length !== items.length}
-            className="px-4 py-1.5 bg-rust-500 hover:bg-rust-600 disabled:bg-stone-300 dark:disabled:bg-stone-600 text-white text-sm rounded font-medium"
+            className="rounded-2xl bg-orange-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-orange-400 disabled:bg-zinc-700"
           >
             {t("ui.check")}
           </button>
         )}
         {state === "right" && (
-          <span className="text-emerald-600 dark:text-emerald-400 text-sm font-medium">
+          <span className="text-sm font-medium text-emerald-300">
             ✓ {t("ui.correct")}
           </span>
         )}
         {state === "wrong" && (
-          <span className="text-red-600 dark:text-red-400 text-sm font-medium">
+          <span className="text-sm font-medium text-red-300">
             ✗ {t("ui.tryAgain")}
           </span>
         )}

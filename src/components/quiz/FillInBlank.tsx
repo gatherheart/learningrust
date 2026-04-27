@@ -33,11 +33,11 @@ export function FillInBlank({ lessonId, quizId, template, blanks, onSolved }: Pr
   }
 
   return (
-    <div className="border border-stone-200 dark:border-stone-700 rounded-lg p-4 bg-white dark:bg-stone-900">
-      <div className="text-sm font-semibold text-stone-700 dark:text-stone-200 mb-3">
+    <div className="rounded-[24px] border border-white/10 bg-zinc-950/80 p-4">
+      <div className="mb-3 text-sm font-semibold text-zinc-100">
         {t(`lessons.${lessonId}.quizzes.${quizId}.question`)}
       </div>
-      <pre className="font-mono text-sm bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100 rounded p-3 whitespace-pre-wrap leading-6">
+      <pre className="whitespace-pre-wrap rounded-2xl border border-white/10 bg-white/[0.04] p-3 font-mono text-sm leading-6 text-zinc-100">
         {segments.map((seg, i) => (
           <span key={i}>
             {seg}
@@ -49,7 +49,7 @@ export function FillInBlank({ lessonId, quizId, template, blanks, onSolved }: Pr
                 }
                 readOnly={alreadyDone}
                 size={Math.max(blanks[i].length + 2, 4)}
-                className="inline-block px-1 mx-0.5 font-mono border-b-2 border-rust-500 bg-rust-50 dark:bg-rust-900/30 text-stone-900 dark:text-stone-100 focus:outline-none focus:bg-white dark:focus:bg-stone-700"
+                className="mx-0.5 inline-block border-b-2 border-orange-400 bg-orange-500/10 px-1 font-mono text-zinc-100 focus:bg-zinc-900 focus:outline-none"
               />
             )}
           </span>
@@ -59,18 +59,18 @@ export function FillInBlank({ lessonId, quizId, template, blanks, onSolved }: Pr
         {!alreadyDone && (
           <button
             onClick={check}
-            className="px-4 py-1.5 bg-rust-500 hover:bg-rust-600 text-white text-sm rounded font-medium"
+            className="rounded-2xl bg-orange-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-orange-400"
           >
             {t("ui.check")}
           </button>
         )}
         {state === "right" && (
-          <span className="text-emerald-600 dark:text-emerald-400 text-sm font-medium">
+          <span className="text-sm font-medium text-emerald-300">
             ✓ {t("ui.correct")}
           </span>
         )}
         {state === "wrong" && (
-          <span className="text-red-600 dark:text-red-400 text-sm font-medium">
+          <span className="text-sm font-medium text-red-300">
             ✗ {t("ui.tryAgain")}
           </span>
         )}

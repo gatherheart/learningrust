@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { Lesson } from "@/types";
+import { lessonProgress } from "@/lib/store";
 
 interface Props {
   lessons: Lesson[];
@@ -8,27 +9,128 @@ interface Props {
 
 export function Home({ lessons }: Props) {
   const { t } = useTranslation();
-  const first = lessons[0];
+  const firstLesson = lessons[0];
+  const completed = lessons.filter((lesson) => lessonProgress(lesson.id, lesson.quizzes.length).done)
+    .length;
+  const nextLesson = lessons.find(
+    (lesson) => !lessonProgress(lesson.id, lesson.quizzes.length).done,
+  );
+
   return (
-    <main className="flex-1 overflow-y-auto bg-stone-50 dark:bg-stone-950">
-      <div className="max-w-3xl mx-auto p-8">
-        <h1 className="text-3xl font-bold text-stone-900 dark:text-stone-100 mb-3">
-          {t("ui.heroTitle")}
-        </h1>
-        <p className="text-stone-600 dark:text-stone-300 leading-relaxed mb-6">
-          {t("ui.heroBody")}
-        </p>
-        {first && (
-          <Link
-            to={`/lesson/${first.id}`}
-            className="inline-block px-5 py-2.5 bg-rust-500 hover:bg-rust-600 text-white rounded font-medium"
-          >
-            {t("ui.startLearning")} →
-          </Link>
-        )}
-        <div className="mt-8 text-sm text-stone-500 dark:text-stone-400">
-          {t("ui.keyboardHint")}
-        </div>
+    <main className="app-scrollbar flex-1 overflow-y-auto bg-[radial-gradient(circle_at_top_right,rgba(251,146,60,0.16),transparent_28%),linear-gradient(180deg,rgba(9,9,11,0.92),rgba(9,9,11,0.98))]">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-5 lg:px-6 lg:py-6">
+        <section className="grid gap-6 xl:grid-cols-[minmax(0,1.35fr)_minmax(360px,0.85fr)]">
+          <div className="rounded-[30px] border border-white/10 bg-zinc-950/85 p-6 shadow-2xl shadow-black/25 lg:p-8">
+            <div className="mb-6 flex flex-wrap items-center gap-2">
+              <span className="rounded-full border border-orange-400/30 bg-orange-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-orange-200">
+                simulation mode
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-zinc-400">
+                rust learning path
+              </span>
+            </div>
+            <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-zinc-50 lg:text-5xl">
+              {t("ui.heroTitle")}
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-zinc-300 lg:text-lg">
+              {t("ui.heroBody")}
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              {firstLesson && (
+                <Link
+                  to={`/lesson/${nextLesson?.id ?? firstLesson.id}`}
+                  className="rounded-2xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-orange-400"
+                >
+                  {t("ui.startLearning")}
+                </Link>
+              )}
+              <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-zinc-300">
+                {completed}/{lessons.length} lessons cleared
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-[30px] border border-white/10 bg-[#0d1117] p-5 shadow-2xl shadow-black/20">
+            <div className="mb-4 flex items-center justify-between">
+              <div className="text-xs uppercase tracking-[0.28em] text-zinc-500">
+                terminal
+              </div>
+              <div className="flex gap-2">
+                <span className="h-3 w-3 rounded-full bg-red-400/80" />
+                <span className="h-3 w-3 rounded-full bg-amber-300/80" />
+                <span className="h-3 w-3 rounded-full bg-emerald-400/80" />
+              </div>
+            </div>
+            <div className="space-y-3 font-mono text-sm leading-7 text-zinc-300">
+              <div>
+                <span className="text-emerald-300">$</span> rustc --lesson {nextLesson?.bin ?? "01_hello"}
+              </div>
+              <div className="text-zinc-500">Compiling interactive lesson graph...</div>
+              <div className="text-orange-200">Loaded {lessons.length} stages with quizzes, checkpoints, and playground links.</div>
+              <div className="text-zinc-500">Tip: use arrow keys to move between unlocked lessons.</div>
+            </div>
+          </div>
+        </section>
+
+        <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div className="rounded-[28px] border border-white/10 bg-zinc-950/80 p-5">
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-zinc-50">Route map</h2>
+              <div className="text-xs uppercase tracking-[0.24em] text-zinc-500">sequence</div>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {lessons.slice(0, 6).map((lesson, index) => {
+                const done = lessonProgress(lesson.id, lesson.quizzes.length).done;
+                return (
+                  <Link
+                    key={lesson.id}
+                    to={`/lesson/${lesson.id}`}
+                    className="rounded-[22px] border border-white/10 bg-white/[0.04] p-4 transition hover:border-orange-400/35 hover:bg-orange-500/8"
+                  >
+                    <div className="mb-2 flex items-center justify-between">
+                      <span className="font-mono text-xs text-zinc-500">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-[10px] uppercase tracking-[0.22em] text-zinc-500">
+                        {done ? "done" : "open"}
+                      </span>
+                    </div>
+                    <div className="text-sm font-medium text-zinc-100">
+                      {t(`lessons.${lesson.id}.title`)}
+                    </div>
+                    <div className="mt-2 text-xs uppercase tracking-[0.18em] text-zinc-500">
+                      {t(`topics.${lesson.topic}`)}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="rounded-[28px] border border-white/10 bg-zinc-950/80 p-5">
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-zinc-50">Flow</h2>
+              <div className="text-xs uppercase tracking-[0.24em] text-zinc-500">how it works</div>
+            </div>
+            <div className="space-y-3">
+              {[
+                "Open a lesson and inspect the Rust program in the editor-like panel.",
+                "Answer the quiz set directly below the code to unlock the next stage.",
+                "Use the playground link whenever you want to branch out and experiment.",
+              ].map((item, index) => (
+                <div
+                  key={item}
+                  className="flex gap-4 rounded-[22px] border border-white/10 bg-white/[0.04] p-4"
+                >
+                  <div className="grid h-9 w-9 shrink-0 place-items-center rounded-2xl bg-orange-500/10 font-mono text-sm text-orange-200">
+                    {index + 1}
+                  </div>
+                  <p className="text-sm leading-7 text-zinc-300">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );

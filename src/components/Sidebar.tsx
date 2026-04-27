@@ -8,95 +8,140 @@ interface Props {
   lessons: Lesson[];
 }
 
+function stageLabel(index: number) {
+  if (index < 8) return "basics";
+  if (index < 16) return "ownership";
+  if (index < 24) return "abstractions";
+  return "advanced";
+}
+
 export function Sidebar({ lessons }: Props) {
   const { t } = useTranslation();
   const [query, setQuery] = useState("");
 
   const totalDone = useMemo(
     () =>
-      lessons.filter(
-        (l) => lessonProgress(l.id, l.quizzes.length).done,
-      ).length,
+      lessons.filter((lesson) => lessonProgress(lesson.id, lesson.quizzes.length).done)
+        .length,
     // Re-evaluate whenever progress changes are reflected through React renders.
-    // The Lesson view forces re-renders via setRefresh after each solve.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [lessons, query],
   );
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return lessons.map((l, i) => ({ lesson: l, index: i }));
+    const normalized = query.trim().toLowerCase();
+
     return lessons
-      .map((l, i) => ({ lesson: l, index: i }))
+      .map((lesson, index) => ({ lesson, index }))
       .filter(({ lesson }) => {
-        const title = (t(`lessons.${lesson.id}.title`) as string).toLowerCase();
-        return title.includes(q) || lesson.id.toLowerCase().includes(q);
+        if (!normalized) return true;
+        const title = String(t(`lessons.${lesson.id}.title`)).toLowerCase();
+        const topic = String(t(`topics.${lesson.topic}`)).toLowerCase();
+        return (
+          title.includes(normalized) ||
+          topic.includes(normalized) ||
+          lesson.id.toLowerCase().includes(normalized)
+        );
       });
   }, [lessons, query, t]);
 
-  const pct = lessons.length === 0 ? 0 : Math.round((totalDone / lessons.length) * 100);
+  const percent = lessons.length === 0 ? 0 : Math.round((totalDone / lessons.length) * 100);
 
   return (
-    <aside className="w-72 shrink-0 border-r border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 overflow-y-auto flex flex-col">
-      <div className="px-4 py-3 border-b border-stone-200 dark:border-stone-700">
-        <div className="flex items-baseline justify-between mb-2">
-          <h2 className="text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 font-semibold">
-            {t("ui.lessons")}
-          </h2>
-          <span className="text-xs text-stone-500 dark:text-stone-400 font-mono">
-            {totalDone}/{lessons.length}
-          </span>
+    <aside className="border-b border-white/10 bg-zinc-950/80 lg:w-[360px] lg:shrink-0 lg:border-b-0 lg:border-r">
+      <div className="app-scrollbar flex h-full flex-col overflow-y-auto">
+        <div className="border-b border-white/10 px-4 py-4 lg:px-5">
+          <div className="rounded-[24px] border border-orange-400/15 bg-gradient-to-br from-orange-500/12 via-zinc-950 to-zinc-950 px-4 py-4">
+            <div className="mb-3 flex items-start justify-between gap-3">
+              <div>
+                <div className="text-[11px] uppercase tracking-[0.3em] text-orange-200/70">
+                  lesson graph
+                </div>
+                <h2 className="mt-1 text-xl font-semibold text-zinc-50">
+                  {t("ui.lessons")}
+                </h2>
+              </div>
+              <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-zinc-300">
+                {totalDone}/{lessons.length}
+              </div>
+            </div>
+            <div className="mb-3 h-2 overflow-hidden rounded-full bg-white/10">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-orange-500 via-amber-400 to-lime-300 transition-all"
+                style={{ width: `${percent}%` }}
+              />
+            </div>
+            <p className="text-sm leading-6 text-zinc-300">
+              {t("ui.keyboardHint")}
+            </p>
+          </div>
+          <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-1.5">
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder={String(t("ui.search"))}
+              className="w-full rounded-xl border border-transparent bg-transparent px-3 py-2 text-sm text-zinc-100 outline-none placeholder:text-zinc-500"
+            />
+          </div>
         </div>
-        <div className="h-1.5 bg-stone-200 dark:bg-stone-700 rounded overflow-hidden mb-2">
-          <div
-            className="h-full bg-rust-500 transition-all"
-            style={{ width: `${pct}%` }}
-          />
-        </div>
-        <input
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder={t("ui.search") as string}
-          className="w-full text-sm px-2 py-1.5 border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-800 text-stone-800 dark:text-stone-100 placeholder:text-stone-400"
-        />
-      </div>
-      <ul>
-        {filtered.map(({ lesson, index }) => {
-          const unlocked = isLessonUnlocked(index, lessons);
-          const prog = lessonProgress(lesson.id, lesson.quizzes.length);
-          return (
-            <li key={lesson.id}>
+
+        <div className="space-y-3 px-3 py-4 lg:px-4">
+          {filtered.map(({ lesson, index }) => {
+            const unlocked = isLessonUnlocked(index, lessons);
+            const progress = lessonProgress(lesson.id, lesson.quizzes.length);
+
+            return (
               <NavLink
+                key={lesson.id}
                 to={unlocked ? `/lesson/${lesson.id}` : "#"}
-                onClick={(e) => !unlocked && e.preventDefault()}
+                onClick={(event) => !unlocked && event.preventDefault()}
                 className={({ isActive }) =>
                   [
-                    "flex items-center gap-3 px-4 py-2.5 text-sm border-b border-stone-100 dark:border-stone-800",
-                    !unlocked && "opacity-40 cursor-not-allowed",
-                    unlocked &&
-                      "hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-200",
-                    isActive &&
-                      "bg-rust-50 dark:bg-rust-900/20 border-l-4 border-l-rust-500",
+                    "group block rounded-[22px] border px-4 py-3 transition",
+                    unlocked
+                      ? "border-white/10 bg-white/[0.045] hover:border-orange-400/35 hover:bg-orange-500/8"
+                      : "cursor-not-allowed border-white/5 bg-white/[0.02] opacity-45",
+                    isActive && "border-orange-400/55 bg-orange-500/12 shadow-lg shadow-orange-950/25",
                   ]
                     .filter(Boolean)
                     .join(" ")
                 }
               >
-                <span className="font-mono text-xs text-stone-400 w-6">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="flex-1 truncate">
-                  {t(`lessons.${lesson.id}.title`)}
-                </span>
-                <span className="text-xs text-stone-400">
-                  {prog.done ? "✓" : `${prog.completed}/${prog.total}`}
-                </span>
+                <div className="mb-2 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-10 w-10 place-items-center rounded-2xl border border-white/10 bg-zinc-900 font-mono text-xs text-zinc-300">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                    <div>
+                      <div className="text-[10px] uppercase tracking-[0.26em] text-zinc-500">
+                        {stageLabel(index)}
+                      </div>
+                      <div className="text-sm font-medium text-zinc-100">
+                        {t(`lessons.${lesson.id}.title`)}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[11px] text-zinc-400">
+                    {progress.done ? "done" : `${progress.completed}/${progress.total}`}
+                  </div>
+                </div>
+                <div className="mb-3 text-xs uppercase tracking-[0.2em] text-zinc-500">
+                  {t(`topics.${lesson.topic}`)}
+                </div>
+                <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-orange-400 to-amber-300 transition-all"
+                    style={{
+                      width: `${Math.round((progress.completed / progress.total) * 100) || 0}%`,
+                    }}
+                  />
+                </div>
               </NavLink>
-            </li>
-          );
-        })}
-      </ul>
+            );
+          })}
+        </div>
+      </div>
     </aside>
   );
 }

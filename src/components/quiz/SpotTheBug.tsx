@@ -33,11 +33,11 @@ export function SpotTheBug({ lessonId, quizId, code, buggyLine, onSolved }: Prop
   }
 
   return (
-    <div className="border border-stone-200 dark:border-stone-700 rounded-lg p-4 bg-white dark:bg-stone-900">
-      <div className="text-sm font-semibold text-stone-700 dark:text-stone-200 mb-3">
+    <div className="rounded-[24px] border border-white/10 bg-zinc-950/80 p-4">
+      <div className="mb-3 text-sm font-semibold text-zinc-100">
         {t(`lessons.${lessonId}.quizzes.${quizId}.question`)}
       </div>
-      <pre className="font-mono text-sm bg-stone-50 dark:bg-stone-800 text-stone-800 dark:text-stone-100 border border-stone-200 dark:border-stone-700 rounded overflow-hidden">
+      <pre className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] font-mono text-sm text-zinc-100">
         {lines.map((line, i) => {
           const lineNum = i + 1;
           const isSelected = selected === lineNum;
@@ -49,11 +49,11 @@ export function SpotTheBug({ lessonId, quizId, code, buggyLine, onSolved }: Prop
               onClick={() => setSelected(lineNum)}
               className={`flex w-full text-left px-3 py-0.5 ${
                 isSelected
-                  ? "bg-rust-100 dark:bg-rust-900/30 ring-1 ring-rust-500"
-                  : "hover:bg-stone-100 dark:hover:bg-stone-700"
+                  ? "bg-orange-500/12 ring-1 ring-orange-400/60"
+                  : "hover:bg-white/[0.06]"
               } ${alreadyDone ? "cursor-default" : "cursor-pointer"}`}
             >
-              <span className="text-stone-400 select-none w-8 shrink-0">{lineNum}</span>
+              <span className="w-8 shrink-0 select-none text-zinc-500">{lineNum}</span>
               <span className="whitespace-pre">{line || " "}</span>
             </button>
           );
@@ -64,18 +64,18 @@ export function SpotTheBug({ lessonId, quizId, code, buggyLine, onSolved }: Prop
           <button
             onClick={check}
             disabled={selected === null}
-            className="px-4 py-1.5 bg-rust-500 hover:bg-rust-600 disabled:bg-stone-300 dark:disabled:bg-stone-600 text-white text-sm rounded font-medium"
+            className="rounded-2xl bg-orange-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-orange-400 disabled:bg-zinc-700"
           >
             {t("ui.check")}
           </button>
         )}
         {state === "right" && (
-          <span className="text-emerald-600 dark:text-emerald-400 text-sm font-medium">
+          <span className="text-sm font-medium text-emerald-300">
             ✓ {t("ui.correct")}
           </span>
         )}
         {state === "wrong" && (
-          <span className="text-red-600 dark:text-red-400 text-sm font-medium">
+          <span className="text-sm font-medium text-red-300">
             ✗ {t("ui.tryAgain")}
           </span>
         )}

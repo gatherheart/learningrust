@@ -32,8 +32,8 @@ export function PredictOutput({ lessonId, quizId, expectedOutput, onSolved }: Pr
   }
 
   return (
-    <div className="border border-stone-200 dark:border-stone-700 rounded-lg p-4 bg-white dark:bg-stone-900">
-      <div className="text-sm font-semibold text-stone-700 dark:text-stone-200 mb-2">
+    <div className="rounded-[24px] border border-white/10 bg-zinc-950/80 p-4">
+      <div className="mb-2 text-sm font-semibold text-zinc-100">
         {t(`lessons.${lessonId}.quizzes.${quizId}.question`)}
       </div>
       <textarea
@@ -41,25 +41,25 @@ export function PredictOutput({ lessonId, quizId, expectedOutput, onSolved }: Pr
         onChange={(e) => setValue(e.target.value)}
         readOnly={alreadyDone}
         rows={Math.max(3, expectedOutput.split("\n").length)}
-        className="w-full font-mono text-sm border border-stone-300 dark:border-stone-600 rounded p-2 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-rust-500"
+        className="w-full rounded-2xl border border-white/10 bg-white/[0.04] p-3 font-mono text-sm text-zinc-100 outline-none focus:border-orange-400/45"
         placeholder={t("ui.predictPlaceholder") ?? ""}
       />
       <div className="flex items-center gap-3 mt-3">
         {!alreadyDone && (
           <button
             onClick={check}
-            className="px-4 py-1.5 bg-rust-500 hover:bg-rust-600 text-white text-sm rounded font-medium"
+            className="rounded-2xl bg-orange-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-orange-400"
           >
             {t("ui.check")}
           </button>
         )}
         {state === "right" && (
-          <span className="text-emerald-600 dark:text-emerald-400 text-sm font-medium">
+          <span className="text-sm font-medium text-emerald-300">
             ✓ {t("ui.correct")}
           </span>
         )}
         {state === "wrong" && (
-          <span className="text-red-600 dark:text-red-400 text-sm font-medium">
+          <span className="text-sm font-medium text-red-300">
             ✗ {t("ui.tryAgain")}
           </span>
         )}

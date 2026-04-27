@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { App } from "@/App";
 import "@/i18n";
 import "@/index.css";
@@ -12,8 +12,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter basename={base}>
+    <HashRouter basename={base}>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
 );

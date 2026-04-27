@@ -27,16 +27,23 @@ export function CodeBlock({ code }: Props) {
   }, []);
 
   return (
-    <div className="rounded-lg border border-stone-200 dark:border-stone-700 overflow-hidden bg-white dark:bg-stone-900">
-      <div className="flex items-center justify-between px-3 py-2 bg-stone-100 dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-        <span className="text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 font-semibold">
-          main.rs
-        </span>
+    <div className="overflow-hidden rounded-[30px] border border-white/10 bg-[#0d1117] shadow-2xl shadow-black/20">
+      <div className="flex items-center justify-between border-b border-white/10 bg-zinc-950/90 px-4 py-3">
+        <div className="flex items-center gap-3">
+          <div className="flex gap-2">
+            <span className="h-3 w-3 rounded-full bg-red-400/80" />
+            <span className="h-3 w-3 rounded-full bg-amber-300/80" />
+            <span className="h-3 w-3 rounded-full bg-emerald-400/80" />
+          </div>
+          <span className="font-mono text-xs uppercase tracking-[0.28em] text-zinc-500">
+            main.rs
+          </span>
+        </div>
         <a
           href={playgroundUrl(code)}
           target="_blank"
           rel="noreferrer"
-          className="text-xs font-medium text-rust-600 dark:text-rust-400 hover:underline"
+          className="rounded-full border border-orange-400/25 bg-orange-500/10 px-3 py-1 text-xs font-medium text-orange-100 transition hover:border-orange-300/45 hover:bg-orange-500/15"
         >
           {t("ui.tryInPlayground")} ↗
         </a>

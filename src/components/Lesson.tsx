@@ -21,114 +21,153 @@ export function Lesson({ lessons }: Props) {
   const [, setRefresh] = useState(0);
   useKeyboardNav(lessons, id);
 
-  const lesson = lessons.find((l) => l.id === id);
+  const lesson = lessons.find((entry) => entry.id === id);
 
   if (!lesson) {
     return (
-      <div className="p-8 text-stone-500 dark:text-stone-400">
+      <main className="flex flex-1 items-center justify-center p-8 text-zinc-400">
         {t("ui.lessonNotFound")}
-      </div>
+      </main>
     );
   }
 
-  const refresh = () => setRefresh((n) => n + 1);
-  const prog = lessonProgress(lesson.id, lesson.quizzes.length);
-  const allDone = lessons.every((l) => lessonProgress(l.id, l.quizzes.length).done);
+  const refresh = () => setRefresh((value) => value + 1);
+  const progress = lessonProgress(lesson.id, lesson.quizzes.length);
+  const lessonIndex = lessons.findIndex((entry) => entry.id === lesson.id);
+  const allDone = lessons.every((entry) => lessonProgress(entry.id, entry.quizzes.length).done);
 
   return (
-    <main className="flex-1 overflow-y-auto bg-stone-50 dark:bg-stone-950">
-      <div className="max-w-3xl mx-auto p-6 space-y-5">
-        <div>
-          <div className="text-xs uppercase tracking-wide text-rust-600 dark:text-rust-400 font-semibold mb-1">
-            {t(`topics.${lesson.topic}`)}
-          </div>
-          <h1 className="text-2xl font-bold text-stone-900 dark:text-stone-100">
-            {t(`lessons.${lesson.id}.title`)}
-          </h1>
-          <p className="text-stone-600 dark:text-stone-300 mt-2 leading-relaxed">
-            {t(`lessons.${lesson.id}.description`)}
-          </p>
-        </div>
-
-        {prog.done && (
-          <div className="rounded-lg bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 px-4 py-3 text-sm text-emerald-800 dark:text-emerald-200 flex items-center gap-2">
-            <span className="text-lg">🎉</span>
-            <span>{t("ui.lessonComplete")}</span>
-          </div>
-        )}
-
-        {allDone && (
-          <div className="rounded-lg bg-rust-500 text-white px-5 py-4 shadow">
-            <div className="text-sm uppercase tracking-wide font-semibold mb-1">
-              {t("ui.courseCompleteBadge")}
+    <main className="app-scrollbar flex-1 overflow-y-auto bg-[radial-gradient(circle_at_top_right,rgba(251,146,60,0.16),transparent_24%),linear-gradient(180deg,rgba(9,9,11,0.86),rgba(9,9,11,0.98))]">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-5 lg:px-6 lg:py-6">
+        <section className="grid gap-6 xl:grid-cols-[minmax(0,1.25fr)_minmax(340px,0.75fr)]">
+          <div className="rounded-[30px] border border-white/10 bg-zinc-950/85 p-6 shadow-2xl shadow-black/25">
+            <div className="mb-5 flex flex-wrap items-center gap-2">
+              <span className="rounded-full border border-orange-400/30 bg-orange-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-orange-200">
+                lesson {String(lessonIndex + 1).padStart(2, "0")}
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-zinc-400">
+                {t(`topics.${lesson.topic}`)}
+              </span>
             </div>
-            <div className="font-bold">{t("ui.courseComplete")}</div>
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-50 lg:text-4xl">
+              {t(`lessons.${lesson.id}.title`)}
+            </h1>
+            <p className="mt-4 max-w-3xl text-base leading-8 text-zinc-300">
+              {t(`lessons.${lesson.id}.description`)}
+            </p>
           </div>
-        )}
 
-        <CodeBlock code={lesson.code} />
+          <div className="rounded-[30px] border border-white/10 bg-[#0d1117] p-5 shadow-2xl shadow-black/20">
+            <div className="mb-4 flex items-center justify-between">
+              <div className="text-xs uppercase tracking-[0.28em] text-zinc-500">
+                mission state
+              </div>
+              <div className="rounded-full border border-white/10 px-3 py-1 font-mono text-[11px] text-zinc-300">
+                {progress.completed}/{progress.total}
+              </div>
+            </div>
+            <div className="mb-4 h-2 overflow-hidden rounded-full bg-white/10">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-orange-500 via-amber-400 to-lime-300 transition-all"
+                style={{ width: `${Math.round((progress.completed / progress.total) * 100) || 0}%` }}
+              />
+            </div>
+            <div className="space-y-3 font-mono text-sm leading-7 text-zinc-300">
+              <div>
+                <span className="text-emerald-300">$</span> cargo run --bin {lesson.bin}
+              </div>
+              <div className="text-zinc-500">expected topic: {t(`topics.${lesson.topic}`)}</div>
+              <div className={progress.done ? "text-emerald-300" : "text-amber-200"}>
+                {progress.done ? "status: unlocked next lesson" : "status: quizzes still pending"}
+              </div>
+              <div className="text-zinc-500">keyboard: left/right arrows for lesson navigation</div>
+            </div>
+            {allDone && (
+              <div className="mt-5 rounded-[22px] border border-emerald-400/25 bg-emerald-500/10 p-4 text-sm text-emerald-100">
+                {t("ui.courseComplete")}
+              </div>
+            )}
+          </div>
+        </section>
 
-        <div className="space-y-4">
-          <h2 className="text-sm uppercase tracking-wide text-stone-500 dark:text-stone-400 font-semibold">
-            {t("ui.quizzes")}
-          </h2>
-          {lesson.quizzes.map((q) => {
-            switch (q.type) {
-              case "predict-output":
-                return (
-                  <PredictOutput
-                    key={q.id}
-                    lessonId={lesson.id}
-                    quizId={q.id}
-                    expectedOutput={lesson.expectedOutput}
-                    onSolved={refresh}
-                  />
-                );
-              case "multiple-choice":
-                return (
-                  <MultipleChoice
-                    key={q.id}
-                    lessonId={lesson.id}
-                    quizId={q.id}
-                    answer={q.answer}
-                    onSolved={refresh}
-                  />
-                );
-              case "fill-in-blank":
-                return (
-                  <FillInBlank
-                    key={q.id}
-                    lessonId={lesson.id}
-                    quizId={q.id}
-                    template={q.template}
-                    blanks={q.blanks}
-                    onSolved={refresh}
-                  />
-                );
-              case "spot-the-bug":
-                return (
-                  <SpotTheBug
-                    key={q.id}
-                    lessonId={lesson.id}
-                    quizId={q.id}
-                    code={q.code}
-                    buggyLine={q.buggyLine}
-                    onSolved={refresh}
-                  />
-                );
-              case "order-statements":
-                return (
-                  <OrderStatements
-                    key={q.id}
-                    lessonId={lesson.id}
-                    quizId={q.id}
-                    answer={q.answer}
-                    onSolved={refresh}
-                  />
-                );
-            }
-          })}
-        </div>
+        <section className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_minmax(360px,0.8fr)]">
+          <div className="space-y-6">
+            <CodeBlock code={lesson.code} />
+          </div>
+
+          <div className="space-y-4">
+            <div className="rounded-[28px] border border-white/10 bg-zinc-950/80 p-5">
+              <div className="mb-1 text-xs uppercase tracking-[0.28em] text-zinc-500">
+                checkpoints
+              </div>
+              <h2 className="text-xl font-semibold text-zinc-50">{t("ui.quizzes")}</h2>
+              <p className="mt-2 text-sm leading-7 text-zinc-300">
+                Clear every checkpoint in this lesson to unlock the next stage.
+              </p>
+            </div>
+            {progress.done && (
+              <div className="rounded-[24px] border border-emerald-400/25 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
+                {t("ui.lessonComplete")}
+              </div>
+            )}
+            {lesson.quizzes.map((quiz) => {
+              switch (quiz.type) {
+                case "predict-output":
+                  return (
+                    <PredictOutput
+                      key={quiz.id}
+                      lessonId={lesson.id}
+                      quizId={quiz.id}
+                      expectedOutput={lesson.expectedOutput}
+                      onSolved={refresh}
+                    />
+                  );
+                case "multiple-choice":
+                  return (
+                    <MultipleChoice
+                      key={quiz.id}
+                      lessonId={lesson.id}
+                      quizId={quiz.id}
+                      answer={quiz.answer}
+                      onSolved={refresh}
+                    />
+                  );
+                case "fill-in-blank":
+                  return (
+                    <FillInBlank
+                      key={quiz.id}
+                      lessonId={lesson.id}
+                      quizId={quiz.id}
+                      template={quiz.template}
+                      blanks={quiz.blanks}
+                      onSolved={refresh}
+                    />
+                  );
+                case "spot-the-bug":
+                  return (
+                    <SpotTheBug
+                      key={quiz.id}
+                      lessonId={lesson.id}
+                      quizId={quiz.id}
+                      code={quiz.code}
+                      buggyLine={quiz.buggyLine}
+                      onSolved={refresh}
+                    />
+                  );
+                case "order-statements":
+                  return (
+                    <OrderStatements
+                      key={quiz.id}
+                      lessonId={lesson.id}
+                      quizId={quiz.id}
+                      answer={quiz.answer}
+                      onSolved={refresh}
+                    />
+                  );
+              }
+            })}
+          </div>
+        </section>
       </div>
     </main>
   );
