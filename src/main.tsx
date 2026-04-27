@@ -8,11 +8,9 @@ import { initTheme } from "@/lib/theme";
 
 initTheme();
 
-const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <HashRouter basename={base}>
+    <HashRouter>
       <App />
     </HashRouter>
   </React.StrictMode>,
