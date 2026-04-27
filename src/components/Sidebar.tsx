@@ -94,42 +94,6 @@ export function Sidebar({ lessons }: Props) {
         </div>
 
         <div className="space-y-3 px-3 py-4 lg:px-4">
-          <NavLink
-            to="/ps"
-            className={({ isActive }) =>
-              [
-                "block rounded-[22px] border px-4 py-4 transition",
-                "border-sky-400/18 bg-sky-500/8 hover:border-sky-300/35 hover:bg-sky-500/12",
-                isActive && "border-sky-300/55 bg-sky-500/14 shadow-lg shadow-sky-950/25",
-              ]
-                .filter(Boolean)
-                .join(" ")
-            }
-          >
-            <div className="mb-2 flex items-center justify-between gap-3">
-              <div>
-                <div className="text-[10px] uppercase tracking-[0.14em] text-sky-100/70">
-                  extra section
-                </div>
-                <div className="text-sm font-medium text-zinc-100">Problem Solving</div>
-              </div>
-              <div className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[11px] text-zinc-300">
-                {solvedProblems}/{problems.length}
-              </div>
-            </div>
-            <div className="mb-3 text-sm leading-6 text-zinc-300">
-              Validate sample outputs first, then move to Rust Playground with starter code.
-            </div>
-            <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-sky-400 to-cyan-300"
-                style={{
-                  width: `${Math.round((solvedProblems / problems.length) * 100) || 0}%`,
-                }}
-              />
-            </div>
-          </NavLink>
-
           {filtered.map(({ lesson, index }) => {
             const unlocked = isLessonUnlocked(index, lessons);
             const progress = lessonProgress(lesson.id, lesson.quizzes.length);
@@ -183,6 +147,42 @@ export function Sidebar({ lessons }: Props) {
               </NavLink>
             );
           })}
+
+          <NavLink
+            to="/ps"
+            className={({ isActive }) =>
+              [
+                "block rounded-[22px] border px-4 py-4 transition",
+                "border-sky-400/18 bg-sky-500/8 hover:border-sky-300/35 hover:bg-sky-500/12",
+                isActive && "border-sky-300/55 bg-sky-500/14 shadow-lg shadow-sky-950/25",
+              ]
+                .filter(Boolean)
+                .join(" ")
+            }
+          >
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.14em] text-sky-100/70">
+                  extra section
+                </div>
+                <div className="text-sm font-medium text-zinc-100">Problem Solving</div>
+              </div>
+              <div className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[11px] text-zinc-300">
+                {solvedProblems}/{problems.length}
+              </div>
+            </div>
+            <div className="mb-3 text-sm leading-6 text-zinc-300">
+              Validate sample outputs first, then move to Rust Playground with starter code.
+            </div>
+            <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-sky-400 to-cyan-300"
+                style={{
+                  width: `${Math.round((solvedProblems / problems.length) * 100) || 0}%`,
+                }}
+              />
+            </div>
+          </NavLink>
         </div>
       </div>
     </aside>
