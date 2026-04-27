@@ -11,6 +11,7 @@ import { SpotTheBug } from "@/components/quiz/SpotTheBug";
 import { OrderStatements } from "@/components/quiz/OrderStatements";
 import { useKeyboardNav } from "@/lib/keyboardNav";
 import { lessonProgress } from "@/lib/store";
+import { useProgressVersion } from "@/lib/useProgressVersion";
 
 interface Props {
   lessons: LessonT[];
@@ -20,6 +21,7 @@ export function Lesson({ lessons }: Props) {
   const { id } = useParams();
   const { t } = useTranslation();
   const [, setRefresh] = useState(0);
+  useProgressVersion();
   useKeyboardNav(lessons, id);
 
   const lesson = lessons.find((entry) => entry.id === id);

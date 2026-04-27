@@ -12,6 +12,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "fn main() {\n    let name = \"world\";\n    println!(\"Hello, {name}!\");\n}\n",
@@ -30,6 +35,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn main() {\n    let mut x = 5;\n    println!(\"x is {x}\");\n    x = x + 1;\n    println!(\"x is {x}\");\n\n    let y: i32 = 10;\n    let z = y * 2;\n    println!(\"y={y}, z={z}\");\n}\n",
@@ -48,6 +58,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
       }
     ],
     "code": "fn takes_ownership(s: String) {\n    println!(\"got: {s}\");\n}\n\nfn borrows(s: &String) {\n    println!(\"borrowed: {s}\");\n}\n\nfn main() {\n    let owned = String::from(\"hello\");\n    borrows(&owned);\n    println!(\"still here: {owned}\");\n    takes_ownership(owned);\n    // owned cannot be used here — it has been moved.\n    println!(\"done\");\n}\n",
@@ -66,6 +81,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    let n = 5;\n    if n > 3 {\n        println!(\"big\");\n    } else {\n        println!(\"small\");\n    }\n\n    let mut i = 0;\n    while i < 3 {\n        println!(\"i={i}\");\n        i += 1;\n    }\n\n    for x in 0..3 {\n        println!(\"x={x}\");\n    }\n}\n",
@@ -84,6 +104,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfn double(x: i32) -> i32 {\n    x * 2\n}\n\nfn main() {\n    let s = add(2, 3);\n    let d = double(s);\n    println!(\"s={s}, d={d}\");\n}\n",
@@ -102,6 +127,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    let s1: &str = \"hello\";\n    let s2: String = String::from(\"world\");\n    let combined = format!(\"{s1}, {s2}!\");\n    println!(\"{combined}\");\n    println!(\"len={}\", combined.len());\n}\n",
@@ -123,6 +153,11 @@
         "blanks": [
           "pair"
         ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn main() {\n    let pair = (1, \"two\");\n    let (a, b) = pair;\n    println!(\"a={a} b={b}\");\n\n    let arr = [10, 20, 30];\n    println!(\"first={}\", arr[0]);\n    println!(\"len={}\", arr.len());\n}\n",
@@ -141,6 +176,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
       }
     ],
     "code": "enum Shape {\n    Circle(f64),\n    Square(f64),\n}\n\nfn area(s: &Shape) -> f64 {\n    match s {\n        Shape::Circle(r) => 3.14 * r * r,\n        Shape::Square(side) => side * side,\n    }\n}\n\nfn main() {\n    let c = Shape::Circle(2.0);\n    let s = Shape::Square(3.0);\n    println!(\"circle={}\", area(&c));\n    println!(\"square={}\", area(&s));\n}\n",
@@ -159,6 +199,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "struct Point {\n    x: i32,\n    y: i32,\n}\n\nimpl Point {\n    fn distance(&self) -> f64 {\n        ((self.x * self.x + self.y * self.y) as f64).sqrt()\n    }\n}\n\nfn main() {\n    let p = Point { x: 3, y: 4 };\n    println!(\"x={}, y={}\", p.x, p.y);\n    println!(\"dist={}\", p.distance());\n}\n",
@@ -175,6 +220,11 @@
       },
       {
         "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
         "type": "multiple-choice",
         "answer": 1
       }
@@ -195,6 +245,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "fn main() {\n    let x = 10;\n    let print_x = || println!(\"x={x}\");\n    print_x();\n    print_x();\n\n    let mut counter = 0;\n    let mut increment = || {\n        counter += 1;\n        println!(\"counter={counter}\");\n    };\n    increment();\n    increment();\n}\n",
@@ -216,6 +271,11 @@
         "blanks": [
           "map"
         ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    let nums = vec![1, 2, 3];\n    let doubled: Vec<i32> = nums.iter().map(|x| x * 2).collect();\n    println!(\"{:?}\", doubled);\n}\n",
@@ -234,6 +294,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5, 6];\n    let evens: Vec<i32> = nums.into_iter().filter(|x| x % 2 == 0).collect();\n    println!(\"{:?}\", evens);\n}\n",
@@ -252,6 +317,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "fn main() {\n    let nums = vec![1, 2, 3, 4];\n    let sum = nums.iter().fold(0, |acc, x| acc + x);\n    let product = nums.iter().fold(1, |acc, x| acc * x);\n    println!(\"sum={sum}\");\n    println!(\"product={product}\");\n}\n",
@@ -271,6 +341,11 @@
         "type": "spot-the-bug",
         "code": "fn main() {\n    let nums = vec![1, 2, 3];\n    let total = nums.iter().sum();\n    println!(\"{total}\");\n}",
         "buggyLine": 3
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5];\n    let total: i32 = nums.iter().sum();\n    let max = nums.iter().max().unwrap();\n    println!(\"total={total}\");\n    println!(\"max={max}\");\n}\n",
@@ -289,6 +364,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
       }
     ],
     "code": "trait Greet {\n    fn greet(&self) -> String;\n}\n\nstruct Person {\n    name: String,\n}\n\nimpl Greet for Person {\n    fn greet(&self) -> String {\n        format!(\"Hello, {}!\", self.name)\n    }\n}\n\nfn main() {\n    let p = Person { name: String::from(\"Alice\") };\n    println!(\"{}\", p.greet());\n}\n",

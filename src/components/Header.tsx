@@ -5,6 +5,7 @@ import { LOCALES } from "@/i18n";
 import { getTheme, setTheme, type Theme } from "@/lib/theme";
 import type { Lesson } from "@/types";
 import { lessonProgress } from "@/lib/store";
+import { useProgressVersion } from "@/lib/useProgressVersion";
 
 interface Props {
   lessons: Lesson[];
@@ -13,6 +14,7 @@ interface Props {
 export function Header({ lessons }: Props) {
   const { t, i18n } = useTranslation();
   const [theme, setLocal] = useState<Theme>(getTheme());
+  useProgressVersion();
   const completed = lessons.filter((lesson) =>
     lessonProgress(lesson.id, lesson.quizzes.length).done,
   ).length;

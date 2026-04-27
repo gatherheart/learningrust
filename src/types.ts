@@ -51,3 +51,20 @@ export interface Lesson {
   expectedOutput: string;
   quizzes: Quiz[];
 }
+
+export interface ProblemSample {
+  input: string;
+  output: string;
+}
+
+export interface Problem {
+  id: string;
+  title: string;
+  difficulty: "easy" | "medium";
+  summary: string;
+  inputFormat: string[];
+  outputFormat: string[];
+  approach: string[];
+  samples: ProblemSample[];
+  starterCode: string;
+}

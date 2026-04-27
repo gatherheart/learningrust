@@ -5,7 +5,8 @@
     "topic": "basics",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+      { "id": "q2", "type": "multiple-choice", "answer": 1 },
+      { "id": "q3", "type": "multiple-choice", "answer": 2 }
     ]
   },
   {
@@ -14,7 +15,8 @@
     "topic": "basics",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+      { "id": "q2", "type": "multiple-choice", "answer": 2 },
+      { "id": "q3", "type": "multiple-choice", "answer": 1 }
     ]
   },
   {
@@ -23,7 +25,8 @@
     "topic": "ownership",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+      { "id": "q2", "type": "multiple-choice", "answer": 0 },
+      { "id": "q3", "type": "multiple-choice", "answer": 3 }
     ]
   },
   {
@@ -32,7 +35,8 @@
     "topic": "basics",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+      { "id": "q2", "type": "multiple-choice", "answer": 2 },
+      { "id": "q3", "type": "multiple-choice", "answer": 0 }
     ]
   },
   {
@@ -41,7 +45,8 @@
     "topic": "basics",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+      { "id": "q2", "type": "multiple-choice", "answer": 1 },
+      { "id": "q3", "type": "multiple-choice", "answer": 2 }
     ]
   },
   {
@@ -50,7 +55,8 @@
     "topic": "basics",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+      { "id": "q2", "type": "multiple-choice", "answer": 1 },
+      { "id": "q3", "type": "multiple-choice", "answer": 0 }
     ]
   },
   {
@@ -64,7 +70,8 @@
         "type": "fill-in-blank",
         "template": "let pair = (1, \"two\");\nlet (a, b) = ___;\nprintln!(\"{a} {b}\");",
         "blanks": ["pair"]
-      }
+      },
+      { "id": "q3", "type": "multiple-choice", "answer": 1 }
     ]
   },
   {
@@ -73,7 +80,8 @@
     "topic": "basics",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+      { "id": "q2", "type": "multiple-choice", "answer": 2 },
+      { "id": "q3", "type": "multiple-choice", "answer": 3 }
     ]
   },
   {
@@ -82,7 +90,8 @@
     "topic": "basics",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+      { "id": "q2", "type": "multiple-choice", "answer": 0 },
+      { "id": "q3", "type": "multiple-choice", "answer": 2 }
     ]
   },
   {
@@ -91,7 +100,8 @@
     "topic": "closures",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+      { "id": "q2", "type": "multiple-choice", "answer": 1 },
+      { "id": "q3", "type": "multiple-choice", "answer": 1 }
     ]
   },
   {
@@ -100,7 +110,8 @@
     "topic": "closures",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+      { "id": "q2", "type": "multiple-choice", "answer": 0 },
+      { "id": "q3", "type": "multiple-choice", "answer": 2 }
     ]
   },
   {
@@ -114,7 +125,8 @@
         "type": "fill-in-blank",
         "template": "let doubled: Vec<i32> = nums.iter().___(|x| x * 2).collect();",
         "blanks": ["map"]
-      }
+      },
+      { "id": "q3", "type": "multiple-choice", "answer": 0 }
     ]
   },
   {
@@ -123,7 +135,8 @@
     "topic": "iterators",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+      { "id": "q2", "type": "multiple-choice", "answer": 2 },
+      { "id": "q3", "type": "multiple-choice", "answer": 1 }
     ]
   },
   {
@@ -132,7 +145,8 @@
     "topic": "iterators",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+      { "id": "q2", "type": "multiple-choice", "answer": 0 },
+      { "id": "q3", "type": "multiple-choice", "answer": 2 }
     ]
   },
   {
@@ -146,7 +160,8 @@
         "type": "spot-the-bug",
         "code": "fn main() {\n    let nums = vec![1, 2, 3];\n    let total = nums.iter().sum();\n    println!(\"{total}\");\n}",
         "buggyLine": 3
-      }
+      },
+      { "id": "q3", "type": "multiple-choice", "answer": 0 }
     ]
   },
   {
@@ -155,7 +170,8 @@
     "topic": "traits",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+      { "id": "q2", "type": "multiple-choice", "answer": 1 },
+      { "id": "q3", "type": "multiple-choice", "answer": 3 }
     ]
   },
   {

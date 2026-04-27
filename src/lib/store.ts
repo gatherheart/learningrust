@@ -2,6 +2,7 @@ const KEY = "learningrust:progress:v1";
 
 interface Progress {
   completedQuizzes: Record<string, true>; // key: `${lessonId}:${quizId}`
+  solvedProblems?: Record<string, true>;
 }
 
 function read(): Progress {
@@ -16,6 +17,7 @@ function read(): Progress {
 
 function write(p: Progress) {
   localStorage.setItem(KEY, JSON.stringify(p));
+  window.dispatchEvent(new Event("learningrust:progress"));
 }
 
 export function isQuizCompleted(lessonId: string, quizId: string): boolean {
@@ -52,4 +54,15 @@ export function isLessonUnlocked(
 
 export function resetProgress(): void {
   localStorage.removeItem(KEY);
+}
+
+export function problemSolved(problemId: string): boolean {
+  return read().solvedProblems?.[problemId] === true;
+}
+
+export function markProblemSolved(problemId: string): void {
+  const p = read();
+  p.solvedProblems ??= {};
+  p.solvedProblems[problemId] = true;
+  write(p);
 }

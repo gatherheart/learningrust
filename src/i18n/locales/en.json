@@ -46,6 +46,15 @@
         "q2": {
           "question": "What is println! ?",
           "options": ["A function", "A macro", "A trait", "A keyword"]
+        },
+        "q3": {
+          "question": "In `println!(\"Hello, {name}!\")`, what does `{name}` do?",
+          "options": [
+            "Creates a new variable called `name`",
+            "Prints the braces literally",
+            "Inserts the value of `name` into the output",
+            "Calls a method on `name`"
+          ]
         }
       }
     },
@@ -64,6 +73,15 @@
             "`i32` does not have a `.set(...)` method, so this fails before mutability even matters."
           ],
           "answerReason": "The correct choice is `let y = y + 1;` because it shadows the original binding with a new one."
+        },
+        "q3": {
+          "question": "What is happening in `let y = y + 1;`?",
+          "options": [
+            "The old `y` is mutated in place",
+            "A new `y` shadows the old one",
+            "Rust automatically adds `mut`",
+            "The type of `y` changes to `usize`"
+          ]
         }
       }
     },
@@ -80,6 +98,15 @@
             "Prints an empty string",
             "Works fine"
           ]
+        },
+        "q3": {
+          "question": "Which argument style borrows a value instead of moving it?",
+          "options": [
+            "`String`",
+            "`Vec<i32>`",
+            "`Box<T>`",
+            "`&String`"
+          ]
         }
       }
     },
@@ -91,6 +118,10 @@
         "q2": {
           "question": "How many times does `for x in 0..3` iterate?",
           "options": ["0 times", "2 times", "3 times", "4 times"]
+        },
+        "q3": {
+          "question": "Which range includes the final value `3`?",
+          "options": ["`1..=3`", "`1..3`", "`0..3`", "`0..=2`"]
         }
       }
     },
@@ -106,6 +137,15 @@
             "The last expression without a semicolon is the block's value",
             "`return` is illegal in Rust",
             "The compiler inserts a return at the end"
+          ]
+        },
+        "q3": {
+          "question": "What happens if you add a semicolon after `a + b` in that function?",
+          "options": [
+            "The function returns `a + b` faster",
+            "Rust ignores the semicolon",
+            "The block no longer returns `a + b` as its value",
+            "The return type changes to `bool`"
           ]
         }
       }
@@ -123,6 +163,10 @@
             "String is always shorter than &str",
             "&str cannot hold UTF-8"
           ]
+        },
+        "q3": {
+          "question": "Which type can grow with methods like `push`?",
+          "options": ["`String`", "`&str`", "`char`", "`usize`"]
         }
       }
     },
@@ -133,6 +177,15 @@
         "q1": { "question": "Predict the program's output:" },
         "q2": {
           "question": "Fill in the blank to destructure the tuple."
+        },
+        "q3": {
+          "question": "Which statement about arrays is true?",
+          "options": [
+            "An array can mix `i32` and `&str` freely",
+            "All array elements must have the same type",
+            "Array length is decided only at runtime",
+            "Arrays cannot be indexed"
+          ]
         }
       }
     },
@@ -148,6 +201,15 @@
             "match needs exhaustiveness only for primitive types",
             "match must cover every variant",
             "All variants must share the same data type"
+          ]
+        },
+        "q3": {
+          "question": "What does one `match` arm usually handle?",
+          "options": [
+            "A single line comment",
+            "A function call only",
+            "A type annotation",
+            "One enum variant or pattern"
           ]
         }
       }
@@ -165,6 +227,15 @@
             "Replaces the struct's fields",
             "Runs at program startup"
           ]
+        },
+        "q3": {
+          "question": "Inside a method, what does `self` refer to?",
+          "options": [
+            "The whole module",
+            "A random global value",
+            "The current struct instance",
+            "The return type"
+          ]
         }
       }
     },
@@ -180,6 +251,15 @@
             "A closure value bound to `add`",
             "A trait implementation",
             "A macro invocation"
+          ]
+        },
+        "q3": {
+          "question": "Why are closures useful?",
+          "options": [
+            "They can only exist inside macros",
+            "They can be stored in variables and passed around",
+            "They replace every function in Rust",
+            "They always require explicit return types"
           ]
         }
       }
@@ -197,6 +277,15 @@
             "Because `counter` is copied each call",
             "Removing `mut` would still compile"
           ]
+        },
+        "q3": {
+          "question": "What is the closure using when it reads or changes `counter`?",
+          "options": [
+            "A new local variable unrelated to `counter`",
+            "A macro-generated global variable",
+            "A captured value from the surrounding scope",
+            "A struct field named `counter`"
+          ]
         }
       }
     },
@@ -207,6 +296,15 @@
         "q1": { "question": "Predict the program's output:" },
         "q2": {
           "question": "Which iterator method transforms each element? Fill in the blank."
+        },
+        "q3": {
+          "question": "What does `collect()` do after `map(...)`?",
+          "options": [
+            "Consumes the iterator and builds a collection",
+            "Sorts the iterator in place",
+            "Turns the iterator into a trait",
+            "Makes `map` run forever"
+          ]
         }
       }
     },
@@ -222,6 +320,15 @@
             "Once per element, eagerly into a Vec",
             "Lazily, only when the iterator is consumed",
             "Filter requires a boolean array as input"
+          ]
+        },
+        "q3": {
+          "question": "Which items does `filter` keep?",
+          "options": [
+            "Items that return numbers larger than zero",
+            "Items for which the predicate returns `true`",
+            "Every item after the first one",
+            "Only items at even indexes"
           ]
         }
       }
@@ -239,6 +346,15 @@
             "Its initial value must always be 0",
             "It runs in parallel"
           ]
+        },
+        "q3": {
+          "question": "What value is carried from one `fold` step to the next?",
+          "options": [
+            "The loop index only",
+            "The input vector itself",
+            "The accumulator",
+            "A hidden mutable global"
+          ]
         }
       }
     },
@@ -249,6 +365,15 @@
         "q1": { "question": "Predict the program's output:" },
         "q2": {
           "question": "The snippet below has one line that won't compile. Which line is it?"
+        },
+        "q3": {
+          "question": "What does `sum()` return when the iterator items are numbers?",
+          "options": [
+            "A single total value",
+            "A new iterator of partial sums",
+            "Always a `String`",
+            "A tuple of `(sum, max)`"
+          ]
         }
       }
     },
@@ -264,6 +389,15 @@
             "Provides the `Greet` trait's methods for `Person`",
             "Removes the `Greet` trait from `Person`",
             "Renames Person to Greet"
+          ]
+        },
+        "q3": {
+          "question": "Why are traits useful?",
+          "options": [
+            "They make all types have the same fields",
+            "They replace enums",
+            "They remove the need for methods",
+            "They let different types share the same behavior contract"
           ]
         }
       }

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { Lesson } from "@/types";
 import { lessonProgress } from "@/lib/store";
+import { useProgressVersion } from "@/lib/useProgressVersion";
 
 interface Props {
   lessons: Lesson[];
@@ -9,6 +10,7 @@ interface Props {
 
 export function Home({ lessons }: Props) {
   const { t } = useTranslation();
+  useProgressVersion();
   const firstLesson = lessons[0];
   const completed = lessons.filter((lesson) => lessonProgress(lesson.id, lesson.quizzes.length).done)
     .length;

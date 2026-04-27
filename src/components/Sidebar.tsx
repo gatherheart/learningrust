@@ -2,7 +2,9 @@ import { useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { Lesson } from "@/types";
-import { isLessonUnlocked, lessonProgress } from "@/lib/store";
+import { isLessonUnlocked, lessonProgress, problemSolved } from "@/lib/store";
+import { problems } from "@/data/problems";
+import { useProgressVersion } from "@/lib/useProgressVersion";
 
 interface Props {
   lessons: Lesson[];
@@ -18,6 +20,7 @@ function stageLabel(index: number) {
 export function Sidebar({ lessons }: Props) {
   const { t } = useTranslation();
   const [query, setQuery] = useState("");
+  const progressVersion = useProgressVersion();
 
   const totalDone = useMemo(
     () =>
@@ -25,7 +28,7 @@ export function Sidebar({ lessons }: Props) {
         .length,
     // Re-evaluate whenever progress changes are reflected through React renders.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [lessons, query],
+    [lessons, query, progressVersion],
   );
 
   const filtered = useMemo(() => {
@@ -46,6 +49,10 @@ export function Sidebar({ lessons }: Props) {
   }, [lessons, query, t]);
 
   const percent = lessons.length === 0 ? 0 : Math.round((totalDone / lessons.length) * 100);
+  const solvedProblems = useMemo(
+    () => problems.filter((problem) => problemSolved(problem.id)).length,
+    [progressVersion],
+  );
 
   return (
     <aside className="border-b border-white/10 bg-zinc-950/80 lg:w-[360px] lg:shrink-0 lg:border-b-0 lg:border-r">
@@ -87,6 +94,42 @@ export function Sidebar({ lessons }: Props) {
         </div>
 
         <div className="space-y-3 px-3 py-4 lg:px-4">
+          <NavLink
+            to="/ps"
+            className={({ isActive }) =>
+              [
+                "block rounded-[22px] border px-4 py-4 transition",
+                "border-sky-400/18 bg-sky-500/8 hover:border-sky-300/35 hover:bg-sky-500/12",
+                isActive && "border-sky-300/55 bg-sky-500/14 shadow-lg shadow-sky-950/25",
+              ]
+                .filter(Boolean)
+                .join(" ")
+            }
+          >
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.14em] text-sky-100/70">
+                  extra section
+                </div>
+                <div className="text-sm font-medium text-zinc-100">Problem Solving</div>
+              </div>
+              <div className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[11px] text-zinc-300">
+                {solvedProblems}/{problems.length}
+              </div>
+            </div>
+            <div className="mb-3 text-sm leading-6 text-zinc-300">
+              Validate sample outputs first, then move to Rust Playground with starter code.
+            </div>
+            <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-sky-400 to-cyan-300"
+                style={{
+                  width: `${Math.round((solvedProblems / problems.length) * 100) || 0}%`,
+                }}
+              />
+            </div>
+          </NavLink>
+
           {filtered.map(({ lesson, index }) => {
             const unlocked = isLessonUnlocked(index, lessons);
             const progress = lessonProgress(lesson.id, lesson.quizzes.length);
