@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,7 +15,7 @@ html {
 }
 
 body {
-  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-family: Inter, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   @apply bg-zinc-950 text-zinc-100;
 }
 
@@ -41,7 +39,7 @@ body::before {
 code,
 pre,
 .font-mono {
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 ::selection {

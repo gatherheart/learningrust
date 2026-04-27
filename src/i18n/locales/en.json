@@ -509,6 +509,58 @@
           ]
         }
       }
+    },
+    "33_vec_push": {
+      "title": "Vectors and push",
+      "description": "`Vec<T>` is Rust's growable array type. It stores elements on the heap, tracks length separately from capacity, and `push()` appends a new item to the end.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Fill in the method used to append `3` to the vector."
+        }
+      }
+    },
+    "34_option_match": {
+      "title": "Option with match guards",
+      "description": "A `match` arm can include an extra `if` condition called a guard. Guards let you refine patterns like `Some(n)` into more specific cases without nesting another `if`.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Why does `Some(25)` print `big`?",
+          "options": [
+            "Because every Some value is treated as big",
+            "Because the `Some(n) if n > 10` guard matches",
+            "Because match checks None first",
+            "Because Option automatically unwraps values over 10"
+          ]
+        }
+      }
+    },
+    "35_arc_mutex": {
+      "title": "Arc and Mutex",
+      "description": "`Arc<T>` provides shared ownership across threads, while `Mutex<T>` gives mutable access one lock holder at a time. They are commonly paired for shared synchronized state.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Order what happens in this program.",
+          "options": [
+            "Create an Arc holding a Mutex with 0 inside",
+            "Clone the Arc so two owners point to the same Mutex",
+            "Lock the Mutex and add 2 to the inner value",
+            "Lock again to print the final count"
+          ]
+        }
+      }
+    },
+    "36_iter_enumerate": {
+      "title": "Iterators: enumerate",
+      "description": "`enumerate()` wraps an iterator and yields `(index, item)` pairs. Because each iteration now returns a tuple, the loop pattern must destructure it with parentheses.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "The snippet below has one line that won't compile. Which line is it?"
+        }
+      }
     }
   }
 }

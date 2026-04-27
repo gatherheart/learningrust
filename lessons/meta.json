@@ -314,5 +314,55 @@
       { "id": "q1", "type": "predict-output" },
       { "id": "q2", "type": "multiple-choice", "answer": 0 }
     ]
+  },
+  {
+    "id": "33_vec_push",
+    "bin": "33_vec_push",
+    "topic": "basics",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q2",
+        "type": "fill-in-blank",
+        "template": "let mut nums = vec![1, 2];\nnums.___(3);\nprintln!(\"{:?}\", nums);",
+        "blanks": ["push"]
+      }
+    ]
+  },
+  {
+    "id": "34_option_match",
+    "bin": "34_option_match",
+    "topic": "error_handling",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "35_arc_mutex",
+    "bin": "35_arc_mutex",
+    "topic": "smart_pointers",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q2",
+        "type": "order-statements",
+        "answer": [0, 1, 2, 3]
+      }
+    ]
+  },
+  {
+    "id": "36_iter_enumerate",
+    "bin": "36_iter_enumerate",
+    "topic": "iterators",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q2",
+        "type": "spot-the-bug",
+        "code": "fn main() {\n    let names = [\"Ada\", \"Linus\"];\n    for index, name in names.iter().enumerate() {\n        println!(\"{index}: {name}\");\n    }\n}",
+        "buggyLine": 3
+      }
+    ]
   }
 ]

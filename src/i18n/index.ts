@@ -68,11 +68,12 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
+    lng: "en",
     fallbackLng: "en",
     supportedLngs: LOCALES.map((l) => l.code),
     interpolation: { escapeValue: false },
     detection: {
-      order: ["localStorage", "navigator"],
+      order: ["localStorage"],
       caches: ["localStorage"],
       lookupLocalStorage: "learningrust:lang",
     },

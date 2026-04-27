@@ -1,0 +1,677 @@
+[
+  {
+    "id": "01_hello",
+    "bin": "01_hello",
+    "topic": "basics",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "fn main() {\n    let name = \"world\";\n    println!(\"Hello, {name}!\");\n}\n",
+    "expectedOutput": "Hello, world!\n"
+  },
+  {
+    "id": "02_variables",
+    "bin": "02_variables",
+    "topic": "basics",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ],
+    "code": "fn main() {\n    let mut x = 5;\n    println!(\"x is {x}\");\n    x = x + 1;\n    println!(\"x is {x}\");\n\n    let y: i32 = 10;\n    let z = y * 2;\n    println!(\"y={y}, z={z}\");\n}\n",
+    "expectedOutput": "x is 5\nx is 6\ny=10, z=20\n"
+  },
+  {
+    "id": "03_ownership",
+    "bin": "03_ownership",
+    "topic": "ownership",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "fn takes_ownership(s: String) {\n    println!(\"got: {s}\");\n}\n\nfn borrows(s: &String) {\n    println!(\"borrowed: {s}\");\n}\n\nfn main() {\n    let owned = String::from(\"hello\");\n    borrows(&owned);\n    println!(\"still here: {owned}\");\n    takes_ownership(owned);\n    // owned cannot be used here — it has been moved.\n    println!(\"done\");\n}\n",
+    "expectedOutput": "borrowed: hello\nstill here: hello\ngot: hello\ndone\n"
+  },
+  {
+    "id": "04_control_flow",
+    "bin": "04_control_flow",
+    "topic": "basics",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ],
+    "code": "fn main() {\n    let n = 5;\n    if n > 3 {\n        println!(\"big\");\n    } else {\n        println!(\"small\");\n    }\n\n    let mut i = 0;\n    while i < 3 {\n        println!(\"i={i}\");\n        i += 1;\n    }\n\n    for x in 0..3 {\n        println!(\"x={x}\");\n    }\n}\n",
+    "expectedOutput": "big\ni=0\ni=1\ni=2\nx=0\nx=1\nx=2\n"
+  },
+  {
+    "id": "05_functions",
+    "bin": "05_functions",
+    "topic": "basics",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfn double(x: i32) -> i32 {\n    x * 2\n}\n\nfn main() {\n    let s = add(2, 3);\n    let d = double(s);\n    println!(\"s={s}, d={d}\");\n}\n",
+    "expectedOutput": "s=5, d=10\n"
+  },
+  {
+    "id": "06_strings",
+    "bin": "06_strings",
+    "topic": "basics",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "fn main() {\n    let s1: &str = \"hello\";\n    let s2: String = String::from(\"world\");\n    let combined = format!(\"{s1}, {s2}!\");\n    println!(\"{combined}\");\n    println!(\"len={}\", combined.len());\n}\n",
+    "expectedOutput": "hello, world!\nlen=13\n"
+  },
+  {
+    "id": "07_tuples_arrays",
+    "bin": "07_tuples_arrays",
+    "topic": "basics",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "fill-in-blank",
+        "template": "let pair = (1, \"two\");\nlet (a, b) = ___;\nprintln!(\"{a} {b}\");",
+        "blanks": [
+          "pair"
+        ]
+      }
+    ],
+    "code": "fn main() {\n    let pair = (1, \"two\");\n    let (a, b) = pair;\n    println!(\"a={a} b={b}\");\n\n    let arr = [10, 20, 30];\n    println!(\"first={}\", arr[0]);\n    println!(\"len={}\", arr.len());\n}\n",
+    "expectedOutput": "a=1 b=two\nfirst=10\nlen=3\n"
+  },
+  {
+    "id": "08_enums",
+    "bin": "08_enums",
+    "topic": "basics",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ],
+    "code": "enum Shape {\n    Circle(f64),\n    Square(f64),\n}\n\nfn area(s: &Shape) -> f64 {\n    match s {\n        Shape::Circle(r) => 3.14 * r * r,\n        Shape::Square(side) => side * side,\n    }\n}\n\nfn main() {\n    let c = Shape::Circle(2.0);\n    let s = Shape::Square(3.0);\n    println!(\"circle={}\", area(&c));\n    println!(\"square={}\", area(&s));\n}\n",
+    "expectedOutput": "circle=12.56\nsquare=9\n"
+  },
+  {
+    "id": "09_structs",
+    "bin": "09_structs",
+    "topic": "basics",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "struct Point {\n    x: i32,\n    y: i32,\n}\n\nimpl Point {\n    fn distance(&self) -> f64 {\n        ((self.x * self.x + self.y * self.y) as f64).sqrt()\n    }\n}\n\nfn main() {\n    let p = Point { x: 3, y: 4 };\n    println!(\"x={}, y={}\", p.x, p.y);\n    println!(\"dist={}\", p.distance());\n}\n",
+    "expectedOutput": "x=3, y=4\ndist=5\n"
+  },
+  {
+    "id": "10_closures_basic",
+    "bin": "10_closures_basic",
+    "topic": "closures",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "fn main() {\n    let add = |a: i32, b: i32| a + b;\n    let square = |x: i32| x * x;\n    println!(\"{}\", add(2, 3));\n    println!(\"{}\", square(4));\n}\n",
+    "expectedOutput": "5\n16\n"
+  },
+  {
+    "id": "11_closures_capture",
+    "bin": "11_closures_capture",
+    "topic": "closures",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "fn main() {\n    let x = 10;\n    let print_x = || println!(\"x={x}\");\n    print_x();\n    print_x();\n\n    let mut counter = 0;\n    let mut increment = || {\n        counter += 1;\n        println!(\"counter={counter}\");\n    };\n    increment();\n    increment();\n}\n",
+    "expectedOutput": "x=10\nx=10\ncounter=1\ncounter=2\n"
+  },
+  {
+    "id": "12_iter_map",
+    "bin": "12_iter_map",
+    "topic": "iterators",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "fill-in-blank",
+        "template": "let doubled: Vec<i32> = nums.iter().___(|x| x * 2).collect();",
+        "blanks": [
+          "map"
+        ]
+      }
+    ],
+    "code": "fn main() {\n    let nums = vec![1, 2, 3];\n    let doubled: Vec<i32> = nums.iter().map(|x| x * 2).collect();\n    println!(\"{:?}\", doubled);\n}\n",
+    "expectedOutput": "[2, 4, 6]\n"
+  },
+  {
+    "id": "13_iter_filter",
+    "bin": "13_iter_filter",
+    "topic": "iterators",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ],
+    "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5, 6];\n    let evens: Vec<i32> = nums.into_iter().filter(|x| x % 2 == 0).collect();\n    println!(\"{:?}\", evens);\n}\n",
+    "expectedOutput": "[2, 4, 6]\n"
+  },
+  {
+    "id": "14_iter_fold",
+    "bin": "14_iter_fold",
+    "topic": "iterators",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "fn main() {\n    let nums = vec![1, 2, 3, 4];\n    let sum = nums.iter().fold(0, |acc, x| acc + x);\n    let product = nums.iter().fold(1, |acc, x| acc * x);\n    println!(\"sum={sum}\");\n    println!(\"product={product}\");\n}\n",
+    "expectedOutput": "sum=10\nproduct=24\n"
+  },
+  {
+    "id": "15_iter_sum",
+    "bin": "15_iter_sum",
+    "topic": "iterators",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "spot-the-bug",
+        "code": "fn main() {\n    let nums = vec![1, 2, 3];\n    let total = nums.iter().sum();\n    println!(\"{total}\");\n}",
+        "buggyLine": 3
+      }
+    ],
+    "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5];\n    let total: i32 = nums.iter().sum();\n    let max = nums.iter().max().unwrap();\n    println!(\"total={total}\");\n    println!(\"max={max}\");\n}\n",
+    "expectedOutput": "total=15\nmax=5\n"
+  },
+  {
+    "id": "16_traits_basic",
+    "bin": "16_traits_basic",
+    "topic": "traits",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "trait Greet {\n    fn greet(&self) -> String;\n}\n\nstruct Person {\n    name: String,\n}\n\nimpl Greet for Person {\n    fn greet(&self) -> String {\n        format!(\"Hello, {}!\", self.name)\n    }\n}\n\nfn main() {\n    let p = Person { name: String::from(\"Alice\") };\n    println!(\"{}\", p.greet());\n}\n",
+    "expectedOutput": "Hello, Alice!\n"
+  },
+  {
+    "id": "17_traits_default",
+    "bin": "17_traits_default",
+    "topic": "traits",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "trait Animal {\n    fn name(&self) -> String;\n    fn sound(&self) -> String {\n        String::from(\"...\")\n    }\n}\n\nstruct Cat;\nstruct Dog;\n\nimpl Animal for Cat {\n    fn name(&self) -> String {\n        String::from(\"cat\")\n    }\n    fn sound(&self) -> String {\n        String::from(\"meow\")\n    }\n}\n\nimpl Animal for Dog {\n    fn name(&self) -> String {\n        String::from(\"dog\")\n    }\n}\n\nfn main() {\n    let c = Cat;\n    let d = Dog;\n    println!(\"{}: {}\", c.name(), c.sound());\n    println!(\"{}: {}\", d.name(), d.sound());\n}\n",
+    "expectedOutput": "cat: meow\ndog: ...\n"
+  },
+  {
+    "id": "18_traits_derive",
+    "bin": "18_traits_derive",
+    "topic": "traits",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "#[derive(Debug, Clone, PartialEq)]\nstruct Point {\n    x: i32,\n    y: i32,\n}\n\nfn main() {\n    let p = Point { x: 1, y: 2 };\n    let q = p.clone();\n    println!(\"{:?}\", p);\n    println!(\"equal={}\", p == q);\n}\n",
+    "expectedOutput": "Point { x: 1, y: 2 }\nequal=true\n"
+  },
+  {
+    "id": "19_generics_basic",
+    "bin": "19_generics_basic",
+    "topic": "generics",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ],
+    "code": "fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {\n    let mut max = list[0];\n    for &item in list {\n        if item > max {\n            max = item;\n        }\n    }\n    max\n}\n\nfn main() {\n    let ints = [10, 25, 3, 47, 8];\n    let floats = [1.1, 2.2, 0.5];\n    println!(\"max int = {}\", largest(&ints));\n    println!(\"max float = {}\", largest(&floats));\n}\n",
+    "expectedOutput": "max int = 47\nmax float = 2.2\n"
+  },
+  {
+    "id": "20_lifetimes_basic",
+    "bin": "20_lifetimes_basic",
+    "topic": "lifetimes",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() >= y.len() {\n        x\n    } else {\n        y\n    }\n}\n\nfn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = \"hi\";\n    let r = longest(&s1, s2);\n    println!(\"{r}\");\n}\n",
+    "expectedOutput": "hello\n"
+  },
+  {
+    "id": "21_lifetimes_struct",
+    "bin": "21_lifetimes_struct",
+    "topic": "lifetimes",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "spot-the-bug",
+        "code": "struct Borrower {\n    name: &str,\n}\n\nfn main() {\n    let s = String::from(\"hi\");\n    let b = Borrower { name: &s };\n    println!(\"{}\", b.name);\n}",
+        "buggyLine": 2
+      }
+    ],
+    "code": "struct Borrower<'a> {\n    name: &'a str,\n}\n\nimpl<'a> Borrower<'a> {\n    fn announce(&self) {\n        println!(\"Borrower: {}\", self.name);\n    }\n}\n\nfn main() {\n    let owner = String::from(\"Alice\");\n    let b = Borrower { name: &owner };\n    b.announce();\n}\n",
+    "expectedOutput": "Borrower: Alice\n"
+  },
+  {
+    "id": "22_result_basic",
+    "bin": "22_result_basic",
+    "topic": "error_handling",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "fn divide(a: i32, b: i32) -> Result<i32, String> {\n    if b == 0 {\n        Err(String::from(\"div by zero\"))\n    } else {\n        Ok(a / b)\n    }\n}\n\nfn main() {\n    match divide(10, 2) {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n    match divide(10, 0) {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n}\n",
+    "expectedOutput": "ok: 5\nerr: div by zero\n"
+  },
+  {
+    "id": "23_option_basic",
+    "bin": "23_option_basic",
+    "topic": "error_handling",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ],
+    "code": "fn first_word(s: &str) -> Option<&str> {\n    s.split_whitespace().next()\n}\n\nfn main() {\n    let s = \"hello world\";\n    let empty = \"\";\n    println!(\"{:?}\", first_word(s));\n    println!(\"{:?}\", first_word(empty));\n    println!(\"default: {}\", first_word(empty).unwrap_or(\"none\"));\n}\n",
+    "expectedOutput": "Some(\"hello\")\nNone\ndefault: none\n"
+  },
+  {
+    "id": "24_error_propagation",
+    "bin": "24_error_propagation",
+    "topic": "error_handling",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "order-statements",
+        "answer": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "code": "use std::num::ParseIntError;\n\nfn parse_and_double(s: &str) -> Result<i32, ParseIntError> {\n    let n: i32 = s.parse()?;\n    Ok(n * 2)\n}\n\nfn main() {\n    match parse_and_double(\"21\") {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n    match parse_and_double(\"xyz\") {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n}\n",
+    "expectedOutput": "ok: 42\nerr: invalid digit found in string\n"
+  },
+  {
+    "id": "25_panic_unwrap",
+    "bin": "25_panic_unwrap",
+    "topic": "error_handling",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "fn main() {\n    let value: Option<i32> = Some(42);\n    let n = value.unwrap();\n    println!(\"n={n}\");\n\n    let result: Result<i32, &str> = Ok(7);\n    let r = result.expect(\"should be ok\");\n    println!(\"r={r}\");\n}\n",
+    "expectedOutput": "n=42\nr=7\n"
+  },
+  {
+    "id": "26_async_basic",
+    "bin": "26_async_basic",
+    "topic": "async",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ],
+    "code": "async fn one() -> i32 {\n    1\n}\n\nasync fn two() -> i32 {\n    2\n}\n\nfn main() {\n    let result = pollster::block_on(async { one().await + two().await });\n    println!(\"result={result}\");\n}\n",
+    "expectedOutput": "result=3\n"
+  },
+  {
+    "id": "27_box_basic",
+    "bin": "27_box_basic",
+    "topic": "smart_pointers",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "fn main() {\n    let b: Box<i32> = Box::new(5);\n    println!(\"b={b}\");\n    println!(\"doubled={}\", *b * 2);\n}\n",
+    "expectedOutput": "b=5\ndoubled=10\n"
+  },
+  {
+    "id": "28_rc_basic",
+    "bin": "28_rc_basic",
+    "topic": "smart_pointers",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "use std::rc::Rc;\n\nfn main() {\n    let a = Rc::new(String::from(\"hello\"));\n    let b = Rc::clone(&a);\n    let c = Rc::clone(&a);\n    println!(\"count={}\", Rc::strong_count(&a));\n    println!(\"a={a}, b={b}, c={c}\");\n}\n",
+    "expectedOutput": "count=3\na=hello, b=hello, c=hello\n"
+  },
+  {
+    "id": "29_refcell_basic",
+    "bin": "29_refcell_basic",
+    "topic": "smart_pointers",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "order-statements",
+        "answer": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "code": "use std::cell::RefCell;\n\nfn main() {\n    let cell = RefCell::new(5);\n    {\n        let mut x = cell.borrow_mut();\n        *x += 10;\n    }\n    println!(\"value={}\", cell.borrow());\n}\n",
+    "expectedOutput": "value=15\n"
+  },
+  {
+    "id": "30_macros_basic",
+    "bin": "30_macros_basic",
+    "topic": "macros",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ],
+    "code": "fn main() {\n    let v = vec![1, 2, 3];\n    println!(\"{:?}\", v);\n\n    let formatted = format!(\"{}+{}={}\", 2, 3, 2 + 3);\n    println!(\"{formatted}\");\n\n    println!(\"debug: {:?}\", v);\n}\n",
+    "expectedOutput": "[1, 2, 3]\n2+3=5\ndebug: [1, 2, 3]\n"
+  },
+  {
+    "id": "31_macros_custom",
+    "bin": "31_macros_custom",
+    "topic": "macros",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "macro_rules! greet {\n    () => {\n        println!(\"Hello!\");\n    };\n    ($name:expr) => {\n        println!(\"Hello, {}!\", $name);\n    };\n}\n\nfn main() {\n    greet!();\n    greet!(\"Alice\");\n}\n",
+    "expectedOutput": "Hello!\nHello, Alice!\n"
+  },
+  {
+    "id": "32_unsafe_basic",
+    "bin": "32_unsafe_basic",
+    "topic": "unsafe",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "fn main() {\n    let mut x = 10;\n    let p: *mut i32 = &mut x;\n    unsafe {\n        *p = *p + 5;\n    }\n    println!(\"x={x}\");\n}\n",
+    "expectedOutput": "x=15\n"
+  },
+  {
+    "id": "33_vec_push",
+    "bin": "33_vec_push",
+    "topic": "basics",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "fill-in-blank",
+        "template": "let mut nums = vec![1, 2];\nnums.___(3);\nprintln!(\"{:?}\", nums);",
+        "blanks": [
+          "push"
+        ]
+      }
+    ],
+    "code": "fn main() {\n    let mut nums = vec![1, 2];\n    nums.push(3);\n\n    println!(\"len={}\", nums.len());\n    println!(\"{:?}\", nums);\n}\n",
+    "expectedOutput": "len=3\n[1, 2, 3]\n"
+  },
+  {
+    "id": "34_option_match",
+    "bin": "34_option_match",
+    "topic": "error_handling",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "fn describe(value: Option<i32>) -> &'static str {\n    match value {\n        Some(n) if n > 10 => \"big\",\n        Some(_) => \"small\",\n        None => \"none\",\n    }\n}\n\nfn main() {\n    println!(\"{}\", describe(Some(3)));\n    println!(\"{}\", describe(Some(25)));\n    println!(\"{}\", describe(None));\n}\n",
+    "expectedOutput": "small\nbig\nnone\n"
+  },
+  {
+    "id": "35_arc_mutex",
+    "bin": "35_arc_mutex",
+    "topic": "smart_pointers",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "order-statements",
+        "answer": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "code": "use std::sync::{Arc, Mutex};\n\nfn main() {\n    let count = Arc::new(Mutex::new(0));\n    let shared = Arc::clone(&count);\n\n    {\n        let mut value = shared.lock().unwrap();\n        *value += 2;\n    }\n\n    println!(\"count={}\", count.lock().unwrap());\n}\n",
+    "expectedOutput": "count=2\n"
+  },
+  {
+    "id": "36_iter_enumerate",
+    "bin": "36_iter_enumerate",
+    "topic": "iterators",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "spot-the-bug",
+        "code": "fn main() {\n    let names = [\"Ada\", \"Linus\"];\n    for index, name in names.iter().enumerate() {\n        println!(\"{index}: {name}\");\n    }\n}",
+        "buggyLine": 3
+      }
+    ],
+    "code": "fn main() {\n    let names = [\"Ada\", \"Linus\", \"Grace\"];\n\n    for (index, name) in names.iter().enumerate() {\n        println!(\"{index}: {name}\");\n    }\n}\n",
+    "expectedOutput": "0: Ada\n1: Linus\n2: Grace\n"
+  }
+]
