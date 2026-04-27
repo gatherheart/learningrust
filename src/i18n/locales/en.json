@@ -51,7 +51,7 @@
     },
     "02_variables": {
       "title": "Variables and mutability",
-      "description": "In Rust, `let y = 10;` creates a variable binding named `y`. That binding is immutable by default, which means you can read its value but you cannot change it later. If you want to reassign it, you must write `let mut y = 10;`. The word `mut` does not change the type of the value; it changes whether the binding is allowed to point to a new value later. In `let y: i32 = 10;`, the `: i32` part is a type annotation. Rust often infers types automatically, but explicit annotations are useful when you want to make the type clear or when inference is not enough.",
+      "description": "`let` creates a binding.\n\n```rust\nlet y = 10;\n```\n\nThis means: make a variable named `y` and bind it to `10`.\n\n```rust\nlet mut y = 10;\ny = 11;\n```\n\n`mut` allows reassignment. Without `mut`, `y = 11;` is an error.\n\n```rust\nlet y: i32 = 10;\n```\n\n`:` introduces a type annotation. Here, `y` is explicitly marked as `i32`.\n\n```rust\nlet y = y + 1;\n```\n\nThis does not mutate the old `y`. It creates a new `y` by shadowing the previous one.",
       "quizzes": {
         "q1": { "question": "Predict the program's output:" },
         "q2": {

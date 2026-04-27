@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { Lesson as LessonT } from "@/types";
 import { CodeBlock } from "@/components/CodeBlock";
+import { LessonDescription } from "@/components/LessonDescription";
 import { PredictOutput } from "@/components/quiz/PredictOutput";
 import { MultipleChoice } from "@/components/quiz/MultipleChoice";
 import { FillInBlank } from "@/components/quiz/FillInBlank";
@@ -52,9 +53,7 @@ export function Lesson({ lessons }: Props) {
             <h1 className="text-3xl font-bold tracking-tight text-zinc-50 lg:text-4xl">
               {t(`lessons.${lesson.id}.title`)}
             </h1>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-zinc-300">
-              {t(`lessons.${lesson.id}.description`)}
-            </p>
+            <LessonDescription content={t(`lessons.${lesson.id}.description`) as string} />
           </div>
 
           <div className="rounded-[30px] border border-white/10 bg-[#0d1117] p-5 shadow-2xl shadow-black/20">
