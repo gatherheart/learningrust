@@ -35,8 +35,8 @@ export function Header({ lessons }: Props) {
               R
             </span>
             <div>
-              <div className="text-[11px] uppercase tracking-[0.32em] text-zinc-500">
-                interactive rust lab
+              <div className="text-[11px] uppercase tracking-[0.16em] text-zinc-500">
+                Rust practice
               </div>
               <span className="text-lg font-semibold text-zinc-50">
                 {t("ui.appName")}
@@ -44,8 +44,8 @@ export function Header({ lessons }: Props) {
             </div>
           </Link>
           <div className="hidden items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 lg:flex">
-            <div className="text-[11px] uppercase tracking-[0.28em] text-zinc-500">
-              campaign
+            <div className="text-[11px] uppercase tracking-[0.14em] text-zinc-500">
+              Progress
             </div>
             <div className="text-sm font-medium text-zinc-200">
               {completed}/{lessons.length} cleared
@@ -59,8 +59,8 @@ export function Header({ lessons }: Props) {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <div className="rounded-full border border-emerald-400/25 bg-emerald-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-emerald-200">
-            terminal flow
+          <div className="rounded-full border border-emerald-400/25 bg-emerald-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-emerald-200">
+            Learn by doing
           </div>
           <button
             onClick={cycle}

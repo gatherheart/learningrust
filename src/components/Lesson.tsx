@@ -42,10 +42,10 @@ export function Lesson({ lessons }: Props) {
         <section className="grid gap-6 xl:grid-cols-[minmax(0,1.25fr)_minmax(340px,0.75fr)]">
           <div className="rounded-[30px] border border-white/10 bg-zinc-950/85 p-6 shadow-2xl shadow-black/25">
             <div className="mb-5 flex flex-wrap items-center gap-2">
-              <span className="rounded-full border border-orange-400/30 bg-orange-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-orange-200">
+              <span className="rounded-full border border-orange-400/30 bg-orange-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-orange-200">
                 lesson {String(lessonIndex + 1).padStart(2, "0")}
               </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-zinc-400">
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-zinc-400">
                 {t(`topics.${lesson.topic}`)}
               </span>
             </div>
@@ -59,8 +59,8 @@ export function Lesson({ lessons }: Props) {
 
           <div className="rounded-[30px] border border-white/10 bg-[#0d1117] p-5 shadow-2xl shadow-black/20">
             <div className="mb-4 flex items-center justify-between">
-              <div className="text-xs uppercase tracking-[0.28em] text-zinc-500">
-                mission state
+              <div className="text-xs uppercase tracking-[0.14em] text-zinc-500">
+                progress
               </div>
               <div className="rounded-full border border-white/10 px-3 py-1 font-mono text-[11px] text-zinc-300">
                 {progress.completed}/{progress.total}
@@ -97,12 +97,12 @@ export function Lesson({ lessons }: Props) {
 
           <div className="space-y-4">
             <div className="rounded-[28px] border border-white/10 bg-zinc-950/80 p-5">
-              <div className="mb-1 text-xs uppercase tracking-[0.28em] text-zinc-500">
-                checkpoints
+              <div className="mb-1 text-xs uppercase tracking-[0.14em] text-zinc-500">
+                quiz set
               </div>
               <h2 className="text-xl font-semibold text-zinc-50">{t("ui.quizzes")}</h2>
               <p className="mt-2 text-sm leading-7 text-zinc-300">
-                Clear every checkpoint in this lesson to unlock the next stage.
+                Finish every quiz in this lesson to unlock the next one.
               </p>
             </div>
             {progress.done && (

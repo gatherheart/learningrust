@@ -22,11 +22,11 @@ export function Home({ lessons }: Props) {
         <section className="grid gap-6 xl:grid-cols-[minmax(0,1.35fr)_minmax(360px,0.85fr)]">
           <div className="rounded-[30px] border border-white/10 bg-zinc-950/85 p-6 shadow-2xl shadow-black/25 lg:p-8">
             <div className="mb-6 flex flex-wrap items-center gap-2">
-              <span className="rounded-full border border-orange-400/30 bg-orange-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-orange-200">
-                simulation mode
+              <span className="rounded-full border border-orange-400/30 bg-orange-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-orange-200">
+                Learn by doing
               </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-zinc-400">
-                rust learning path
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-zinc-400">
+                {lessons.length} lessons
               </span>
             </div>
             <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-zinc-50 lg:text-5xl">
@@ -52,8 +52,8 @@ export function Home({ lessons }: Props) {
 
           <div className="rounded-[30px] border border-white/10 bg-[#0d1117] p-5 shadow-2xl shadow-black/20">
             <div className="mb-4 flex items-center justify-between">
-              <div className="text-xs uppercase tracking-[0.28em] text-zinc-500">
-                terminal
+              <div className="text-xs uppercase tracking-[0.16em] text-zinc-500">
+                preview
               </div>
               <div className="flex gap-2">
                 <span className="h-3 w-3 rounded-full bg-red-400/80" />
@@ -65,8 +65,8 @@ export function Home({ lessons }: Props) {
               <div>
                 <span className="text-emerald-300">$</span> rustc --lesson {nextLesson?.bin ?? "01_hello"}
               </div>
-              <div className="text-zinc-500">Compiling interactive lesson graph...</div>
-              <div className="text-orange-200">Loaded {lessons.length} stages with quizzes, checkpoints, and playground links.</div>
+              <div className="text-zinc-500">Loading the next lesson...</div>
+              <div className="text-orange-200">You get runnable Rust examples, short quizzes, and playground links.</div>
               <div className="text-zinc-500">Tip: use arrow keys to move between unlocked lessons.</div>
             </div>
           </div>
@@ -75,8 +75,8 @@ export function Home({ lessons }: Props) {
         <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <div className="rounded-[28px] border border-white/10 bg-zinc-950/80 p-5">
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-zinc-50">Route map</h2>
-              <div className="text-xs uppercase tracking-[0.24em] text-zinc-500">sequence</div>
+              <h2 className="text-lg font-semibold text-zinc-50">Lesson list</h2>
+              <div className="text-xs uppercase tracking-[0.14em] text-zinc-500">order</div>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {lessons.slice(0, 6).map((lesson, index) => {
@@ -109,14 +109,14 @@ export function Home({ lessons }: Props) {
 
           <div className="rounded-[28px] border border-white/10 bg-zinc-950/80 p-5">
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-zinc-50">Flow</h2>
-              <div className="text-xs uppercase tracking-[0.24em] text-zinc-500">how it works</div>
+              <h2 className="text-lg font-semibold text-zinc-50">How it works</h2>
+              <div className="text-xs uppercase tracking-[0.14em] text-zinc-500">overview</div>
             </div>
             <div className="space-y-3">
               {[
-                "Open a lesson and inspect the Rust program in the editor-like panel.",
-                "Answer the quiz set directly below the code to unlock the next stage.",
-                "Use the playground link whenever you want to branch out and experiment.",
+                "Open a lesson and read the Rust example in the editor panel.",
+                "Finish the quiz under the code to unlock the next lesson.",
+                "Use the playground link whenever you want to test your own changes.",
               ].map((item, index) => (
                 <div
                   key={item}

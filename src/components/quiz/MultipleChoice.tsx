@@ -20,6 +20,17 @@ export function MultipleChoice({ lessonId, quizId, answer, onSolved }: Props) {
   const options = t(`lessons.${lessonId}.quizzes.${quizId}.options`, {
     returnObjects: true,
   }) as string[];
+  const rawExplanations = t(`lessons.${lessonId}.quizzes.${quizId}.explanations`, {
+    returnObjects: true,
+  });
+  const explanations = Array.isArray(rawExplanations) ? (rawExplanations as string[]) : [];
+  const answerReasonKey = `lessons.${lessonId}.quizzes.${quizId}.answerReason`;
+  const answerReasonValue = t(answerReasonKey);
+  const answerReason = answerReasonValue === answerReasonKey ? "" : answerReasonValue;
+  const wrongReason =
+    selected !== null && explanations[selected]
+      ? explanations[selected]
+      : t("ui.incorrectReasonFallback");
 
   function check() {
     if (selected === answer) {
@@ -77,9 +88,11 @@ export function MultipleChoice({ lessonId, quizId, answer, onSolved }: Props) {
           </span>
         )}
         {state === "wrong" && (
-          <span className="text-sm font-medium text-red-300">
-            ✗ {t("ui.tryAgain")}
-          </span>
+          <div className="space-y-2 rounded-2xl border border-red-400/25 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+            <div className="font-medium">✗ {t("ui.tryAgain")}</div>
+            <div>{wrongReason}</div>
+            {answerReason && <div className="text-red-100/90">{answerReason}</div>}
+          </div>
         )}
       </div>
     </div>

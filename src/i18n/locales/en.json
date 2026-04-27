@@ -10,7 +10,7 @@
     "lessonNotFound": "Lesson not found.",
     "predictPlaceholder": "Type the program's exact output...",
     "heroTitle": "Learn Rust by solving quizzes",
-    "heroBody": "Work through bite-size lessons. Each one runs real Rust code and asks you to predict its output or pick the correct answer. Free, no account, in your browser.",
+    "heroBody": "Work through short lessons with real Rust code. Read the example, predict the output, and answer a quick quiz right in your browser.",
     "startLearning": "Start learning",
     "yourOrder": "Your order",
     "available": "Available",
@@ -20,7 +20,8 @@
     "lessonComplete": "Lesson complete — every quiz solved!",
     "courseComplete": "You've completed every lesson. Congratulations!",
     "courseCompleteBadge": "Course complete",
-    "keyboardHint": "Tip: use ↑/↓ or j/k to move between lessons."
+    "keyboardHint": "Tip: use the arrow keys to move between lessons.",
+    "incorrectReasonFallback": "That choice does not match what Rust allows in this example."
   },
   "topics": {
     "basics": "Basics",
@@ -39,7 +40,7 @@
   "lessons": {
     "01_hello": {
       "title": "Hello, world!",
-      "description": "Your first Rust program. The println! macro prints to standard output. Variables can be interpolated directly inside the format string.",
+      "description": "Your first Rust program. `println!` writes text to standard output, and variables can be inserted directly into the format string.",
       "quizzes": {
         "q1": { "question": "What does this program print? (Type the exact output.)" },
         "q2": {
@@ -50,18 +51,25 @@
     },
     "02_variables": {
       "title": "Variables and mutability",
-      "description": "Variables are immutable by default. Add `mut` to allow reassignment. Type annotations are optional when the compiler can infer them.",
+      "description": "Variables are immutable by default. Add `mut` when you want to change a value later. Type annotations are optional when Rust can infer them.",
       "quizzes": {
         "q1": { "question": "Predict the program's output:" },
         "q2": {
-          "question": "Given `let y: i32 = 10;` (without `mut`), which line below would still compile if added afterward?",
-          "options": ["y = y + 1;", "y += 1;", "let y = y + 1;", "y.set(11);"]
+          "question": "If you write `let y: i32 = 10;` without `mut`, which extra line still compiles?",
+          "options": ["y = y + 1;", "y += 1;", "let y = y + 1;", "y.set(11);"],
+          "explanations": [
+            "This tries to assign a new value to `y`, but `y` is immutable because it was not declared with `mut`.",
+            "This is also a mutation. `+=` still changes the existing variable, so it needs `mut`.",
+            "This works because it creates a new variable named `y` that shadows the old one instead of mutating it.",
+            "`i32` does not have a `.set(...)` method, so this fails before mutability even matters."
+          ],
+          "answerReason": "The correct choice is `let y = y + 1;` because it shadows the original binding with a new one."
         }
       }
     },
     "03_ownership": {
       "title": "Ownership and borrowing",
-      "description": "Every value in Rust has exactly one owner. Passing a value by reference (&) borrows it without taking ownership. Once a value has been moved, the original binding can no longer be used.",
+      "description": "Every value in Rust has one owner. Passing `&value` borrows it without taking ownership. After a move, the original binding can no longer be used.",
       "quizzes": {
         "q1": { "question": "Predict the program's output:" },
         "q2": {
@@ -77,7 +85,7 @@
     },
     "04_control_flow": {
       "title": "Control flow",
-      "description": "if/else, while, and for. The range `0..3` is half-open: it yields 0, 1, 2 — and stops before 3.",
+      "description": "Rust uses `if`, `while`, and `for` for control flow. The range `0..3` is half-open, so it yields `0`, `1`, and `2`.",
       "quizzes": {
         "q1": { "question": "Predict the program's output:" },
         "q2": {
@@ -88,7 +96,7 @@
     },
     "05_functions": {
       "title": "Functions and expressions",
-      "description": "Functions take typed parameters and return a typed value. The last expression in a block — the one without a trailing semicolon — is the block's value, including the function's return value.",
+      "description": "Functions take typed parameters and return typed values. In Rust, the last expression in a block becomes the return value when it has no trailing semicolon.",
       "quizzes": {
         "q1": { "question": "Predict the program's output:" },
         "q2": {
@@ -104,7 +112,7 @@
     },
     "06_strings": {
       "title": "Strings: String vs &str",
-      "description": "`&str` is a borrowed view into UTF-8 data (often a literal). `String` is a heap-allocated, growable, owned UTF-8 buffer. `format!` builds a `String`.",
+      "description": "`&str` is a borrowed string slice. `String` is an owned, growable UTF-8 buffer on the heap. `format!` creates a new `String`.",
       "quizzes": {
         "q1": { "question": "Predict the program's output:" },
         "q2": {
@@ -120,7 +128,7 @@
     },
     "07_tuples_arrays": {
       "title": "Tuples and arrays",
-      "description": "Tuples group different types together; you destructure them with `let (a, b) = ...`. Arrays have a fixed size known at compile time.",
+      "description": "Tuples group different types together, and you can destructure them with `let (a, b) = ...`. Arrays have a fixed size known at compile time.",
       "quizzes": {
         "q1": { "question": "Predict the program's output:" },
         "q2": {

@@ -54,8 +54,8 @@ export function Sidebar({ lessons }: Props) {
           <div className="rounded-[24px] border border-orange-400/15 bg-gradient-to-br from-orange-500/12 via-zinc-950 to-zinc-950 px-4 py-4">
             <div className="mb-3 flex items-start justify-between gap-3">
               <div>
-                <div className="text-[11px] uppercase tracking-[0.3em] text-orange-200/70">
-                  lesson graph
+                <div className="text-[11px] uppercase tracking-[0.14em] text-orange-200/70">
+                  Course map
                 </div>
                 <h2 className="mt-1 text-xl font-semibold text-zinc-50">
                   {t("ui.lessons")}
@@ -114,7 +114,7 @@ export function Sidebar({ lessons }: Props) {
                       {String(index + 1).padStart(2, "0")}
                     </div>
                     <div>
-                      <div className="text-[10px] uppercase tracking-[0.26em] text-zinc-500">
+                      <div className="text-[10px] uppercase tracking-[0.14em] text-zinc-500">
                         {stageLabel(index)}
                       </div>
                       <div className="text-sm font-medium text-zinc-100">
