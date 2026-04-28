@@ -78,6 +78,7 @@ export function Lesson({ lessons }: Props) {
                 <span className="text-emerald-300">$</span> cargo run --bin {lesson.bin}
               </div>
               <div className="text-zinc-500">expected topic: {t(`topics.${lesson.topic}`)}</div>
+              <div className="text-orange-200">edit the snippet and run it directly in this lesson page</div>
               <div className={progress.done ? "text-emerald-300" : "text-amber-200"}>
                 {progress.done ? "status: unlocked next lesson" : "status: quizzes still pending"}
               </div>

@@ -68,7 +68,7 @@ export function Home({ lessons }: Props) {
                 <span className="text-emerald-300">$</span> rustc --lesson {nextLesson?.bin ?? "01_hello"}
               </div>
               <div className="text-zinc-500">Loading the next lesson...</div>
-              <div className="text-orange-200">You get runnable Rust examples, short quizzes, and playground links.</div>
+              <div className="text-orange-200">You can edit and run Rust right here on the page, then open the official playground only when you want a bigger sandbox.</div>
               <div className="text-zinc-500">Tip: use arrow keys to move between unlocked lessons.</div>
             </div>
           </div>
@@ -116,9 +116,9 @@ export function Home({ lessons }: Props) {
             </div>
             <div className="space-y-3">
               {[
-                "Open a lesson and read the Rust example in the editor panel.",
+                "Open a lesson, edit the Rust example, and run it inline.",
                 "Finish the quiz under the code to unlock the next lesson.",
-                "Use the playground link whenever you want to test your own changes.",
+                "Use the playground link only when you want to continue in the full Rust playground.",
               ].map((item, index) => (
                 <div
                   key={item}
