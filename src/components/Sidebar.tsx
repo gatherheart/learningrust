@@ -6,7 +6,8 @@ import { isLessonUnlocked, lessonProgress, problemSolved } from "@/lib/store";
 import { problems } from "@/data/problems";
 import { useProgressVersion } from "@/lib/useProgressVersion";
 import { deepDiveQuestions } from "@/data/deepDive";
-import { deepDiveSolved } from "@/lib/store";
+import { interviewQuestions } from "@/data/interview";
+import { deepDiveSolved, interviewSolved } from "@/lib/store";
 
 interface Props {
   lessons: Lesson[];
@@ -57,6 +58,10 @@ export function Sidebar({ lessons }: Props) {
   );
   const solvedDeepDive = useMemo(
     () => deepDiveQuestions.filter((question) => deepDiveSolved(question.id)).length,
+    [progressVersion],
+  );
+  const solvedInterview = useMemo(
+    () => interviewQuestions.filter((question) => interviewSolved(question.id)).length,
     [progressVersion],
   );
 
@@ -185,6 +190,42 @@ export function Sidebar({ lessons }: Props) {
                 className="h-full rounded-full bg-gradient-to-r from-sky-400 to-cyan-300"
                 style={{
                   width: `${Math.round((solvedProblems / problems.length) * 100) || 0}%`,
+                }}
+              />
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/interview"
+            className={({ isActive }) =>
+              [
+                "block rounded-[22px] border px-4 py-4 transition",
+                "border-sky-400/18 bg-sky-500/8 hover:border-sky-300/35 hover:bg-sky-500/12",
+                isActive && "border-sky-300/55 bg-sky-500/14 shadow-lg shadow-sky-950/25",
+              ]
+                .filter(Boolean)
+                .join(" ")
+            }
+          >
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.14em] text-sky-100/70">
+                  interview section
+                </div>
+                <div className="text-sm font-medium text-zinc-100">Interview Deep Dive</div>
+              </div>
+              <div className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[11px] text-zinc-300">
+                {solvedInterview}/{interviewQuestions.length}
+              </div>
+            </div>
+            <div className="mb-3 text-sm leading-6 text-zinc-300">
+              Junior, mid, and senior Rust interview questions on ownership, traits, async, unsafe, and design tradeoffs.
+            </div>
+            <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-sky-400 to-cyan-300"
+                style={{
+                  width: `${Math.round((solvedInterview / interviewQuestions.length) * 100) || 0}%`,
                 }}
               />
             </div>

@@ -7,6 +7,7 @@ import { Lesson } from "@/components/Lesson";
 import { Home } from "@/components/Home";
 import { ProblemSolving } from "@/components/ProblemSolving";
 import { DeepDive } from "@/components/DeepDive";
+import { Interview } from "@/components/Interview";
 
 const lessons = lessonsData as LessonT[];
 
@@ -20,6 +21,7 @@ export function App() {
           <Routes>
             <Route path="/" element={<Home lessons={lessons} />} />
             <Route path="/deep-dive" element={<DeepDive />} />
+            <Route path="/interview" element={<Interview />} />
             <Route path="/ps" element={<ProblemSolving />} />
             <Route path="/lesson/:id" element={<Lesson lessons={lessons} />} />
             <Route path="*" element={<Navigate to="/" replace />} />

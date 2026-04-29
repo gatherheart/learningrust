@@ -4,6 +4,7 @@ interface Progress {
   completedQuizzes: Record<string, true>; // key: `${lessonId}:${quizId}`
   solvedProblems?: Record<string, true>;
   solvedDeepDive?: Record<string, true>;
+  solvedInterview?: Record<string, true>;
 }
 
 function read(): Progress {
@@ -76,5 +77,17 @@ export function markDeepDiveSolved(questionId: string): void {
   const p = read();
   p.solvedDeepDive ??= {};
   p.solvedDeepDive[questionId] = true;
+  write(p);
+}
+
+
+export function interviewSolved(questionId: string): boolean {
+  return read().solvedInterview?.[questionId] === true;
+}
+
+export function markInterviewSolved(questionId: string): void {
+  const p = read();
+  p.solvedInterview ??= {};
+  p.solvedInterview[questionId] = true;
   write(p);
 }
