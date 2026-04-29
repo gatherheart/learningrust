@@ -117,7 +117,7 @@ export function Lesson({ lessons }: Props) {
                 case "predict-output":
                   return (
                     <PredictOutput
-                      key={quiz.id}
+                      key={`${lesson.id}-${quiz.id}`}
                       lessonId={lesson.id}
                       quizId={quiz.id}
                       expectedOutput={lesson.expectedOutput}
@@ -127,7 +127,7 @@ export function Lesson({ lessons }: Props) {
                 case "multiple-choice":
                   return (
                     <MultipleChoice
-                      key={quiz.id}
+                      key={`${lesson.id}-${quiz.id}`}
                       lessonId={lesson.id}
                       quizId={quiz.id}
                       answer={quiz.answer}
@@ -137,7 +137,7 @@ export function Lesson({ lessons }: Props) {
                 case "fill-in-blank":
                   return (
                     <FillInBlank
-                      key={quiz.id}
+                      key={`${lesson.id}-${quiz.id}`}
                       lessonId={lesson.id}
                       quizId={quiz.id}
                       template={quiz.template}
@@ -148,7 +148,7 @@ export function Lesson({ lessons }: Props) {
                 case "spot-the-bug":
                   return (
                     <SpotTheBug
-                      key={quiz.id}
+                      key={`${lesson.id}-${quiz.id}`}
                       lessonId={lesson.id}
                       quizId={quiz.id}
                       code={quiz.code}
@@ -159,7 +159,7 @@ export function Lesson({ lessons }: Props) {
                 case "order-statements":
                   return (
                     <OrderStatements
-                      key={quiz.id}
+                      key={`${lesson.id}-${quiz.id}`}
                       lessonId={lesson.id}
                       quizId={quiz.id}
                       answer={quiz.answer}
