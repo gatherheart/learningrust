@@ -903,5 +903,189 @@
     ],
     "code": "use std::sync::Mutex;\n\nfn main() {\n    let counter = Mutex::new(0);\n\n    {\n        let mut value = counter.lock().unwrap();\n        *value += 5;\n    }\n\n    println!(\"count={}\", *counter.lock().unwrap());\n}\n",
     "expectedOutput": "count=5\n"
+  },
+  {
+    "id": "39_shadowing_basics",
+    "bin": "39_shadowing_basics",
+    "topic": "ownership",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "fn main() {\n    let x = 1;\n    let x = x + 1;\n    println!(\"{x}\");\n}\n",
+    "expectedOutput": "2\n"
+  },
+  {
+    "id": "40_copy_clone_value",
+    "bin": "40_copy_clone_value",
+    "topic": "traits",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "#[derive(Copy, Clone)]\nstruct Point {\n    x: i32,\n    y: i32,\n}\n\nfn main() {\n    let p1 = Point { x: 1, y: 2 };\n    let p2 = p1;\n    println!(\"p1 = {}, {}\", p1.x, p1.y);\n    println!(\"p2 = {}, {}\", p2.x, p2.y);\n}\n",
+    "expectedOutput": "p1 = 1, 2\np2 = 1, 2\n"
+  },
+  {
+    "id": "41_trait_objects",
+    "bin": "41_trait_objects",
+    "topic": "traits",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ],
+    "code": "trait Draw {\n    fn draw(&self);\n}\n\nstruct Button;\n\nimpl Draw for Button {\n    fn draw(&self) {\n        println!(\"button\");\n    }\n}\n\nfn render(item: &dyn Draw) {\n    item.draw();\n}\n\nfn main() {\n    let button = Button;\n    render(&button);\n}\n",
+    "expectedOutput": "button\n"
+  },
+  {
+    "id": "42_send_sync",
+    "bin": "42_send_sync",
+    "topic": "concurrency",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    let data = Arc::new(String::from(\"shared\"));\n    let cloned = Arc::clone(&data);\n    let handle = thread::spawn(move || {\n        println!(\"{cloned}\");\n    });\n    handle.join().unwrap();\n}\n",
+    "expectedOutput": "shared\n"
+  },
+  {
+    "id": "43_pin_basics",
+    "bin": "43_pin_basics",
+    "topic": "async",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "use std::pin::Pin;\n\nfn main() {\n    let value = String::from(\"pinned\");\n    let pinned = Pin::new(Box::new(value));\n    println!(\"{}\", pinned.as_ref().get_ref());\n}\n",
+    "expectedOutput": "pinned\n"
+  },
+  {
+    "id": "44_interior_mutability",
+    "bin": "44_interior_mutability",
+    "topic": "smart_pointers",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ],
+    "code": "use std::cell::RefCell;\n\nfn main() {\n    let value = RefCell::new(1);\n    *value.borrow_mut() += 1;\n    println!(\"{}\", value.borrow());\n}\n",
+    "expectedOutput": "2\n"
+  },
+  {
+    "id": "45_async_blocking",
+    "bin": "45_async_blocking",
+    "topic": "async",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "fn main() {\n    println!(\"blocking work inside async can starve an executor\");\n}\n",
+    "expectedOutput": "blocking work inside async can starve an executor\n"
+  },
+  {
+    "id": "46_crate_boundaries",
+    "bin": "46_crate_boundaries",
+    "topic": "traits",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "fn main() {\n    println!(\"public api\");\n    println!(\"private implementation\");\n}\n",
+    "expectedOutput": "public api\nprivate implementation\n"
   }
 ]

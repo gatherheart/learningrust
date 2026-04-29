@@ -4,9 +4,20 @@
     "bin": "01_hello",
     "topic": "basics",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 },
-      { "id": "q3", "type": "multiple-choice", "answer": 2 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
     ]
   },
   {
@@ -14,9 +25,20 @@
     "bin": "02_variables",
     "topic": "basics",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 },
-      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   },
   {
@@ -24,9 +46,20 @@
     "bin": "03_ownership",
     "topic": "ownership",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 },
-      { "id": "q3", "type": "multiple-choice", "answer": 3 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
+      }
     ]
   },
   {
@@ -34,9 +67,20 @@
     "bin": "04_control_flow",
     "topic": "basics",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 },
-      { "id": "q3", "type": "multiple-choice", "answer": 0 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
     ]
   },
   {
@@ -44,9 +88,20 @@
     "bin": "05_functions",
     "topic": "basics",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 },
-      { "id": "q3", "type": "multiple-choice", "answer": 2 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
     ]
   },
   {
@@ -54,9 +109,20 @@
     "bin": "06_strings",
     "topic": "basics",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 },
-      { "id": "q3", "type": "multiple-choice", "answer": 0 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
     ]
   },
   {
@@ -64,14 +130,23 @@
     "bin": "07_tuples_arrays",
     "topic": "basics",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
       {
         "id": "q2",
         "type": "fill-in-blank",
         "template": "let pair = (1, \"two\");\nlet (a, b) = ___;\nprintln!(\"{a} {b}\");",
-        "blanks": ["pair"]
+        "blanks": [
+          "pair"
+        ]
       },
-      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   },
   {
@@ -79,9 +154,20 @@
     "bin": "08_enums",
     "topic": "basics",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 },
-      { "id": "q3", "type": "multiple-choice", "answer": 3 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
+      }
     ]
   },
   {
@@ -89,9 +175,20 @@
     "bin": "09_structs",
     "topic": "basics",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 },
-      { "id": "q3", "type": "multiple-choice", "answer": 2 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
     ]
   },
   {
@@ -99,9 +196,20 @@
     "bin": "10_closures_basic",
     "topic": "closures",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 },
-      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   },
   {
@@ -109,9 +217,20 @@
     "bin": "11_closures_capture",
     "topic": "closures",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 },
-      { "id": "q3", "type": "multiple-choice", "answer": 2 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
     ]
   },
   {
@@ -119,14 +238,23 @@
     "bin": "12_iter_map",
     "topic": "iterators",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
       {
         "id": "q2",
         "type": "fill-in-blank",
         "template": "let doubled: Vec<i32> = nums.iter().___(|x| x * 2).collect();",
-        "blanks": ["map"]
+        "blanks": [
+          "map"
+        ]
       },
-      { "id": "q3", "type": "multiple-choice", "answer": 0 }
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
     ]
   },
   {
@@ -134,9 +262,20 @@
     "bin": "13_iter_filter",
     "topic": "iterators",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 },
-      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   },
   {
@@ -144,9 +283,20 @@
     "bin": "14_iter_fold",
     "topic": "iterators",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 },
-      { "id": "q3", "type": "multiple-choice", "answer": 2 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
     ]
   },
   {
@@ -154,14 +304,21 @@
     "bin": "15_iter_sum",
     "topic": "iterators",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
       {
         "id": "q2",
         "type": "spot-the-bug",
         "code": "fn main() {\n    let nums = vec![1, 2, 3];\n    let total = nums.iter().sum();\n    println!(\"{total}\");\n}",
         "buggyLine": 3
       },
-      { "id": "q3", "type": "multiple-choice", "answer": 0 }
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
     ]
   },
   {
@@ -169,9 +326,20 @@
     "bin": "16_traits_basic",
     "topic": "traits",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 },
-      { "id": "q3", "type": "multiple-choice", "answer": 3 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
+      }
     ]
   },
   {
@@ -179,9 +347,20 @@
     "bin": "17_traits_default",
     "topic": "traits",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 },
-      { "id": "q3", "type": "multiple-choice", "answer": 2 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
     ]
   },
   {
@@ -189,9 +368,20 @@
     "bin": "18_traits_derive",
     "topic": "traits",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 },
-      { "id": "q3", "type": "multiple-choice", "answer": 3 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
+      }
     ]
   },
   {
@@ -199,9 +389,20 @@
     "bin": "19_generics_basic",
     "topic": "generics",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 },
-      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   },
   {
@@ -209,9 +410,20 @@
     "bin": "20_lifetimes_basic",
     "topic": "lifetimes",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 },
-      { "id": "q3", "type": "multiple-choice", "answer": 2 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
     ]
   },
   {
@@ -219,14 +431,21 @@
     "bin": "21_lifetimes_struct",
     "topic": "lifetimes",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
       {
         "id": "q2",
         "type": "spot-the-bug",
         "code": "struct Borrower {\n    name: &str,\n}\n\nfn main() {\n    let s = String::from(\"hi\");\n    let b = Borrower { name: &s };\n    println!(\"{}\", b.name);\n}",
         "buggyLine": 2
       },
-      { "id": "q3", "type": "multiple-choice", "answer": 0 }
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
     ]
   },
   {
@@ -234,9 +453,20 @@
     "bin": "22_result_basic",
     "topic": "error_handling",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 },
-      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   },
   {
@@ -244,9 +474,20 @@
     "bin": "23_option_basic",
     "topic": "error_handling",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 },
-      { "id": "q3", "type": "multiple-choice", "answer": 3 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
+      }
     ]
   },
   {
@@ -254,13 +495,25 @@
     "bin": "24_error_propagation",
     "topic": "error_handling",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
       {
         "id": "q2",
         "type": "order-statements",
-        "answer": [0, 1, 2, 3]
+        "answer": [
+          0,
+          1,
+          2,
+          3
+        ]
       },
-      { "id": "q3", "type": "multiple-choice", "answer": 2 }
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
     ]
   },
   {
@@ -268,9 +521,20 @@
     "bin": "25_panic_unwrap",
     "topic": "error_handling",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 },
-      { "id": "q3", "type": "multiple-choice", "answer": 0 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
     ]
   },
   {
@@ -278,9 +542,20 @@
     "bin": "26_async_basic",
     "topic": "async",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 },
-      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   },
   {
@@ -288,9 +563,20 @@
     "bin": "27_box_basic",
     "topic": "smart_pointers",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 },
-      { "id": "q3", "type": "multiple-choice", "answer": 3 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
+      }
     ]
   },
   {
@@ -298,9 +584,20 @@
     "bin": "28_rc_basic",
     "topic": "smart_pointers",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 },
-      { "id": "q3", "type": "multiple-choice", "answer": 2 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
     ]
   },
   {
@@ -308,13 +605,25 @@
     "bin": "29_refcell_basic",
     "topic": "smart_pointers",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
       {
         "id": "q2",
         "type": "order-statements",
-        "answer": [0, 1, 2, 3]
+        "answer": [
+          0,
+          1,
+          2,
+          3
+        ]
       },
-      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   },
   {
@@ -322,9 +631,20 @@
     "bin": "30_macros_basic",
     "topic": "macros",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 },
-      { "id": "q3", "type": "multiple-choice", "answer": 0 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
     ]
   },
   {
@@ -332,9 +652,20 @@
     "bin": "31_macros_custom",
     "topic": "macros",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 },
-      { "id": "q3", "type": "multiple-choice", "answer": 2 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
     ]
   },
   {
@@ -342,9 +673,20 @@
     "bin": "32_unsafe_basic",
     "topic": "unsafe",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 },
-      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   },
   {
@@ -352,14 +694,23 @@
     "bin": "33_vec_push",
     "topic": "basics",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
       {
         "id": "q2",
         "type": "fill-in-blank",
         "template": "let mut nums = vec![1, 2];\nnums.___(3);\nprintln!(\"{:?}\", nums);",
-        "blanks": ["push"]
+        "blanks": [
+          "push"
+        ]
       },
-      { "id": "q3", "type": "multiple-choice", "answer": 2 }
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
     ]
   },
   {
@@ -367,9 +718,20 @@
     "bin": "34_option_match",
     "topic": "error_handling",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 },
-      { "id": "q3", "type": "multiple-choice", "answer": 0 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
     ]
   },
   {
@@ -377,13 +739,25 @@
     "bin": "35_arc_mutex",
     "topic": "smart_pointers",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
       {
         "id": "q2",
         "type": "order-statements",
-        "answer": [0, 1, 2, 3]
+        "answer": [
+          0,
+          1,
+          2,
+          3
+        ]
       },
-      { "id": "q3", "type": "multiple-choice", "answer": 3 }
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
+      }
     ]
   },
   {
@@ -391,14 +765,21 @@
     "bin": "36_iter_enumerate",
     "topic": "iterators",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
       {
         "id": "q2",
         "type": "spot-the-bug",
         "code": "fn main() {\n    let names = [\"Ada\", \"Linus\"];\n    for index, name in names.iter().enumerate() {\n        println!(\"{index}: {name}\");\n    }\n}",
         "buggyLine": 3
       },
-      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   },
   {
@@ -406,9 +787,20 @@
     "bin": "37_thread_basic",
     "topic": "concurrency",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 },
-      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   },
   {
@@ -416,13 +808,192 @@
     "bin": "38_mutex_basic",
     "topic": "concurrency",
     "quizzes": [
-      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
       {
         "id": "q2",
         "type": "order-statements",
-        "answer": [0, 1, 2]
+        "answer": [
+          0,
+          1,
+          2
+        ]
       },
-      { "id": "q3", "type": "multiple-choice", "answer": 0 }
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "id": "39_shadowing_basics",
+    "bin": "39_shadowing_basics",
+    "topic": "ownership",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "id": "40_copy_clone_value",
+    "bin": "40_copy_clone_value",
+    "topic": "traits",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": "41_trait_objects",
+    "bin": "41_trait_objects",
+    "topic": "traits",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ]
+  },
+  {
+    "id": "42_send_sync",
+    "bin": "42_send_sync",
+    "topic": "concurrency",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "id": "43_pin_basics",
+    "bin": "43_pin_basics",
+    "topic": "async",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": "44_interior_mutability",
+    "bin": "44_interior_mutability",
+    "topic": "smart_pointers",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
+      }
+    ]
+  },
+  {
+    "id": "45_async_blocking",
+    "bin": "45_async_blocking",
+    "topic": "async",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "id": "46_crate_boundaries",
+    "bin": "46_crate_boundaries",
+    "topic": "traits",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
     ]
   }
 ]

@@ -56,10 +56,17 @@
       "title": "Hello, world!",
       "description": "Use `println!` to print a line.\n\n```rust\nprintln!(\"Hello, world!\");\n```\n\n`println!` is a macro, so it ends with `!`.\n\n```rust\nlet name = \"Rust\";\nprintln!(\"Hello, {name}!\");\n```\n\nRust can insert variables directly into the format string.",
       "quizzes": {
-        "q1": { "question": "What does this program print? (Type the exact output.)" },
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
         "q2": {
           "question": "What is println! ?",
-          "options": ["A function", "A macro", "A trait", "A keyword"]
+          "options": [
+            "A function",
+            "A macro",
+            "A trait",
+            "A keyword"
+          ]
         },
         "q3": {
           "question": "In `println!(\"Hello, {name}!\")`, what does `{name}` do?",
@@ -76,10 +83,17 @@
       "title": "Variables and mutability",
       "description": "`let` creates a binding.\n\n```rust\nlet y = 10;\n```\n\nThis means: make a variable named `y` and bind it to `10`.\n\n```rust\nlet mut y = 10;\ny = 11;\n```\n\n`mut` allows reassignment. Without `mut`, `y = 11;` is an error.\n\n```rust\nlet y: i32 = 10;\n```\n\n`:` introduces a type annotation. Here, `y` is explicitly marked as `i32`.\n\n```rust\nlet y = y + 1;\n```\n\nThis does not mutate the old `y`. It creates a new `y` by shadowing the previous one.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "If you write `let y: i32 = 10;` without `mut`, which extra line still compiles?",
-          "options": ["y = y + 1;", "y += 1;", "let y = y + 1;", "y.set(11);"],
+          "options": [
+            "y = y + 1;",
+            "y += 1;",
+            "let y = y + 1;",
+            "y.set(11);"
+          ],
           "explanations": [
             "This tries to assign a new value to `y`, but `y` is immutable because it was not declared with `mut`.",
             "This is also a mutation. `+=` still changes the existing variable, so it needs `mut`.",
@@ -103,7 +117,9 @@
       "title": "Ownership and borrowing",
       "description": "Passing a `String` by value moves ownership.\n\n```rust\nfn takes_ownership(s: String) {\n    println!(\"got: {s}\");\n}\n```\n\nAfter `takes_ownership(owned)`, the original `owned` binding can no longer be used.\n\n```rust\nfn borrows(s: &String) {\n    println!(\"borrowed: {s}\");\n}\n```\n\n`&String` borrows the value instead, so the original variable is still valid after the call.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "After `takes_ownership(owned)` is called, what happens if we try to use `owned` again?",
           "options": [
@@ -128,14 +144,26 @@
       "title": "Control flow",
       "description": "Use `if`, `while`, and `for` to control execution.\n\n```rust\nif x > 0 {\n    println!(\"positive\");\n}\n```\n\nRanges like `0..3` stop before the last number.\n\n```rust\nfor n in 0..3 {\n    println!(\"{n}\");\n}\n```\n\nThis prints `0`, `1`, and `2`.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "How many times does `for x in 0..3` iterate?",
-          "options": ["0 times", "2 times", "3 times", "4 times"]
+          "options": [
+            "0 times",
+            "2 times",
+            "3 times",
+            "4 times"
+          ]
         },
         "q3": {
           "question": "Which range includes the final value `3`?",
-          "options": ["`1..=3`", "`1..3`", "`0..3`", "`0..=2`"]
+          "options": [
+            "`1..=3`",
+            "`1..3`",
+            "`0..3`",
+            "`0..=2`"
+          ]
         }
       }
     },
@@ -143,7 +171,9 @@
       "title": "Functions and expressions",
       "description": "Functions declare parameter types and optional return types.\n\n```rust\nfn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n```\n\nThe last line has no semicolon, so it becomes the return value.\n\n```rust\nfn log_value(x: i32) {\n    println!(\"{x}\");\n}\n```\n\nA trailing semicolon turns a line into a statement instead of a returned expression.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Why does `fn add(a, b) -> i32 { a + b }` return `a + b` without a `return` keyword?",
           "options": [
@@ -168,7 +198,9 @@
       "title": "Strings: String vs &str",
       "description": "Use `&str` for borrowed text.\n\n```rust\nlet name: &str = \"Rust\";\n```\n\nUse `String` for owned, growable text.\n\n```rust\nlet mut name = String::from(\"Rust\");\nname.push('!');\n```\n\n`format!` builds and returns a new `String`.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Which statement is true?",
           "options": [
@@ -180,7 +212,12 @@
         },
         "q3": {
           "question": "Which type can grow with methods like `push`?",
-          "options": ["`String`", "`&str`", "`char`", "`usize`"]
+          "options": [
+            "`String`",
+            "`&str`",
+            "`char`",
+            "`usize`"
+          ]
         }
       }
     },
@@ -188,7 +225,9 @@
       "title": "Tuples and arrays",
       "description": "Tuples can mix types.\n\n```rust\nlet pair = (1, \"two\");\nlet (a, b) = pair;\n```\n\nArrays hold values of one type and a fixed length.\n\n```rust\nlet nums = [10, 20, 30];\nprintln!(\"{}\", nums[0]);\n```\n\nThe array length is part of its type.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Fill in the blank to destructure the tuple."
         },
@@ -207,7 +246,9 @@
       "title": "Enums and match",
       "description": "An enum lets one value have several possible shapes.\n\n```rust\nenum Direction {\n    Left,\n    Right,\n}\n```\n\nUse `match` to handle each variant.\n\n```rust\nmatch dir {\n    Direction::Left => println!(\"L\"),\n    Direction::Right => println!(\"R\"),\n}\n```\n\n`match` must cover every variant.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Which statement about `match` on an enum is true?",
           "options": [
@@ -232,7 +273,9 @@
       "title": "Structs and methods",
       "description": "A Rust `struct` is the closest thing to class-like data: it groups fields, but it does not bundle methods inside the type body.\n\n```rust\nstruct User {\n    name: String,\n    age: u32,\n}\n```\n\nMethods live in a separate `impl` block.\n\n```rust\nimpl User {\n    fn is_adult(&self) -> bool {\n        self.age >= 18\n    }\n}\n```\n\nA useful mental map is:\n\n```text\nclass-like data         -> struct\nclass-like methods      -> impl\ninterface-like behavior -> trait\nvariant type            -> enum\n```\n\nBut the mapping is not exact. Rust structs participate in ownership rules. Assigning a struct usually moves it unless the type implements `Copy`.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "What does an `impl` block do for a struct?",
           "options": [
@@ -257,7 +300,9 @@
       "title": "Closures",
       "description": "A closure is an anonymous function stored in a value.\n\n```rust\nlet add = |a: i32, b: i32| a + b;\nprintln!(\"{}\", add(2, 3));\n```\n\nRust often infers the types, so closures can stay compact.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Which best describes `let add = |a: i32, b: i32| a + b;` ?",
           "options": [
@@ -282,7 +327,9 @@
       "title": "Closures: capturing state",
       "description": "Closures can use values from the surrounding scope.\n\n```rust\nlet mut count = 0;\nlet mut inc = || {\n    count += 1;\n};\n```\n\nBecause the closure changes captured state, the closure binding itself must be `mut`.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Why must `increment` be declared `mut`?",
           "options": [
@@ -307,7 +354,9 @@
       "title": "Iterators: map",
       "description": "`map` transforms each item in an iterator.\n\n```rust\nlet nums = vec![1, 2, 3];\nlet doubled: Vec<i32> = nums.iter().map(|x| x * 2).collect();\n```\n\n`map` is lazy, so the work happens only when the iterator is consumed, such as by `collect()`.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Which iterator method transforms each element? Fill in the blank."
         },
@@ -326,7 +375,9 @@
       "title": "Iterators: filter",
       "description": "`filter` keeps only items that match a condition.\n\n```rust\nlet nums = vec![1, 2, 3, 4];\nlet evens: Vec<i32> = nums.into_iter().filter(|n| n % 2 == 0).collect();\n```\n\nLike `map`, `filter` is lazy until the iterator is consumed.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "When does `filter`'s predicate run?",
           "options": [
@@ -351,7 +402,9 @@
       "title": "Iterators: fold",
       "description": "`fold` combines many items into one result.\n\n```rust\nlet nums = [1, 2, 3];\nlet total = nums.iter().fold(0, |acc, n| acc + n);\n```\n\nThe first argument is the starting accumulator.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Which statement is true about `fold`?",
           "options": [
@@ -376,7 +429,9 @@
       "title": "Iterators: sum and max",
       "description": "Methods like `sum()` and `max()` consume an iterator and return a final result.\n\n```rust\nlet nums = vec![1, 2, 3];\nlet total: i32 = nums.iter().sum();\n```\n\n`sum()` often needs a type annotation so Rust knows the output type.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "The snippet below has one line that won't compile. Which line is it?"
         },
@@ -395,7 +450,9 @@
       "title": "Traits",
       "description": "A trait describes shared behavior.\n\n```rust\ntrait Greet {\n    fn greet(&self);\n}\n```\n\nA type implements the trait like this.\n\n```rust\nimpl Greet for Person {\n    fn greet(&self) {\n        println!(\"hi\");\n    }\n}\n```",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "What does `impl Greet for Person` do?",
           "options": [
@@ -420,7 +477,9 @@
       "title": "Traits: default methods",
       "description": "Trait methods can have default behavior.\n\n```rust\ntrait Speak {\n    fn sound(&self) -> &'static str {\n        \"...\"\n    }\n}\n```\n\nA type may override that method, but it does not have to.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Why does `Dog` print `dog: ...`?",
           "options": [
@@ -445,7 +504,9 @@
       "title": "Traits: derive",
       "description": "`derive` asks Rust to generate trait implementations for you.\n\n```rust\n#[derive(Debug, Copy, Clone, PartialEq)]\nstruct Point {\n    x: i32,\n    y: i32,\n}\n```\n\nThis matters for value-like structs. With `Copy`, assigning `p1` into `p2` duplicates the bits, so both variables stay usable.\n\n```rust\nlet p1 = Point { x: 1, y: 2 };\nlet p2 = p1;\n```\n\nWithout `Copy`, that assignment would move the value and `p1` could not be used afterward. `Clone` is the explicit duplicate operation when automatic copying is not available or not desired.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "What does `#[derive(Debug, Copy, Clone, PartialEq)]` do?",
           "options": [
@@ -470,7 +531,9 @@
       "title": "Generics",
       "description": "Generics let one function work with many types.\n\n```rust\nfn largest<T: PartialOrd + Copy>(a: T, b: T) -> T {\n    if a > b { a } else { b }\n}\n```\n\n`T: PartialOrd + Copy` means `T` must support comparison and cheap copying.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Which is the correct syntax for a bounded generic?",
           "options": [
@@ -495,7 +558,9 @@
       "title": "Lifetimes",
       "description": "Lifetimes describe how long references stay valid.\n\n```rust\nfn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() { x } else { y }\n}\n```\n\n`'a` tells Rust the returned reference cannot outlive the input references.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "What does the `'a` in `fn longest<'a>(x: &'a str, y: &'a str) -> &'a str` mean?",
           "options": [
@@ -520,7 +585,9 @@
       "title": "Lifetimes in structs",
       "description": "A struct that stores a reference needs a lifetime parameter.\n\n```rust\nstruct Borrower<'a> {\n    name: &'a str,\n}\n```\n\nWithout `'a`, Rust would not know how long `name` is allowed to live.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Which line below has the missing lifetime that prevents this from compiling?"
         },
@@ -539,7 +606,9 @@
       "title": "Result and match",
       "description": "`Result<T, E>` represents success or failure.\n\n```rust\nlet value: Result<i32, &str> = Ok(42);\n```\n\nUse `match` to handle both cases.\n\n```rust\nmatch value {\n    Ok(n) => println!(\"{n}\"),\n    Err(e) => println!(\"error: {e}\"),\n}\n```",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Which is true about Result?",
           "options": [
@@ -564,7 +633,9 @@
       "title": "Option and unwrap_or",
       "description": "`Option<T>` means a value may or may not exist.\n\n```rust\nlet name = Some(\"Rust\");\nlet empty: Option<&str> = None;\n```\n\n`unwrap_or` gives the value or a fallback.\n\n```rust\nprintln!(\"{}\", empty.unwrap_or(\"none\"));\n```",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "What does `unwrap_or(\"none\")` do when called on `None`?",
           "options": [
@@ -589,7 +660,9 @@
       "title": "Error propagation with ?",
       "description": "The `?` operator unwraps success and returns early on failure.\n\n```rust\nfn read_num(text: &str) -> Result<i32, std::num::ParseIntError> {\n    let n = text.parse()?;\n    Ok(n)\n}\n```\n\nThis works only inside functions that return `Result` or `Option`.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Order what happens when `parse_and_double(\"21\")` is called, in execution order.",
           "options": [
@@ -614,7 +687,9 @@
       "title": "panic, unwrap, expect",
       "description": "`unwrap()` and `expect()` extract the inner value.\n\n```rust\nlet value = Some(10);\nprintln!(\"{}\", value.unwrap());\n```\n\nIf the value is missing, the program panics.\n\n```rust\nlet missing: Option<i32> = None;\nmissing.expect(\"value should exist\");\n```",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "What happens if `value.unwrap()` is called when `value` is `None`?",
           "options": [
@@ -639,7 +714,9 @@
       "title": "async / await",
       "description": "`async fn` returns a future.\n\n```rust\nasync fn fetch() -> i32 {\n    42\n}\n```\n\nThe function body does not finish immediately. Something must await or poll the future.\n\n```rust\nlet value = pollster::block_on(fetch());\n```",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "What does calling an `async fn` actually do?",
           "options": [
@@ -664,7 +741,9 @@
       "title": "Smart pointers: Box",
       "description": "`Box<T>` stores a value on the heap.\n\n```rust\nlet n = Box::new(5);\nprintln!(\"{}\", n);\n```\n\nIt is useful for heap allocation and recursive data structures.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Where does Box<T> store its data?",
           "options": [
@@ -689,7 +768,9 @@
       "title": "Smart pointers: Rc",
       "description": "`Rc<T>` lets multiple variables share ownership.\n\n```rust\nuse std::rc::Rc;\nlet a = Rc::new(String::from(\"hi\"));\nlet b = Rc::clone(&a);\n```\n\nThe value is dropped only when the last `Rc` is gone. `Rc` is for single-threaded code.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Which best describes Rc<T>?",
           "options": [
@@ -714,7 +795,9 @@
       "title": "Smart pointers: RefCell",
       "description": "`RefCell<T>` allows interior mutability.\n\n```rust\nuse std::cell::RefCell;\nlet cell = RefCell::new(5);\n*cell.borrow_mut() += 1;\n```\n\nThe borrow rules are checked at runtime instead of compile time.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Order the steps the program performs.",
           "options": [
@@ -739,7 +822,9 @@
       "title": "Macros: built-in",
       "description": "Built-in macros end with `!`.\n\n```rust\nlet v = vec![1, 2, 3];\nprintln!(\"{:?}\", v);\nlet text = format!(\"{}+{}={}\", 2, 3, 5);\n```\n\nMacros expand into code at compile time.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "When do macros run?",
           "options": [
@@ -764,7 +849,9 @@
       "title": "Macros: macro_rules!",
       "description": "`macro_rules!` defines a declarative macro.\n\n```rust\nmacro_rules! say_hi {\n    () => {\n        println!(\"hi\");\n    };\n}\n```\n\nThe macro matches a pattern and expands into regular Rust code.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "What does `macro_rules!` define?",
           "options": [
@@ -789,7 +876,9 @@
       "title": "Unsafe Rust",
       "description": "`unsafe` allows operations Rust cannot verify automatically.\n\n```rust\nlet mut x = 10;\nlet p: *mut i32 = &mut x;\nunsafe {\n    *p += 1;\n}\n```\n\nThis does not disable the whole language. It only allows specific unsafe actions inside the block.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Which is true about `unsafe { }`?",
           "options": [
@@ -814,7 +903,9 @@
       "title": "Vectors and push",
       "description": "`Vec<T>` is Rust's growable array type.\n\n```rust\nlet mut nums = vec![1, 2];\nnums.push(3);\n```\n\n`push()` appends a value to the end of the vector.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Fill in the method used to append `3` to the vector."
         },
@@ -833,7 +924,9 @@
       "title": "Option with match guards",
       "description": "`match` arms can use guards.\n\n```rust\nmatch value {\n    Some(n) if n > 10 => \"big\",\n    Some(_) => \"small\",\n    None => \"none\",\n}\n```\n\nThe `if n > 10` part is a guard that adds an extra condition.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Why does `Some(25)` print `big`?",
           "options": [
@@ -858,7 +951,9 @@
       "title": "Arc and Mutex",
       "description": "`Arc<T>` shares ownership across threads.\n\n```rust\nuse std::sync::{Arc, Mutex};\nlet count = Arc::new(Mutex::new(0));\n```\n\n`Mutex<T>` protects mutable shared data.\n\n```rust\nlet mut value = count.lock().unwrap();\n*value += 1;\n```",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Order what happens in this program.",
           "options": [
@@ -883,7 +978,9 @@
       "title": "Iterators: enumerate",
       "description": "`enumerate()` adds an index to each item.\n\n```rust\nfor (index, name) in names.iter().enumerate() {\n    println!(\"{index}: {name}\");\n}\n```\n\nBecause each item is a tuple, the loop pattern must use parentheses.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "The snippet below has one line that won't compile. Which line is it?"
         },
@@ -902,7 +999,9 @@
       "title": "Threads: spawn and join",
       "description": "Use `thread::spawn` to start a new thread.\n\n```rust\nlet handle = thread::spawn(|| {\n    println!(\"worker thread\");\n});\n```\n\n`join()` waits for that thread to finish before the main thread continues.\n\n```rust\nhandle.join().unwrap();\nprintln!(\"main thread\");\n```",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Why does the program call `handle.join().unwrap()`?",
           "options": [
@@ -927,7 +1026,9 @@
       "title": "Locks: Mutex",
       "description": "`Mutex<T>` protects shared mutable data.\n\n```rust\nlet counter = Mutex::new(0);\n```\n\nTo access the inner value, you lock the mutex and receive a guard.\n\n```rust\nlet mut value = counter.lock().unwrap();\n*value += 5;\n```\n\nWhen the guard goes out of scope, the lock is released.",
       "quizzes": {
-        "q1": { "question": "Predict the program's output:" },
+        "q1": {
+          "question": "Predict the program's output:"
+        },
         "q2": {
           "question": "Order what happens in this program.",
           "options": [
@@ -944,6 +1045,302 @@
             "It removes the need to handle lock poisoning",
             "It automatically converts shared data into `Rc<T>`"
           ]
+        }
+      }
+    },
+    "41_trait_objects": {
+      "title": "Trait Objects and Dynamic Dispatch",
+      "description": "A trait object such as `&dyn Draw` hides the concrete type behind a shared behavior interface.\n\n```rust\nfn render(item: &dyn Draw) {\n    item.draw();\n}\n```\n\nThis is a runtime-polymorphism choice, unlike monomorphized generics.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "What does `&dyn Draw` represent?",
+          "options": [
+            "A reference to any value that implements `Draw`, using dynamic dispatch.",
+            "A macro that creates buttons.",
+            "A mutable borrow of every type at once."
+          ],
+          "explanations": [
+            "Correct. The concrete type is hidden behind trait-object behavior.",
+            "It is not a macro.",
+            "That is not what trait objects mean."
+          ],
+          "answerReason": "Trait objects provide behavior-based polymorphism at runtime."
+        },
+        "q3": {
+          "question": "How is this different from a generic `T: Draw` parameter?",
+          "options": [
+            "Generics always allocate on the heap.",
+            "Trait objects can only be used in tests.",
+            "Generics preserve compile-time concrete type information, while trait objects erase it behind a runtime interface."
+          ],
+          "explanations": [
+            "Generics do not always allocate.",
+            "Trait objects are a normal production feature.",
+            "Correct. This is the key design distinction."
+          ],
+          "answerReason": "The trait-object versus generic choice changes dispatch and what type information stays available."
+        }
+      }
+    },
+    "44_interior_mutability": {
+      "title": "Interior Mutability Tradeoffs",
+      "description": "Interior mutability allows mutation through shared ownership patterns by moving some checks to runtime or abstraction boundaries.\n\n```rust\nlet value = RefCell::new(1);\n```\n\nThis is useful, but it changes where borrow-rule enforcement happens.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why is `RefCell<T>` a tradeoff?",
+          "options": [
+            "Because it moves some borrow enforcement from compile time to runtime.",
+            "Because it removes all ownership reasoning.",
+            "Because it is always thread-safe shared state."
+          ],
+          "explanations": [
+            "Correct. Flexibility comes with different enforcement timing.",
+            "Ownership reasoning still matters.",
+            "`RefCell` is not the thread-safe shared-state default."
+          ],
+          "answerReason": "Interior mutability increases flexibility by changing where correctness is checked."
+        },
+        "q3": {
+          "question": "What is the main design lesson?",
+          "options": [
+            "Runtime borrow checks are always better.",
+            "Compile-time checks no longer matter in Rust.",
+            "Extra flexibility should be used deliberately because it changes failure modes and API expectations."
+          ],
+          "explanations": [
+            "That is too absolute.",
+            "Compile-time checks still matter a lot.",
+            "Correct. The tradeoff is about where guarantees come from."
+          ],
+          "answerReason": "Interior mutability is powerful, but it is not a free replacement for simpler ownership models."
+        }
+      }
+    },
+    "46_crate_boundaries": {
+      "title": "Crate Boundaries and Architecture",
+      "description": "Crate boundaries are part of architecture because they shape API ownership, visibility, and dependency direction.\n\n```rust\npub mod api;\nmod internal;\n```\n\nPackage structure is one way to encode coupling rules in larger Rust systems.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why do crate boundaries matter beyond build organization?",
+          "options": [
+            "Because only crates can contain traits.",
+            "Because modules cannot be tested.",
+            "Because they help encode API ownership, dependency direction, and isolation boundaries."
+          ],
+          "explanations": [
+            "Traits are not limited to crates that way.",
+            "Modules can be tested.",
+            "Correct. Package boundaries are part of system structure."
+          ],
+          "answerReason": "Crate boundaries influence coupling and what invariants are enforced where."
+        },
+        "q3": {
+          "question": "What is the main architecture benefit?",
+          "options": [
+            "Only faster formatting.",
+            "A clearer public surface and better control over internal coupling.",
+            "Automatic removal of all unsafe code."
+          ],
+          "explanations": [
+            "Formatting is unrelated.",
+            "Correct. Structure helps keep large systems disciplined.",
+            "Unsafe code is not removed automatically."
+          ],
+          "answerReason": "Good boundaries make large codebases easier to reason about and evolve."
+        }
+      }
+    },
+    "40_copy_clone_value": {
+      "title": "Copy, Clone, and Value Semantics",
+      "description": "A `Copy` type behaves more like a traditional value type because assignment duplicates it implicitly.\n\n```rust\n#[derive(Copy, Clone)]\nstruct Point { x: i32, y: i32 }\n```\n\nWithout `Copy`, moving the value would make the old binding unusable.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why can `p1` still be used after `let p2 = p1;`?",
+          "options": [
+            "Because structs are always shared by reference.",
+            "Because `Clone` runs automatically on every assignment.",
+            "Because `Point` implements `Copy`, so the assignment duplicates the value implicitly."
+          ],
+          "explanations": [
+            "That is not how ordinary struct assignment works here.",
+            "`Clone` is explicit; `Copy` is the implicit behavior.",
+            "Correct. `Copy` gives assignment-like duplication semantics."
+          ],
+          "answerReason": "`Copy` changes assignment from a move into an implicit duplication."
+        },
+        "q3": {
+          "question": "Why does `Copy` often feel like value semantics?",
+          "options": [
+            "Because `Copy` values are not stored in memory.",
+            "Because passing or assigning them does not transfer exclusive ownership away from the old binding.",
+            "Because `Copy` disables type checking."
+          ],
+          "explanations": [
+            "All values are still stored somewhere in memory.",
+            "Correct. The original binding remains usable after assignment-like operations.",
+            "Type checking still applies."
+          ],
+          "answerReason": "Implicit duplication is why `Copy` often matches value-type intuition."
+        }
+      }
+    },
+    "42_send_sync": {
+      "title": "Send, Sync, and Thread Safety",
+      "description": "`Send` and `Sync` describe what ownership and shared references may safely cross thread boundaries.\n\n```rust\nlet data = Arc::new(String::from(\"shared\"));\n```\n\nThese traits shape what concurrent Rust designs are legal.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why is `Arc` used here instead of plain `Rc`?",
+          "options": [
+            "Because `Rc` is always mutable.",
+            "Because `Arc` is thread-safe shared ownership, while `Rc` is not for cross-thread sharing.",
+            "Because `Arc` removes the need for ownership."
+          ],
+          "explanations": [
+            "`Rc` being always mutable is false.",
+            "Correct. `Arc` is the thread-safe shared-ownership choice.",
+            "Ownership still exists."
+          ],
+          "answerReason": "Shared ownership across threads needs thread-safe reference counting."
+        },
+        "q3": {
+          "question": "What do `Send` and `Sync` help express?",
+          "options": [
+            "Whether ownership or shared references can cross thread boundaries safely.",
+            "Only how TCP packets are routed.",
+            "How the formatter aligns code."
+          ],
+          "explanations": [
+            "Correct. They encode thread-safety properties.",
+            "Networking is unrelated.",
+            "Formatting is unrelated."
+          ],
+          "answerReason": "These traits are Rust’s vocabulary for thread-safety guarantees."
+        }
+      }
+    },
+    "45_async_blocking": {
+      "title": "Blocking Work Inside Async",
+      "description": "Async executors rely on tasks yielding cooperatively.\n\n```rust\n// blocking work here can stall executor threads\n```\n\nA blocking call in the wrong place can damage latency and throughput assumptions.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why is blocking work inside async a design problem?",
+          "options": [
+            "Because async code cannot call ordinary functions.",
+            "Because blocking can starve executor threads and hurt latency or throughput.",
+            "Because blocked tasks become compile errors automatically."
+          ],
+          "explanations": [
+            "Async code can still call ordinary functions.",
+            "Correct. Blocking undermines cooperative progress.",
+            "This is a runtime architecture problem, not an automatic compile error."
+          ],
+          "answerReason": "Async structure depends on tasks not monopolizing executor threads with blocking work."
+        },
+        "q3": {
+          "question": "What is the broader lesson?",
+          "options": [
+            "Concurrency model assumptions matter when choosing APIs and runtime behavior.",
+            "Only syntax matters in async Rust.",
+            "Blocking always improves fairness."
+          ],
+          "explanations": [
+            "Correct. Runtime model and API choice are connected.",
+            "Syntax alone is not enough.",
+            "Blocking does not automatically improve fairness."
+          ],
+          "answerReason": "Architecture choices have to respect the executor’s concurrency model."
+        }
+      }
+    },
+    "39_shadowing_basics": {
+      "title": "Shadowing Versus Mutation",
+      "description": "Shadowing creates a new binding instead of mutating an old one.\n\n```rust\nlet x = 1;\nlet x = x + 1;\n```\n\nThat is different from `let mut x = 1; x = 2;`.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "What is happening in `let x = x + 1;`?",
+          "options": [
+            "The old binding is mutated in place.",
+            "A new binding shadows the previous one.",
+            "`x` becomes a macro."
+          ],
+          "explanations": [
+            "Mutation would require a mutable binding assignment.",
+            "Correct. Shadowing creates a fresh binding.",
+            "`x` is still a variable binding."
+          ],
+          "answerReason": "Shadowing reuses the name for a new binding rather than mutating the old one."
+        },
+        "q3": {
+          "question": "Why does this distinction matter?",
+          "options": [
+            "Because ownership, type changes, and immutability reasoning depend on whether you shadow or mutate.",
+            "Because Rust cannot print mutable values.",
+            "Because shadowing only works in tests."
+          ],
+          "explanations": [
+            "Correct. The semantics are different even when the name is reused.",
+            "Printing is unrelated.",
+            "Shadowing is a normal language feature."
+          ],
+          "answerReason": "Shadowing and mutation affect how you reason about the binding and its lifetime."
+        }
+      }
+    },
+    "43_pin_basics": {
+      "title": "Pin and Stable Location",
+      "description": "`Pin` exists for abstractions that rely on values not being moved after they are pinned.\n\n```rust\nlet pinned = Pin::new(Box::new(value));\n```\n\nThis matters for some async and self-referential patterns.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why does `Pin` exist?",
+          "options": [
+            "Because pinned values always run faster.",
+            "Because the stack cannot hold strings.",
+            "Because some abstractions rely on stable memory location for soundness."
+          ],
+          "explanations": [
+            "`Pin` is not a universal speed trick.",
+            "Strings can be held by values normally.",
+            "Correct. Stable location is the point."
+          ],
+          "answerReason": "Pin protects designs that would be unsound if values were moved freely."
+        },
+        "q3": {
+          "question": "Where does this show up often?",
+          "options": [
+            "Only in comments.",
+            "In async state machines and other move-sensitive abstractions.",
+            "Only when printing macros are used."
+          ],
+          "explanations": [
+            "Comments are unrelated.",
+            "Correct. Async internals are a common case.",
+            "Macros are unrelated."
+          ],
+          "answerReason": "Pinning becomes relevant when movement itself can break invariants."
         }
       }
     }
