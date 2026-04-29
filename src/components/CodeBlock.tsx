@@ -130,7 +130,7 @@ export function CodeBlock({ code }: Props) {
       </div>
       <CodeMirror
         value={draft}
-        extensions={[EditorState.tabSize.of(2), indentUnit.of("  "), rust()]}
+        extensions={[EditorState.tabSize.of(4), indentUnit.of("    "), rust()]}
         editable
         onChange={setDraft}
         basicSetup={{ lineNumbers: true, foldGutter: false, highlightActiveLine: false }}
