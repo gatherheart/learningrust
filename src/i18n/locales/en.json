@@ -99,7 +99,7 @@
     },
     "03_ownership": {
       "title": "Ownership and borrowing",
-      "description": "Moving transfers ownership.\n\n```rust\nlet s = String::from(\"hi\");\nlet t = s;\n```\n\nAfter that, `s` can no longer be used.\n\n```rust\nfn print_len(text: &String) {\n    println!(\"{}\", text.len());\n}\n```\n\n`&String` borrows the value, so the original variable stays usable.",
+      "description": "Passing a `String` by value moves ownership.\n\n```rust\nfn takes_ownership(s: String) {\n    println!(\"got: {s}\");\n}\n```\n\nAfter `takes_ownership(owned)`, the original `owned` binding can no longer be used.\n\n```rust\nfn borrows(s: &String) {\n    println!(\"borrowed: {s}\");\n}\n```\n\n`&String` borrows the value instead, so the original variable is still valid after the call.",
       "quizzes": {
         "q1": { "question": "Predict the program's output:" },
         "q2": {
