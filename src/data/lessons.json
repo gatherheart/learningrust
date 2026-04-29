@@ -387,6 +387,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "trait Animal {\n    fn name(&self) -> String;\n    fn sound(&self) -> String {\n        String::from(\"...\")\n    }\n}\n\nstruct Cat;\nstruct Dog;\n\nimpl Animal for Cat {\n    fn name(&self) -> String {\n        String::from(\"cat\")\n    }\n    fn sound(&self) -> String {\n        String::from(\"meow\")\n    }\n}\n\nimpl Animal for Dog {\n    fn name(&self) -> String {\n        String::from(\"dog\")\n    }\n}\n\nfn main() {\n    let c = Cat;\n    let d = Dog;\n    println!(\"{}: {}\", c.name(), c.sound());\n    println!(\"{}: {}\", d.name(), d.sound());\n}\n",
@@ -405,6 +410,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
       }
     ],
     "code": "#[derive(Debug, Clone, PartialEq)]\nstruct Point {\n    x: i32,\n    y: i32,\n}\n\nfn main() {\n    let p = Point { x: 1, y: 2 };\n    let q = p.clone();\n    println!(\"{:?}\", p);\n    println!(\"equal={}\", p == q);\n}\n",
@@ -423,6 +433,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {\n    let mut max = list[0];\n    for &item in list {\n        if item > max {\n            max = item;\n        }\n    }\n    max\n}\n\nfn main() {\n    let ints = [10, 25, 3, 47, 8];\n    let floats = [1.1, 2.2, 0.5];\n    println!(\"max int = {}\", largest(&ints));\n    println!(\"max float = {}\", largest(&floats));\n}\n",
@@ -441,6 +456,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() >= y.len() {\n        x\n    } else {\n        y\n    }\n}\n\nfn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = \"hi\";\n    let r = longest(&s1, s2);\n    println!(\"{r}\");\n}\n",
@@ -460,6 +480,11 @@
         "type": "spot-the-bug",
         "code": "struct Borrower {\n    name: &str,\n}\n\nfn main() {\n    let s = String::from(\"hi\");\n    let b = Borrower { name: &s };\n    println!(\"{}\", b.name);\n}",
         "buggyLine": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "struct Borrower<'a> {\n    name: &'a str,\n}\n\nimpl<'a> Borrower<'a> {\n    fn announce(&self) {\n        println!(\"Borrower: {}\", self.name);\n    }\n}\n\nfn main() {\n    let owner = String::from(\"Alice\");\n    let b = Borrower { name: &owner };\n    b.announce();\n}\n",
@@ -478,6 +503,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn divide(a: i32, b: i32) -> Result<i32, String> {\n    if b == 0 {\n        Err(String::from(\"div by zero\"))\n    } else {\n        Ok(a / b)\n    }\n}\n\nfn main() {\n    match divide(10, 2) {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n    match divide(10, 0) {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n}\n",
@@ -496,6 +526,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
       }
     ],
     "code": "fn first_word(s: &str) -> Option<&str> {\n    s.split_whitespace().next()\n}\n\nfn main() {\n    let s = \"hello world\";\n    let empty = \"\";\n    println!(\"{:?}\", first_word(s));\n    println!(\"{:?}\", first_word(empty));\n    println!(\"default: {}\", first_word(empty).unwrap_or(\"none\"));\n}\n",
@@ -519,6 +554,11 @@
           2,
           3
         ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "use std::num::ParseIntError;\n\nfn parse_and_double(s: &str) -> Result<i32, ParseIntError> {\n    let n: i32 = s.parse()?;\n    Ok(n * 2)\n}\n\nfn main() {\n    match parse_and_double(\"21\") {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n    match parse_and_double(\"xyz\") {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n}\n",
@@ -537,6 +577,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    let value: Option<i32> = Some(42);\n    let n = value.unwrap();\n    println!(\"n={n}\");\n\n    let result: Result<i32, &str> = Ok(7);\n    let r = result.expect(\"should be ok\");\n    println!(\"r={r}\");\n}\n",
@@ -555,6 +600,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "async fn one() -> i32 {\n    1\n}\n\nasync fn two() -> i32 {\n    2\n}\n\nfn main() {\n    let result = pollster::block_on(async { one().await + two().await });\n    println!(\"result={result}\");\n}\n",
@@ -573,6 +623,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
       }
     ],
     "code": "fn main() {\n    let b: Box<i32> = Box::new(5);\n    println!(\"b={b}\");\n    println!(\"doubled={}\", *b * 2);\n}\n",
@@ -591,6 +646,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "use std::rc::Rc;\n\nfn main() {\n    let a = Rc::new(String::from(\"hello\"));\n    let b = Rc::clone(&a);\n    let c = Rc::clone(&a);\n    println!(\"count={}\", Rc::strong_count(&a));\n    println!(\"a={a}, b={b}, c={c}\");\n}\n",
@@ -614,6 +674,11 @@
           2,
           3
         ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "use std::cell::RefCell;\n\nfn main() {\n    let cell = RefCell::new(5);\n    {\n        let mut x = cell.borrow_mut();\n        *x += 10;\n    }\n    println!(\"value={}\", cell.borrow());\n}\n",
@@ -632,6 +697,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    let v = vec![1, 2, 3];\n    println!(\"{:?}\", v);\n\n    let formatted = format!(\"{}+{}={}\", 2, 3, 2 + 3);\n    println!(\"{formatted}\");\n\n    println!(\"debug: {:?}\", v);\n}\n",
@@ -650,6 +720,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "macro_rules! greet {\n    () => {\n        println!(\"Hello!\");\n    };\n    ($name:expr) => {\n        println!(\"Hello, {}!\", $name);\n    };\n}\n\nfn main() {\n    greet!();\n    greet!(\"Alice\");\n}\n",
@@ -668,6 +743,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn main() {\n    let mut x = 10;\n    let p: *mut i32 = &mut x;\n    unsafe {\n        *p = *p + 5;\n    }\n    println!(\"x={x}\");\n}\n",
@@ -689,6 +769,11 @@
         "blanks": [
           "push"
         ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "fn main() {\n    let mut nums = vec![1, 2];\n    nums.push(3);\n\n    println!(\"len={}\", nums.len());\n    println!(\"{:?}\", nums);\n}\n",
@@ -707,6 +792,11 @@
         "id": "q2",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn describe(value: Option<i32>) -> &'static str {\n    match value {\n        Some(n) if n > 10 => \"big\",\n        Some(_) => \"small\",\n        None => \"none\",\n    }\n}\n\nfn main() {\n    println!(\"{}\", describe(Some(3)));\n    println!(\"{}\", describe(Some(25)));\n    println!(\"{}\", describe(None));\n}\n",
@@ -730,6 +820,11 @@
           2,
           3
         ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 3
       }
     ],
     "code": "use std::sync::{Arc, Mutex};\n\nfn main() {\n    let count = Arc::new(Mutex::new(0));\n    let shared = Arc::clone(&count);\n\n    {\n        let mut value = shared.lock().unwrap();\n        *value += 2;\n    }\n\n    println!(\"count={}\", count.lock().unwrap());\n}\n",
@@ -749,6 +844,11 @@
         "type": "spot-the-bug",
         "code": "fn main() {\n    let names = [\"Ada\", \"Linus\"];\n    for index, name in names.iter().enumerate() {\n        println!(\"{index}: {name}\");\n    }\n}",
         "buggyLine": 3
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn main() {\n    let names = [\"Ada\", \"Linus\", \"Grace\"];\n\n    for (index, name) in names.iter().enumerate() {\n        println!(\"{index}: {name}\");\n    }\n}\n",

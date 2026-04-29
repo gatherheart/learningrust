@@ -427,6 +427,15 @@
             "Default methods cannot be overridden",
             "Cat doesn't implement the trait"
           ]
+        },
+        "q3": {
+          "question": "Why are default trait methods useful in practice?",
+          "options": [
+            "They force every type to use the same exact implementation",
+            "They remove the need for trait implementations entirely",
+            "They let a trait provide shared behavior while still allowing overrides",
+            "They make traits work only for enums"
+          ]
         }
       }
     },
@@ -442,6 +451,15 @@
             "Only works on enums",
             "Replaces the struct's fields",
             "Runs at runtime"
+          ]
+        },
+        "q3": {
+          "question": "Why can `derive` only work when all fields support the derived trait too?",
+          "options": [
+            "Because derive uses a network request to inspect each field",
+            "Because Rust forbids traits on fields",
+            "Because only primitive types can be cloned or compared",
+            "Because the generated implementation must call the same trait on every field"
           ]
         }
       }
@@ -459,6 +477,15 @@
             "T: PartialOrd + Copy",
             "T :: PartialOrd, Copy"
           ]
+        },
+        "q3": {
+          "question": "Why does `largest<T: PartialOrd + Copy>` need `Copy` in this example?",
+          "options": [
+            "So Rust can sort values automatically",
+            "So the function can return `a` or `b` by value without moving out of borrowed data",
+            "Because every generic type must implement `Copy`",
+            "Because `PartialOrd` only works together with `Copy`"
+          ]
         }
       }
     },
@@ -475,6 +502,15 @@
             "'a is required for every function",
             "'a only applies to Strings"
           ]
+        },
+        "q3": {
+          "question": "What problem are lifetimes solving here?",
+          "options": [
+            "They let Rust track how long returned references may safely point to input data",
+            "They make the function run longer",
+            "They allocate strings on the heap",
+            "They replace ownership with garbage collection"
+          ]
         }
       }
     },
@@ -485,6 +521,15 @@
         "q1": { "question": "Predict the program's output:" },
         "q2": {
           "question": "Which line below has the missing lifetime that prevents this from compiling?"
+        },
+        "q3": {
+          "question": "Why must `Borrower` declare a lifetime parameter?",
+          "options": [
+            "Because the struct stores a reference and Rust must know how long that reference may live",
+            "Because every struct in Rust needs a lifetime",
+            "Because `String` always requires `'static`",
+            "Because structs cannot hold fields without trait bounds"
+          ]
         }
       }
     },
@@ -500,6 +545,15 @@
             "It's a struct",
             "Err always panics",
             "match cannot pattern-match Result"
+          ]
+        },
+        "q3": {
+          "question": "Why is `Result` preferred over panicking for recoverable failures?",
+          "options": [
+            "It forces the caller to handle or propagate the failure explicitly",
+            "It makes the compiler run faster",
+            "It removes the need for return types",
+            "It guarantees the program never exits early"
           ]
         }
       }
@@ -517,6 +571,15 @@
             "Returns the default \"none\"",
             "Calls the function again"
           ]
+        },
+        "q3": {
+          "question": "When would you choose `Option<T>` instead of `Result<T, E>`?",
+          "options": [
+            "When the absence of a value is expected and you do not need an error message",
+            "When you need to store two successful values",
+            "When parsing integers from text",
+            "Only when working with traits"
+          ]
         }
       }
     },
@@ -532,6 +595,15 @@
             "Parsing succeeds; `?` unwraps Ok(21) into n",
             "Multiply 21 by 2 to get 42",
             "Wrap 42 in Ok and return"
+          ]
+        },
+        "q3": {
+          "question": "What happens if the parse step returns `Err` before multiplication?",
+          "options": [
+            "The function keeps going with `0`",
+            "The error is ignored",
+            "The `?` returns that error early from the function",
+            "Rust retries the parse automatically"
           ]
         }
       }
@@ -549,6 +621,15 @@
             "Returns Err",
             "Returns 0"
           ]
+        },
+        "q3": {
+          "question": "Why is `expect(\"message\")` often better than plain `unwrap()` during debugging?",
+          "options": [
+            "It never panics",
+            "It converts `None` into `Some`",
+            "It makes the code async-safe",
+            "It panics with a custom message that explains the assumption"
+          ]
         }
       }
     },
@@ -564,6 +645,15 @@
             "Polls the OS scheduler",
             "Returns a future that needs to be awaited or polled",
             "Spawns an OS thread"
+          ]
+        },
+        "q3": {
+          "question": "Why do we need something like `block_on` in this example?",
+          "options": [
+            "Because a future does not complete by itself until an executor polls it",
+            "Because async functions cannot return values",
+            "Because Rust requires every function to be blocking",
+            "Because `await` only works inside macros"
           ]
         }
       }
@@ -581,6 +671,15 @@
             "In thread-local storage",
             "In a static segment"
           ]
+        },
+        "q3": {
+          "question": "Why would you choose `Box<T>` over a plain `T`?",
+          "options": [
+            "To move the value to the heap or to build recursive structures",
+            "To share data across threads automatically",
+            "To bypass ownership checks",
+            "To make every method asynchronous"
+          ]
         }
       }
     },
@@ -596,6 +695,15 @@
             "Thread-safe across threads",
             "Deep-copies on clone",
             "Can't hold strings"
+          ]
+        },
+        "q3": {
+          "question": "Why is `Rc<T>` not used across threads?",
+          "options": [
+            "Because its reference counting is not thread-safe",
+            "Because it can only store integers",
+            "Because cloning an `Rc` consumes the inner value",
+            "Because `Rc` always leaks memory"
           ]
         }
       }
@@ -613,6 +721,15 @@
             "Drop the mutable borrow when its scope ends",
             "Borrow immutably to print the final value"
           ]
+        },
+        "q3": {
+          "question": "What extra risk comes with `RefCell<T>` compared with normal borrowing?",
+          "options": [
+            "It disables type checking",
+            "It can panic at runtime if borrow rules are broken",
+            "It always copies the inner data",
+            "It only works with `unsafe` blocks"
+          ]
         }
       }
     },
@@ -628,6 +745,15 @@
             "On every function call",
             "At compile time, expanding into code",
             "Lazily, on first use"
+          ]
+        },
+        "q3": {
+          "question": "Why are macros useful for things like `println!` and `vec!`?",
+          "options": [
+            "They can accept flexible syntax and expand into regular Rust before compilation finishes",
+            "They run faster than machine code",
+            "They replace the type system",
+            "They only work in debug mode"
           ]
         }
       }
@@ -645,6 +771,15 @@
             "An unsafe block",
             "A trait"
           ]
+        },
+        "q3": {
+          "question": "How does a declarative macro decide what code to generate?",
+          "options": [
+            "By matching the input against patterns and expanding the matching rule",
+            "By executing the code at runtime first",
+            "By compiling a separate crate automatically",
+            "By reading values from stdin"
+          ]
         }
       }
     },
@@ -661,6 +796,15 @@
             "It makes Rust as memory-safe as Java",
             "Raw pointers are checked at runtime"
           ]
+        },
+        "q3": {
+          "question": "What does `unsafe` actually change?",
+          "options": [
+            "It turns off all borrow checking forever",
+            "It allows specific operations the compiler cannot verify, while the rest of Rust rules still apply",
+            "It makes raw pointers safe automatically",
+            "It removes the need for types"
+          ]
         }
       }
     },
@@ -671,6 +815,15 @@
         "q1": { "question": "Predict the program's output:" },
         "q2": {
           "question": "Fill in the method used to append `3` to the vector."
+        },
+        "q3": {
+          "question": "Why does the vector need `mut` before calling `push`?",
+          "options": [
+            "Because `push` changes the vector's contents and possibly its length",
+            "Because vectors are immutable forever in Rust",
+            "Because `push` returns a new vector",
+            "Because all heap values require `mut`"
+          ]
         }
       }
     },
@@ -686,6 +839,15 @@
             "Because the `Some(n) if n > 10` guard matches",
             "Because match checks None first",
             "Because Option automatically unwraps values over 10"
+          ]
+        },
+        "q3": {
+          "question": "What is the benefit of a match guard here?",
+          "options": [
+            "It lets one pattern split into more precise cases without nesting another `if`",
+            "It removes the need for `Some` and `None`",
+            "It turns `Option` into `Result`",
+            "It makes the match run at compile time"
           ]
         }
       }
@@ -703,6 +865,15 @@
             "Lock the Mutex and add 2 to the inner value",
             "Lock again to print the final count"
           ]
+        },
+        "q3": {
+          "question": "Why are `Arc` and `Mutex` often paired together?",
+          "options": [
+            "Because `Arc` shares ownership and `Mutex` protects mutable access to shared data",
+            "Because both are required for string formatting",
+            "Because `Arc` provides mutation and `Mutex` provides cloning",
+            "Because neither can be used alone"
+          ]
         }
       }
     },
@@ -713,6 +884,15 @@
         "q1": { "question": "Predict the program's output:" },
         "q2": {
           "question": "The snippet below has one line that won't compile. Which line is it?"
+        },
+        "q3": {
+          "question": "Why does `enumerate()` require a loop pattern like `(index, item)`?",
+          "options": [
+            "Because `enumerate()` returns a closure",
+            "Because each iteration item is a tuple of index and value",
+            "Because Rust loops always need parentheses",
+            "Because arrays cannot be iterated without tuple syntax"
+          ]
         }
       }
     }

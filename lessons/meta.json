@@ -180,7 +180,8 @@
     "topic": "traits",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+      { "id": "q2", "type": "multiple-choice", "answer": 1 },
+      { "id": "q3", "type": "multiple-choice", "answer": 2 }
     ]
   },
   {
@@ -189,7 +190,8 @@
     "topic": "traits",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+      { "id": "q2", "type": "multiple-choice", "answer": 0 },
+      { "id": "q3", "type": "multiple-choice", "answer": 3 }
     ]
   },
   {
@@ -198,7 +200,8 @@
     "topic": "generics",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+      { "id": "q2", "type": "multiple-choice", "answer": 2 },
+      { "id": "q3", "type": "multiple-choice", "answer": 1 }
     ]
   },
   {
@@ -207,7 +210,8 @@
     "topic": "lifetimes",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+      { "id": "q2", "type": "multiple-choice", "answer": 1 },
+      { "id": "q3", "type": "multiple-choice", "answer": 2 }
     ]
   },
   {
@@ -221,7 +225,8 @@
         "type": "spot-the-bug",
         "code": "struct Borrower {\n    name: &str,\n}\n\nfn main() {\n    let s = String::from(\"hi\");\n    let b = Borrower { name: &s };\n    println!(\"{}\", b.name);\n}",
         "buggyLine": 2
-      }
+      },
+      { "id": "q3", "type": "multiple-choice", "answer": 0 }
     ]
   },
   {
@@ -230,7 +235,8 @@
     "topic": "error_handling",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+      { "id": "q2", "type": "multiple-choice", "answer": 0 },
+      { "id": "q3", "type": "multiple-choice", "answer": 1 }
     ]
   },
   {
@@ -239,7 +245,8 @@
     "topic": "error_handling",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+      { "id": "q2", "type": "multiple-choice", "answer": 2 },
+      { "id": "q3", "type": "multiple-choice", "answer": 3 }
     ]
   },
   {
@@ -252,7 +259,8 @@
         "id": "q2",
         "type": "order-statements",
         "answer": [0, 1, 2, 3]
-      }
+      },
+      { "id": "q3", "type": "multiple-choice", "answer": 2 }
     ]
   },
   {
@@ -261,7 +269,8 @@
     "topic": "error_handling",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+      { "id": "q2", "type": "multiple-choice", "answer": 1 },
+      { "id": "q3", "type": "multiple-choice", "answer": 0 }
     ]
   },
   {
@@ -270,7 +279,8 @@
     "topic": "async",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+      { "id": "q2", "type": "multiple-choice", "answer": 2 },
+      { "id": "q3", "type": "multiple-choice", "answer": 1 }
     ]
   },
   {
@@ -279,7 +289,8 @@
     "topic": "smart_pointers",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+      { "id": "q2", "type": "multiple-choice", "answer": 1 },
+      { "id": "q3", "type": "multiple-choice", "answer": 3 }
     ]
   },
   {
@@ -288,7 +299,8 @@
     "topic": "smart_pointers",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+      { "id": "q2", "type": "multiple-choice", "answer": 0 },
+      { "id": "q3", "type": "multiple-choice", "answer": 2 }
     ]
   },
   {
@@ -301,7 +313,8 @@
         "id": "q2",
         "type": "order-statements",
         "answer": [0, 1, 2, 3]
-      }
+      },
+      { "id": "q3", "type": "multiple-choice", "answer": 1 }
     ]
   },
   {
@@ -310,7 +323,8 @@
     "topic": "macros",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 2 }
+      { "id": "q2", "type": "multiple-choice", "answer": 2 },
+      { "id": "q3", "type": "multiple-choice", "answer": 0 }
     ]
   },
   {
@@ -319,7 +333,8 @@
     "topic": "macros",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+      { "id": "q2", "type": "multiple-choice", "answer": 1 },
+      { "id": "q3", "type": "multiple-choice", "answer": 2 }
     ]
   },
   {
@@ -328,7 +343,8 @@
     "topic": "unsafe",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 0 }
+      { "id": "q2", "type": "multiple-choice", "answer": 0 },
+      { "id": "q3", "type": "multiple-choice", "answer": 1 }
     ]
   },
   {
@@ -342,7 +358,8 @@
         "type": "fill-in-blank",
         "template": "let mut nums = vec![1, 2];\nnums.___(3);\nprintln!(\"{:?}\", nums);",
         "blanks": ["push"]
-      }
+      },
+      { "id": "q3", "type": "multiple-choice", "answer": 2 }
     ]
   },
   {
@@ -351,7 +368,8 @@
     "topic": "error_handling",
     "quizzes": [
       { "id": "q1", "type": "predict-output" },
-      { "id": "q2", "type": "multiple-choice", "answer": 1 }
+      { "id": "q2", "type": "multiple-choice", "answer": 1 },
+      { "id": "q3", "type": "multiple-choice", "answer": 0 }
     ]
   },
   {
@@ -364,7 +382,8 @@
         "id": "q2",
         "type": "order-statements",
         "answer": [0, 1, 2, 3]
-      }
+      },
+      { "id": "q3", "type": "multiple-choice", "answer": 3 }
     ]
   },
   {
@@ -378,7 +397,8 @@
         "type": "spot-the-bug",
         "code": "fn main() {\n    let names = [\"Ada\", \"Linus\"];\n    for index, name in names.iter().enumerate() {\n        println!(\"{index}: {name}\");\n    }\n}",
         "buggyLine": 3
-      }
+      },
+      { "id": "q3", "type": "multiple-choice", "answer": 1 }
     ]
   }
 ]
