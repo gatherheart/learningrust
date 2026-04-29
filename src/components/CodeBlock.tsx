@@ -61,11 +61,19 @@ export function CodeBlock({ code }: Props) {
       const result = await executeRust(draft, controller.signal);
       setOutput(result.stdout);
       setStderr(result.stderr);
-      setRunState("done");
+      if (result.success) {
+        setRunState("done");
+      } else {
+        setRunState("error");
+        setRunError(t("ui.compileFailed"));
+      }
     } catch (error) {
       const message = error instanceof Error && error.name === "AbortError"
         ? t("ui.runTimedOut")
         : t("ui.runFailed");
+      if (error instanceof Error && error.name !== "AbortError") {
+        setStderr(error.message);
+      }
       setRunError(message);
       setRunState("error");
     } finally {
@@ -145,30 +153,29 @@ export function CodeBlock({ code }: Props) {
             {runState === "running" ? t("ui.running") : t("ui.outputReady")}
           </div>
         </div>
-        {runError ? (
-          <div className="rounded-2xl border border-red-400/20 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+        {runError && (
+          <div className="mb-3 rounded-2xl border border-red-400/20 bg-red-500/10 px-4 py-3 text-sm text-red-100">
             {runError}
           </div>
-        ) : (
-          <div className="grid gap-3 lg:grid-cols-2">
-            <section className="rounded-[22px] border border-white/10 bg-black/25 p-4">
-              <div className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">
-                {t("ui.stdout")}
-              </div>
-              <pre className="app-scrollbar min-h-28 overflow-x-auto whitespace-pre-wrap text-sm leading-6 text-emerald-100">
-                {output || t("ui.outputPlaceholder")}
-              </pre>
-            </section>
-            <section className="rounded-[22px] border border-white/10 bg-black/25 p-4">
-              <div className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">
-                {t("ui.stderr")}
-              </div>
-              <pre className="app-scrollbar min-h-28 overflow-x-auto whitespace-pre-wrap text-sm leading-6 text-amber-100">
-                {stderr || t("ui.stderrPlaceholder")}
-              </pre>
-            </section>
-          </div>
         )}
+        <div className="grid gap-3 lg:grid-cols-2">
+          <section className="rounded-[22px] border border-white/10 bg-black/25 p-4">
+            <div className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">
+              {t("ui.stdout")}
+            </div>
+            <pre className="app-scrollbar min-h-28 overflow-x-auto whitespace-pre-wrap text-sm leading-6 text-emerald-100">
+              {output || t("ui.outputPlaceholder")}
+            </pre>
+          </section>
+          <section className="rounded-[22px] border border-white/10 bg-black/25 p-4">
+            <div className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">
+              {t("ui.stderr")}
+            </div>
+            <pre className="app-scrollbar min-h-28 overflow-x-auto whitespace-pre-wrap text-sm leading-6 text-amber-100">
+              {stderr || t("ui.stderrPlaceholder")}
+            </pre>
+          </section>
+        </div>
       </div>
     </div>
   );

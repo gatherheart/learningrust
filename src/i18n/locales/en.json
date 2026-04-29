@@ -18,6 +18,7 @@
     "stderrPlaceholder": "Compiler details appear here after each run.",
     "runInlineHint": "This editor runs Rust inline from the lesson page, so you can test changes without leaving the site.",
     "runFailed": "The inline runner could not reach the Rust execution service.",
+    "compileFailed": "Rust returned compiler errors. Check the compiler log.",
     "runTimedOut": "The run timed out. Try a smaller example or use the full playground.",
     "lessonNotFound": "Lesson not found.",
     "predictPlaceholder": "Type the program's exact output...",
