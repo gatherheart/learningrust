@@ -47,6 +47,7 @@
     "error_handling": "Error handling",
     "async": "Async",
     "smart_pointers": "Smart pointers",
+    "concurrency": "Concurrency",
     "macros": "Macros",
     "unsafe": "Unsafe"
   },
@@ -893,6 +894,55 @@
             "Because each iteration item is a tuple of index and value",
             "Because Rust loops always need parentheses",
             "Because arrays cannot be iterated without tuple syntax"
+          ]
+        }
+      }
+    },
+    "37_thread_basic": {
+      "title": "Threads: spawn and join",
+      "description": "Use `thread::spawn` to start a new thread.\n\n```rust\nlet handle = thread::spawn(|| {\n    println!(\"worker thread\");\n});\n```\n\n`join()` waits for that thread to finish before the main thread continues.\n\n```rust\nhandle.join().unwrap();\nprintln!(\"main thread\");\n```",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Why does the program call `handle.join().unwrap()`?",
+          "options": [
+            "To start the thread lazily",
+            "To make the closure mutable",
+            "To wait for the spawned thread to finish",
+            "To clone the thread handle"
+          ]
+        },
+        "q3": {
+          "question": "What does `thread::spawn` return?",
+          "options": [
+            "A borrowed reference to the thread body",
+            "A `JoinHandle` that can be used to wait for the thread",
+            "A `Mutex` protecting the thread",
+            "A `Result<String, String>`"
+          ]
+        }
+      }
+    },
+    "38_mutex_basic": {
+      "title": "Locks: Mutex",
+      "description": "`Mutex<T>` protects shared mutable data.\n\n```rust\nlet counter = Mutex::new(0);\n```\n\nTo access the inner value, you lock the mutex and receive a guard.\n\n```rust\nlet mut value = counter.lock().unwrap();\n*value += 5;\n```\n\nWhen the guard goes out of scope, the lock is released.",
+      "quizzes": {
+        "q1": { "question": "Predict the program's output:" },
+        "q2": {
+          "question": "Order what happens in this program.",
+          "options": [
+            "Create a mutex holding `0`",
+            "Lock the mutex and add `5` to the inner value",
+            "Lock it again to print the final count"
+          ]
+        },
+        "q3": {
+          "question": "Why is a `MutexGuard` useful?",
+          "options": [
+            "It keeps the lock held only while the guarded value is in scope",
+            "It copies the protected data into a new thread",
+            "It removes the need to handle lock poisoning",
+            "It automatically converts shared data into `Rc<T>`"
           ]
         }
       }

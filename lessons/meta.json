@@ -400,5 +400,29 @@
       },
       { "id": "q3", "type": "multiple-choice", "answer": 1 }
     ]
+  },
+  {
+    "id": "37_thread_basic",
+    "bin": "37_thread_basic",
+    "topic": "concurrency",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      { "id": "q2", "type": "multiple-choice", "answer": 2 },
+      { "id": "q3", "type": "multiple-choice", "answer": 1 }
+    ]
+  },
+  {
+    "id": "38_mutex_basic",
+    "bin": "38_mutex_basic",
+    "topic": "concurrency",
+    "quizzes": [
+      { "id": "q1", "type": "predict-output" },
+      {
+        "id": "q2",
+        "type": "order-statements",
+        "answer": [0, 1, 2]
+      },
+      { "id": "q3", "type": "multiple-choice", "answer": 0 }
+    ]
   }
 ]

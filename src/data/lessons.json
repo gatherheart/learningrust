@@ -853,5 +853,55 @@
     ],
     "code": "fn main() {\n    let names = [\"Ada\", \"Linus\", \"Grace\"];\n\n    for (index, name) in names.iter().enumerate() {\n        println!(\"{index}: {name}\");\n    }\n}\n",
     "expectedOutput": "0: Ada\n1: Linus\n2: Grace\n"
+  },
+  {
+    "id": "37_thread_basic",
+    "bin": "37_thread_basic",
+    "topic": "concurrency",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      }
+    ],
+    "code": "use std::thread;\n\nfn main() {\n    let handle = thread::spawn(|| {\n        println!(\"worker thread\");\n    });\n\n    handle.join().unwrap();\n    println!(\"main thread\");\n}\n",
+    "expectedOutput": "worker thread\nmain thread\n"
+  },
+  {
+    "id": "38_mutex_basic",
+    "bin": "38_mutex_basic",
+    "topic": "concurrency",
+    "quizzes": [
+      {
+        "id": "q1",
+        "type": "predict-output"
+      },
+      {
+        "id": "q2",
+        "type": "order-statements",
+        "answer": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      }
+    ],
+    "code": "use std::sync::Mutex;\n\nfn main() {\n    let counter = Mutex::new(0);\n\n    {\n        let mut value = counter.lock().unwrap();\n        *value += 5;\n    }\n\n    println!(\"count={}\", *counter.lock().unwrap());\n}\n",
+    "expectedOutput": "count=5\n"
   }
 ]
