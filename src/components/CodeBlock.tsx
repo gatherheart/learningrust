@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { rust } from "@codemirror/lang-rust";
+import { EditorState } from "@codemirror/state";
+import { indentUnit } from "@codemirror/language";
 import { useTranslation } from "react-i18next";
 import { executeRust, playgroundUrl } from "@/lib/playground";
 
@@ -128,7 +130,7 @@ export function CodeBlock({ code }: Props) {
       </div>
       <CodeMirror
         value={draft}
-        extensions={[rust()]}
+        extensions={[EditorState.tabSize.of(2), indentUnit.of("  "), rust()]}
         editable
         onChange={setDraft}
         basicSetup={{ lineNumbers: true, foldGutter: false, highlightActiveLine: false }}
