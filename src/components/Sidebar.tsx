@@ -5,6 +5,8 @@ import type { Lesson } from "@/types";
 import { isLessonUnlocked, lessonProgress, problemSolved } from "@/lib/store";
 import { problems } from "@/data/problems";
 import { useProgressVersion } from "@/lib/useProgressVersion";
+import { deepDiveQuestions } from "@/data/deepDive";
+import { deepDiveSolved } from "@/lib/store";
 
 interface Props {
   lessons: Lesson[];
@@ -51,6 +53,10 @@ export function Sidebar({ lessons }: Props) {
   const percent = lessons.length === 0 ? 0 : Math.round((totalDone / lessons.length) * 100);
   const solvedProblems = useMemo(
     () => problems.filter((problem) => problemSolved(problem.id)).length,
+    [progressVersion],
+  );
+  const solvedDeepDive = useMemo(
+    () => deepDiveQuestions.filter((question) => deepDiveSolved(question.id)).length,
     [progressVersion],
   );
 
@@ -179,6 +185,42 @@ export function Sidebar({ lessons }: Props) {
                 className="h-full rounded-full bg-gradient-to-r from-sky-400 to-cyan-300"
                 style={{
                   width: `${Math.round((solvedProblems / problems.length) * 100) || 0}%`,
+                }}
+              />
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/deep-dive"
+            className={({ isActive }) =>
+              [
+                "block rounded-[22px] border px-4 py-4 transition",
+                "border-fuchsia-400/18 bg-fuchsia-500/8 hover:border-fuchsia-300/35 hover:bg-fuchsia-500/12",
+                isActive && "border-fuchsia-300/55 bg-fuchsia-500/14 shadow-lg shadow-fuchsia-950/25",
+              ]
+                .filter(Boolean)
+                .join(" ")
+            }
+          >
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.14em] text-fuchsia-100/70">
+                  advanced section
+                </div>
+                <div className="text-sm font-medium text-zinc-100">Deep Dive</div>
+              </div>
+              <div className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[11px] text-zinc-300">
+                {solvedDeepDive}/{deepDiveQuestions.length}
+              </div>
+            </div>
+            <div className="mb-3 text-sm leading-6 text-zinc-300">
+              Harder reasoning questions on ownership, traits, lifetimes, iterators, concurrency, and unsafe Rust.
+            </div>
+            <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-fuchsia-400 to-indigo-300"
+                style={{
+                  width: `${Math.round((solvedDeepDive / deepDiveQuestions.length) * 100) || 0}%`,
                 }}
               />
             </div>

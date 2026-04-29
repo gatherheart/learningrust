@@ -3,6 +3,7 @@ const KEY = "learningrust:progress:v1";
 interface Progress {
   completedQuizzes: Record<string, true>; // key: `${lessonId}:${quizId}`
   solvedProblems?: Record<string, true>;
+  solvedDeepDive?: Record<string, true>;
 }
 
 function read(): Progress {
@@ -64,5 +65,16 @@ export function markProblemSolved(problemId: string): void {
   const p = read();
   p.solvedProblems ??= {};
   p.solvedProblems[problemId] = true;
+  write(p);
+}
+
+export function deepDiveSolved(questionId: string): boolean {
+  return read().solvedDeepDive?.[questionId] === true;
+}
+
+export function markDeepDiveSolved(questionId: string): void {
+  const p = read();
+  p.solvedDeepDive ??= {};
+  p.solvedDeepDive[questionId] = true;
   write(p);
 }

@@ -1,0 +1,148 @@
+import type { DeepDiveQuestion } from "@/types";
+
+export const deepDiveQuestions: DeepDiveQuestion[] = [
+  {
+    id: "ownership_move_after_call",
+    topic: "ownership",
+    title: "Moved Value After Function Call",
+    scenario: [
+      "A function takes `String` by value and prints it.",
+      "The caller tries to use the same variable again after the call.",
+    ],
+    question: "What is the best explanation for the compile failure?",
+    options: [
+      "Rust assumes `println!` consumes all strings permanently",
+      "Ownership moved into the function, so the original binding is no longer valid afterward",
+      "Strings in Rust can only be printed once",
+      "The borrow checker prevents any function call on owned values",
+    ],
+    answer: 1,
+    explanation: "Passing `String` by value transfers ownership into the function. After that move, the caller cannot use the old binding unless ownership is returned or the function borrows instead.",
+  },
+  {
+    id: "borrow_vs_mut_borrow",
+    topic: "borrowing",
+    title: "Shared and Mutable Borrow Conflict",
+    scenario: [
+      "You keep an immutable reference to a vector.",
+      "Before that immutable reference is finished, you try to take a mutable reference to the same vector.",
+    ],
+    question: "Why does Rust reject this pattern?",
+    options: [
+      "Because vectors cannot be borrowed mutably at all",
+      "Because mutable borrows are slower than immutable borrows",
+      "Because Rust forbids overlapping mutable access while shared readers still exist",
+      "Because `Vec<T>` requires `unsafe` for mutation",
+    ],
+    answer: 2,
+    explanation: "Rust prevents aliasing plus mutation at the same time. If shared references still exist, taking a mutable reference would make it possible to change data while other code still assumes stable read-only access.",
+  },
+  {
+    id: "trait_object_reasoning",
+    topic: "traits",
+    title: "Generics vs Trait Objects",
+    scenario: [
+      "You want one collection to hold values of different concrete types.",
+      "Each type implements the same behavior trait.",
+    ],
+    question: "Why might `Box<dyn Trait>` be chosen instead of a generic `Vec<T>`?",
+    options: [
+      "Because trait objects allow heterogeneous values behind one common interface",
+      "Because generics cannot call trait methods",
+      "Because trait objects run at compile time only",
+      "Because `Vec<T>` cannot store heap values",
+    ],
+    answer: 0,
+    explanation: "A generic `Vec<T>` requires one concrete `T` for the whole vector. A trait object like `Box<dyn Trait>` allows different concrete types to be stored behind the same trait interface.",
+  },
+  {
+    id: "lifetime_return_reasoning",
+    topic: "lifetimes",
+    title: "Returning a Reference Safely",
+    scenario: [
+      "A function receives two string slices and returns one of them.",
+      "The compiler needs to know how the output reference relates to the inputs.",
+    ],
+    question: "What is the core purpose of the lifetime parameter here?",
+    options: [
+      "To make the function run longer",
+      "To express that the returned reference cannot outlive the referenced input data",
+      "To force both strings onto the heap",
+      "To replace ownership with copying",
+    ],
+    answer: 1,
+    explanation: "The lifetime ties the returned reference to the lifetime of the input references. Rust needs that relation so it can prove the returned reference does not outlive the data it points to.",
+  },
+  {
+    id: "iterator_laziness_reasoning",
+    topic: "iterators",
+    title: "Why Laziness Matters",
+    scenario: [
+      "You chain `map`, `filter`, and `take` on an iterator.",
+      "Nothing is collected or consumed yet.",
+    ],
+    question: "What benefit does iterator laziness provide in this case?",
+    options: [
+      "Each stage can be fused so work only happens for items actually needed by the consumer",
+      "The code becomes dynamic instead of static",
+      "Rust skips type checking until runtime",
+      "The iterator stores all intermediate vectors automatically",
+    ],
+    answer: 0,
+    explanation: "Lazy iterators defer work until consumption. That means transformations can be composed efficiently, often avoiding intermediate allocations and avoiding work for values that are never actually requested.",
+  },
+  {
+    id: "result_vs_panic_reasoning",
+    topic: "error_handling",
+    title: "Recoverable Failure Design",
+    scenario: [
+      "You are writing a parser for user input.",
+      "Invalid input is expected to happen sometimes.",
+    ],
+    question: "Why is `Result<T, E>` usually the better API than panicking?",
+    options: [
+      "Because `Result` forces every program to log automatically",
+      "Because `Result` lets the caller decide whether to recover, retry, or propagate the error",
+      "Because `panic!` is forbidden outside tests",
+      "Because `Result` is always shorter than `panic!`",
+    ],
+    answer: 1,
+    explanation: "Parsing user input is a recoverable failure. `Result` keeps that failure in the type system so callers can handle it intentionally rather than crashing the whole program.",
+  },
+  {
+    id: "arc_mutex_reasoning",
+    topic: "concurrency",
+    title: "Shared Mutable State Across Threads",
+    scenario: [
+      "Several threads need to update the same counter.",
+      "The updates must be synchronized and ownership must be shared safely.",
+    ],
+    question: "Why is `Arc<Mutex<T>>` a common pairing?",
+    options: [
+      "Because `Arc` handles shared ownership and `Mutex` guards one mutable access at a time",
+      "Because `Arc` provides mutability and `Mutex` provides cloning",
+      "Because `Mutex` automatically parallelizes writes",
+      "Because `Arc` removes all locking overhead",
+    ],
+    answer: 0,
+    explanation: "`Arc` gives thread-safe shared ownership, while `Mutex` serializes mutable access. Together they solve two different problems that often appear at the same time in concurrent code.",
+  },
+  {
+    id: "unsafe_boundary_reasoning",
+    topic: "unsafe",
+    title: "Unsafe Boundaries",
+    scenario: [
+      "A small block of code must dereference a raw pointer.",
+      "The rest of the program should still rely on normal Rust guarantees.",
+    ],
+    question: "What is the best design principle here?",
+    options: [
+      "Keep the `unsafe` region as small and well-justified as possible",
+      "Mark the whole module `unsafe` so it is easier to write",
+      "Replace all references with raw pointers for consistency",
+      "Avoid comments because unsafe code should be self-evident",
+    ],
+    answer: 0,
+    explanation: "Good Rust code isolates unsafe operations behind small, reviewed boundaries. That keeps the unverifiable part narrow while allowing the rest of the codebase to stay inside normal safety guarantees.",
+  },
+];

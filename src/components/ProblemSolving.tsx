@@ -4,10 +4,14 @@ import { markProblemSolved, problemSolved } from "@/lib/store";
 import { problems } from "@/data/problems";
 import { useProgressVersion } from "@/lib/useProgressVersion";
 
-function difficultyTone(level: "easy" | "medium") {
-  return level === "easy"
-    ? "border-emerald-400/25 bg-emerald-500/10 text-emerald-100"
-    : "border-amber-400/25 bg-amber-500/10 text-amber-100";
+function difficultyTone(level: "easy" | "medium" | "hard") {
+  if (level === "easy") {
+    return "border-emerald-400/25 bg-emerald-500/10 text-emerald-100";
+  }
+  if (level === "medium") {
+    return "border-amber-400/25 bg-amber-500/10 text-amber-100";
+  }
+  return "border-rose-400/25 bg-rose-500/10 text-rose-100";
 }
 
 export function ProblemSolving() {
@@ -35,6 +39,7 @@ export function ProblemSolving() {
             </h1>
             <div className="mt-4 space-y-3 text-base leading-8 text-zinc-300">
               <p>Use these drills when you want algorithm practice but cannot run Rust locally.</p>
+              <p>The set now mixes warm-up tasks with harder patterns like prefix sums, stack validation, and sliding windows.</p>
               <p>Each problem gives you sample input, a starter Rust template, and answer boxes where you can validate expected output by reasoning through the logic.</p>
               <p>When you are ready to code, open the same starter template in Rust Playground.</p>
             </div>

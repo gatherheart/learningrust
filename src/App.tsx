@@ -6,6 +6,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { Lesson } from "@/components/Lesson";
 import { Home } from "@/components/Home";
 import { ProblemSolving } from "@/components/ProblemSolving";
+import { DeepDive } from "@/components/DeepDive";
 
 const lessons = lessonsData as LessonT[];
 
@@ -18,6 +19,7 @@ export function App() {
           <Sidebar lessons={lessons} />
           <Routes>
             <Route path="/" element={<Home lessons={lessons} />} />
+            <Route path="/deep-dive" element={<DeepDive />} />
             <Route path="/ps" element={<ProblemSolving />} />
             <Route path="/lesson/:id" element={<Lesson lessons={lessons} />} />
             <Route path="*" element={<Navigate to="/" replace />} />

@@ -60,11 +60,22 @@ export interface ProblemSample {
 export interface Problem {
   id: string;
   title: string;
-  difficulty: "easy" | "medium";
+  difficulty: "easy" | "medium" | "hard";
   summary: string;
   inputFormat: string[];
   outputFormat: string[];
   approach: string[];
   samples: ProblemSample[];
   starterCode: string;
+}
+
+export interface DeepDiveQuestion {
+  id: string;
+  topic: string;
+  title: string;
+  scenario: string[];
+  question: string;
+  options: string[];
+  answer: number;
+  explanation: string;
 }
