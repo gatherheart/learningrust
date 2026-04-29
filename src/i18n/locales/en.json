@@ -230,7 +230,7 @@
     },
     "09_structs": {
       "title": "Structs and methods",
-      "description": "A struct groups named fields.\n\n```rust\nstruct User {\n    name: String,\n    age: u32,\n}\n```\n\nAn `impl` block adds methods.\n\n```rust\nimpl User {\n    fn is_adult(&self) -> bool {\n        self.age >= 18\n    }\n}\n```",
+      "description": "A Rust `struct` is the closest thing to class-like data: it groups fields, but it does not bundle methods inside the type body.\n\n```rust\nstruct User {\n    name: String,\n    age: u32,\n}\n```\n\nMethods live in a separate `impl` block.\n\n```rust\nimpl User {\n    fn is_adult(&self) -> bool {\n        self.age >= 18\n    }\n}\n```\n\nA useful mental map is:\n\n```text\nclass-like data         -> struct\nclass-like methods      -> impl\ninterface-like behavior -> trait\nvariant type            -> enum\n```\n\nBut the mapping is not exact. Rust structs participate in ownership rules. Assigning a struct usually moves it unless the type implements `Copy`.",
       "quizzes": {
         "q1": { "question": "Predict the program's output:" },
         "q2": {
@@ -243,12 +243,12 @@
           ]
         },
         "q3": {
-          "question": "Inside a method, what does `self` refer to?",
+          "question": "Which statement about assigning a struct value is true by default?",
           "options": [
-            "The whole module",
-            "A random global value",
-            "The current struct instance",
-            "The return type"
+            "It always deep-copies every field",
+            "It usually moves the value unless the type implements `Copy`",
+            "It converts the struct into a trait object",
+            "It is only allowed inside an `impl` block"
           ]
         }
       }
@@ -443,25 +443,25 @@
     },
     "18_traits_derive": {
       "title": "Traits: derive",
-      "description": "`derive` asks Rust to generate trait implementations for you.\n\n```rust\n#[derive(Debug, Clone, PartialEq)]\nstruct Point {\n    x: i32,\n    y: i32,\n}\n```\n\nThis is common for traits like `Debug`, `Clone`, and `PartialEq`.",
+      "description": "`derive` asks Rust to generate trait implementations for you.\n\n```rust\n#[derive(Debug, Copy, Clone, PartialEq)]\nstruct Point {\n    x: i32,\n    y: i32,\n}\n```\n\nThis matters for value-like structs. With `Copy`, assigning `p1` into `p2` duplicates the bits, so both variables stay usable.\n\n```rust\nlet p1 = Point { x: 1, y: 2 };\nlet p2 = p1;\n```\n\nWithout `Copy`, that assignment would move the value and `p1` could not be used afterward. `Clone` is the explicit duplicate operation when automatic copying is not available or not desired.",
       "quizzes": {
         "q1": { "question": "Predict the program's output:" },
         "q2": {
-          "question": "What does `#[derive(Debug, Clone, PartialEq)]` do?",
+          "question": "What does `#[derive(Debug, Copy, Clone, PartialEq)]` do?",
           "options": [
             "Auto-generates implementations of those traits",
-            "Only works on enums",
+            "Turns every field into a reference",
             "Replaces the struct's fields",
             "Runs at runtime"
           ]
         },
         "q3": {
-          "question": "Why can `derive` only work when all fields support the derived trait too?",
+          "question": "Why can `p1` still be used after `let p2 = p1;` in this lesson?",
           "options": [
-            "Because derive uses a network request to inspect each field",
-            "Because Rust forbids traits on fields",
-            "Because only primitive types can be cloned or compared",
-            "Because the generated implementation must call the same trait on every field"
+            "Because `PartialEq` keeps the old binding alive",
+            "Because `Debug` prevents moves",
+            "Because the struct implements `Copy`, so assignment copies instead of moving",
+            "Because all structs in Rust are copied by default"
           ]
         }
       }

@@ -417,8 +417,8 @@
         "answer": 3
       }
     ],
-    "code": "#[derive(Debug, Clone, PartialEq)]\nstruct Point {\n    x: i32,\n    y: i32,\n}\n\nfn main() {\n    let p = Point { x: 1, y: 2 };\n    let q = p.clone();\n    println!(\"{:?}\", p);\n    println!(\"equal={}\", p == q);\n}\n",
-    "expectedOutput": "Point { x: 1, y: 2 }\nequal=true\n"
+    "code": "#[derive(Debug, Copy, Clone, PartialEq)]\nstruct Point {\n    x: i32,\n    y: i32,\n}\n\nfn main() {\n    let p1 = Point { x: 1, y: 2 };\n    let p2 = p1;\n\n    println!(\"p1 = {}, {}\", p1.x, p1.y);\n    println!(\"p2 = {}, {}\", p2.x, p2.y);\n    println!(\"equal={}\", p1 == p2);\n}\n",
+    "expectedOutput": "p1 = 1, 2\np2 = 1, 2\nequal=true\n"
   },
   {
     "id": "19_generics_basic",
