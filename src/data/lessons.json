@@ -203,7 +203,7 @@
       {
         "id": "q3",
         "type": "multiple-choice",
-        "answer": 2
+        "answer": 1
       }
     ],
     "code": "struct Point {\n    x: i32,\n    y: i32,\n}\n\nimpl Point {\n    fn distance(&self) -> f64 {\n        ((self.x * self.x + self.y * self.y) as f64).sqrt()\n    }\n}\n\nfn main() {\n    let p = Point { x: 3, y: 4 };\n    println!(\"x={}, y={}\", p.x, p.y);\n    println!(\"dist={}\", p.distance());\n}\n",
