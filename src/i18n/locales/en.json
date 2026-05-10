@@ -76,6 +76,24 @@
             "Inserts the value of `name` into the output",
             "Calls a method on `name`"
           ]
+        },
+        "q4": {
+          "question": "Why does `println!` end with `!` in Rust?",
+          "options": [
+            "Because it is a macro invocation",
+            "Because it mutates global output state",
+            "Because it returns `!`",
+            "Because all printing syntax uses punctuation"
+          ]
+        },
+        "q5": {
+          "question": "If a program calls `println!(\"Hello\");` and then `println!(\"Rust\");`, what is printed?",
+          "options": [
+            "`Hello Rust` on one line",
+            "`Hello` and `Rust` on separate lines",
+            "Only `Rust`",
+            "Nothing until `flush()` is called"
+          ]
         }
       }
     },
@@ -110,6 +128,24 @@
             "Rust automatically adds `mut`",
             "The type of `y` changes to `usize`"
           ]
+        },
+        "q4": {
+          "question": "When is an explicit type annotation like `let y: i32 = 10;` most useful?",
+          "options": [
+            "When you need to guide the compiler or document the intended type",
+            "When you want to make a variable mutable",
+            "When you want Rust to skip type checking",
+            "When shadowing is not allowed"
+          ]
+        },
+        "q5": {
+          "question": "What is the key difference between mutation and shadowing in Rust?",
+          "options": [
+            "Mutation creates a new binding, while shadowing edits the old one",
+            "Shadowing creates a new binding, while mutation changes an existing one",
+            "They are identical except for style",
+            "Mutation works only for numbers, shadowing only for strings"
+          ]
         }
       }
     },
@@ -136,6 +172,24 @@
             "`Vec<i32>`",
             "`Box<T>`",
             "`&String`"
+          ]
+        },
+        "q4": {
+          "question": "Why would a function take `&String` instead of `String` when reading text?",
+          "options": [
+            "To borrow the value without taking ownership",
+            "To force Rust to copy the heap allocation",
+            "Because `String` cannot be passed to functions",
+            "To convert the value into a trait object"
+          ]
+        },
+        "q5": {
+          "question": "If a function needs to modify a caller's `String` in place, which parameter type best communicates that intent?",
+          "options": [
+            "`String`",
+            "`&String`",
+            "`&mut String`",
+            "`&&String`"
           ]
         }
       }
@@ -164,6 +218,24 @@
             "`0..3`",
             "`0..=2`"
           ]
+        },
+        "q4": {
+          "question": "Why does the range `0..3` stop before `3`?",
+          "options": [
+            "Because `..` means an inclusive range",
+            "Because the upper bound of `a..b` is exclusive",
+            "Because loops in Rust always skip the last item",
+            "Because `3` is reserved for indexing"
+          ]
+        },
+        "q5": {
+          "question": "When is a `while` loop usually the better fit than `for x in 0..n`?",
+          "options": [
+            "When the number of iterations depends on a changing condition",
+            "When you want Rust to unroll the loop",
+            "When iterating over a fixed range",
+            "When you need pattern matching"
+          ]
         }
       }
     },
@@ -190,6 +262,24 @@
             "Rust ignores the semicolon",
             "The block no longer returns `a + b` as its value",
             "The return type changes to `bool`"
+          ]
+        },
+        "q4": {
+          "question": "Why must Rust function parameters include their types in the signature?",
+          "options": [
+            "So macros can rewrite the function body",
+            "So the compiler knows the contract at compile time",
+            "So runtime reflection can inspect them",
+            "So parameters can be mutated automatically"
+          ]
+        },
+        "q5": {
+          "question": "What value does a block evaluate to when its last line ends with a semicolon?",
+          "options": [
+            "The last expression's value",
+            "The block's line count",
+            "The unit value `()`",
+            "A hidden `Result`"
           ]
         }
       }
@@ -218,6 +308,24 @@
             "`char`",
             "`usize`"
           ]
+        },
+        "q4": {
+          "question": "Why do many APIs prefer taking `&str` instead of `String` for text input?",
+          "options": [
+            "`&str` guarantees ASCII only",
+            "`&str` lets callers pass borrowed text without transferring ownership",
+            "`String` cannot be read by functions",
+            "`&str` always allocates less memory at runtime"
+          ]
+        },
+        "q5": {
+          "question": "What does `format!(...)` produce?",
+          "options": [
+            "A borrowed `&str` tied to the current scope",
+            "A new owned `String` built from the formatted data",
+            "A `char` array on the stack",
+            "It prints directly to stdout and returns `()`"
+          ]
         }
       }
     },
@@ -238,6 +346,24 @@
             "All array elements must have the same type",
             "Array length is decided only at runtime",
             "Arrays cannot be indexed"
+          ]
+        },
+        "q4": {
+          "question": "Why is array length considered part of the type in Rust?",
+          "options": [
+            "So `[i32; 3]` and `[i32; 4]` are treated as different fixed-size types",
+            "So arrays can store mixed types",
+            "So array indexing becomes optional",
+            "So arrays can only live on the heap"
+          ]
+        },
+        "q5": {
+          "question": "When is a tuple usually a better fit than an array?",
+          "options": [
+            "When you need a growable sequence",
+            "When you need to store values of different types together",
+            "When every element must share one type",
+            "When you need to sort values in place"
           ]
         }
       }
@@ -266,6 +392,24 @@
             "A type annotation",
             "One enum variant or pattern"
           ]
+        },
+        "q4": {
+          "question": "Why is an enum often better than a few unrelated booleans for state like direction?",
+          "options": [
+            "Enums compile faster than booleans",
+            "An enum models one valid state from a finite set more explicitly",
+            "Booleans cannot be matched with `match`",
+            "Enums are the only way to store text"
+          ]
+        },
+        "q5": {
+          "question": "What does exhaustiveness in `match` protect you from?",
+          "options": [
+            "Forgetting to handle one of the possible variants",
+            "Allocating too much stack space",
+            "Using methods inside the arms",
+            "Creating references in pattern matching"
+          ]
         }
       }
     },
@@ -292,6 +436,24 @@
             "It usually moves the value unless the type implements `Copy`",
             "It converts the struct into a trait object",
             "It is only allowed inside an `impl` block"
+          ]
+        },
+        "q4": {
+          "question": "Why is `&self` a common method receiver for structs?",
+          "options": [
+            "It borrows the instance so the method can read it without taking ownership",
+            "It copies the whole struct before every call",
+            "It forces all fields to be public",
+            "It means the method is static"
+          ]
+        },
+        "q5": {
+          "question": "Where do methods for a struct live in Rust?",
+          "options": [
+            "Inside the field list",
+            "In a neighboring `impl` block",
+            "Inside the `main` function only",
+            "In the crate root automatically"
           ]
         }
       }
@@ -320,6 +482,24 @@
             "They replace every function in Rust",
             "They always require explicit return types"
           ]
+        },
+        "q4": {
+          "question": "What capability makes closures different from plain function items?",
+          "options": [
+            "Closures can capture values from the surrounding scope",
+            "Closures can return values but functions cannot",
+            "Closures must always allocate on the heap",
+            "Closures are the only callable form in Rust"
+          ]
+        },
+        "q5": {
+          "question": "Why can closure parameter types often be omitted?",
+          "options": [
+            "Because closures are dynamically typed",
+            "Because the compiler can often infer them from usage",
+            "Because closures ignore their inputs",
+            "Because omitted types default to `i32`"
+          ]
         }
       }
     },
@@ -347,6 +527,24 @@
             "A captured value from the surrounding scope",
             "A struct field named `counter`"
           ]
+        },
+        "q4": {
+          "question": "If a closure only reads a captured variable and does not mutate anything, what usually changes?",
+          "options": [
+            "The closure must still be declared `mut`",
+            "The captured variable must become `static`",
+            "The closure binding often no longer needs to be `mut`",
+            "The closure stops being callable"
+          ]
+        },
+        "q5": {
+          "question": "What does it mean for a closure to capture a value?",
+          "options": [
+            "It stores or borrows access to a variable from its surrounding scope",
+            "It converts the variable into a constant",
+            "It moves every variable in the function automatically",
+            "It serializes the variable into the binary"
+          ]
         }
       }
     },
@@ -367,6 +565,24 @@
             "Sorts the iterator in place",
             "Turns the iterator into a trait",
             "Makes `map` run forever"
+          ]
+        },
+        "q4": {
+          "question": "Why is iterator laziness useful with `map`?",
+          "options": [
+            "It delays work until consumption, which helps composition and avoids unnecessary intermediate results",
+            "It guarantees parallel execution",
+            "It forces every iterator into a `Vec`",
+            "It prevents closures from capturing values"
+          ]
+        },
+        "q5": {
+          "question": "What kind of items does `nums.iter()` yield for a `Vec<i32>`?",
+          "options": [
+            "Owned `i32` values moved out of the vector",
+            "Mutable references by default",
+            "Shared references to each element",
+            "Tuple pairs of `(index, value)`"
           ]
         }
       }
@@ -395,6 +611,24 @@
             "Every item after the first one",
             "Only items at even indexes"
           ]
+        },
+        "q4": {
+          "question": "What happens to an item when a `filter` predicate returns `false`?",
+          "options": [
+            "The item is cloned and retried",
+            "The item is discarded from the resulting iterator",
+            "The whole iterator panics",
+            "The item is turned into `None`"
+          ]
+        },
+        "q5": {
+          "question": "What is the main semantic difference between `iter()` and `into_iter()` on a collection?",
+          "options": [
+            "`iter()` borrows items, while `into_iter()` consumes the collection to yield owned items",
+            "`iter()` sorts items, while `into_iter()` preserves order",
+            "`into_iter()` only works on arrays",
+            "There is no difference in ownership"
+          ]
         }
       }
     },
@@ -422,6 +656,24 @@
             "The accumulator",
             "A hidden mutable global"
           ]
+        },
+        "q4": {
+          "question": "If you call `fold(10, |acc, n| acc + n)` on `[1, 2, 3]`, what final value do you get?",
+          "options": [
+            "6",
+            "10",
+            "16",
+            "60"
+          ]
+        },
+        "q5": {
+          "question": "When is `fold` preferable to a helper like `sum()`?",
+          "options": [
+            "When you need custom accumulation logic or a nonstandard result",
+            "Only when the iterator is empty",
+            "Only when working with strings",
+            "When you want the compiler to skip type inference"
+          ]
         }
       }
     },
@@ -442,6 +694,24 @@
             "A new iterator of partial sums",
             "Always a `String`",
             "A tuple of `(sum, max)`"
+          ]
+        },
+        "q4": {
+          "question": "Why does `sum()` often need a type annotation somewhere nearby?",
+          "options": [
+            "Because iterators cannot contain numbers without annotation",
+            "Because the compiler may need help deciding the result type",
+            "Because `sum()` always returns a tuple",
+            "Because annotations turn lazy iterators into eager ones"
+          ]
+        },
+        "q5": {
+          "question": "Why does `max()` typically return an `Option<T>` instead of just `T`?",
+          "options": [
+            "Because iterators may be empty and have no maximum value",
+            "Because `max()` always allocates on the heap",
+            "Because it might need to return multiple maxima",
+            "Because `Option` is required for all numeric APIs"
           ]
         }
       }
@@ -470,6 +740,24 @@
             "They remove the need for methods",
             "They let different types share the same behavior contract"
           ]
+        },
+        "q4": {
+          "question": "What is the main role of a trait in Rust?",
+          "options": [
+            "To define a shared behavior contract that multiple types can implement",
+            "To store fields shared by several structs",
+            "To replace all generics with inheritance",
+            "To force runtime dispatch"
+          ]
+        },
+        "q5": {
+          "question": "Why is a function parameter like `impl Greet` or `T: Greet` useful?",
+          "options": [
+            "It lets the function call trait methods on different concrete types that implement the trait",
+            "It erases all type information before compilation",
+            "It means the function can only accept one exact type forever",
+            "It automatically allocates arguments on the heap"
+          ]
         }
       }
     },
@@ -496,6 +784,24 @@
             "They remove the need for trait implementations entirely",
             "They let a trait provide shared behavior while still allowing overrides",
             "They make traits work only for enums"
+          ]
+        },
+        "q4": {
+          "question": "When would a type override a default trait method?",
+          "options": [
+            "When it needs behavior different from the shared default",
+            "Only when the trait has no required methods",
+            "Default methods cannot actually be overridden",
+            "Only inside `unsafe` code"
+          ]
+        },
+        "q5": {
+          "question": "Why are default trait methods useful across many implementations?",
+          "options": [
+            "They eliminate the need to implement the trait",
+            "They let a trait provide common behavior while allowing selective customization",
+            "They make every implementation identical and unchangeable",
+            "They work only for enums"
           ]
         }
       }
@@ -524,6 +830,24 @@
             "Because the struct implements `Copy`, so assignment copies instead of moving",
             "Because all structs in Rust are copied by default"
           ]
+        },
+        "q4": {
+          "question": "What is the practical difference between `Copy` and `Clone`?",
+          "options": [
+            "`Copy` is explicit and `Clone` is implicit",
+            "`Copy` allows implicit duplication on assignment, while `Clone` is an explicit operation",
+            "They are exactly the same trait with different names",
+            "`Clone` only works for primitive integers"
+          ]
+        },
+        "q5": {
+          "question": "Why is `Debug` commonly derived on structs during learning and development?",
+          "options": [
+            "It enables printing values with formatting like `{:?}` for inspection",
+            "It makes the struct thread-safe",
+            "It disables move semantics",
+            "It allows pattern matching on private fields"
+          ]
         }
       }
     },
@@ -550,6 +874,24 @@
             "So the function can return `a` or `b` by value without moving out of borrowed data",
             "Because every generic type must implement `Copy`",
             "Because `PartialOrd` only works together with `Copy`"
+          ]
+        },
+        "q4": {
+          "question": "Why are generics valuable in Rust APIs?",
+          "options": [
+            "They let one function or type work across multiple concrete types while preserving static type checking",
+            "They convert all values into trait objects",
+            "They remove the need for function signatures",
+            "They delay type checking until runtime"
+          ]
+        },
+        "q5": {
+          "question": "What does the compiler typically do with generic code at compile time?",
+          "options": [
+            "It interprets it line by line at runtime",
+            "It generates concrete versions for the types you actually use",
+            "It stores the generic body only once and skips type checking",
+            "It converts every generic into a macro"
           ]
         }
       }
@@ -578,6 +920,24 @@
             "They allocate strings on the heap",
             "They replace ownership with garbage collection"
           ]
+        },
+        "q4": {
+          "question": "What do lifetime annotations describe in Rust?",
+          "options": [
+            "How long the program will run",
+            "Relationships between borrowed references so the compiler can verify validity",
+            "How many times a loop executes",
+            "Which values are allocated on the heap"
+          ]
+        },
+        "q5": {
+          "question": "Why are lifetime annotations often needed when a function returns a reference derived from its inputs?",
+          "options": [
+            "To tell the compiler which input reference the output is tied to",
+            "To make the returned reference live forever",
+            "To disable borrow checking temporarily",
+            "To force the function to allocate a new value"
+          ]
         }
       }
     },
@@ -598,6 +958,24 @@
             "Because every struct in Rust needs a lifetime",
             "Because `String` always requires `'static`",
             "Because structs cannot hold fields without trait bounds"
+          ]
+        },
+        "q4": {
+          "question": "Why does a struct that stores a reference usually need a lifetime parameter?",
+          "options": [
+            "To guarantee the referenced data outlives the struct value",
+            "To make the struct copyable",
+            "To allow methods inside `impl` blocks",
+            "To force the struct onto the stack"
+          ]
+        },
+        "q5": {
+          "question": "What is one common way to avoid lifetime parameters in a struct design?",
+          "options": [
+            "Store owned data like `String` instead of borrowed references when appropriate",
+            "Replace the struct with a trait object",
+            "Mark every field as `mut`",
+            "Use `unsafe` for all fields"
           ]
         }
       }
@@ -626,6 +1004,24 @@
             "It removes the need for return types",
             "It guarantees the program never exits early"
           ]
+        },
+        "q4": {
+          "question": "What do the `Ok` and `Err` variants of `Result<T, E>` represent?",
+          "options": [
+            "Two ways to borrow the same value",
+            "Success with a value, or failure with an error",
+            "Synchronous and asynchronous execution",
+            "Stack and heap allocation"
+          ]
+        },
+        "q5": {
+          "question": "Why is matching on `Result` a useful beginner pattern?",
+          "options": [
+            "It forces you to consider both the success and error paths explicitly",
+            "It automatically retries failed operations",
+            "It turns every error into a panic",
+            "It prevents functions from returning values"
+          ]
         }
       }
     },
@@ -652,6 +1048,24 @@
             "When you need to store two successful values",
             "When parsing integers from text",
             "Only when working with traits"
+          ]
+        },
+        "q4": {
+          "question": "When is `Option<T>` usually a better model than `Result<T, E>`?",
+          "options": [
+            "When absence is expected and not an error condition by itself",
+            "When you need to attach a detailed error message",
+            "When the value must always exist",
+            "When you need thread-safe sharing"
+          ]
+        },
+        "q5": {
+          "question": "What does `unwrap_or(\"none\")` return when the option is `Some(\"Rust\")`?",
+          "options": [
+            "`none`",
+            "A panic",
+            "`Rust`",
+            "`Some(\"Rust\")`"
           ]
         }
       }
@@ -680,6 +1094,24 @@
             "The `?` returns that error early from the function",
             "Rust retries the parse automatically"
           ]
+        },
+        "q4": {
+          "question": "What does the `?` operator do when applied to a `Result` that is `Err`?",
+          "options": [
+            "It converts the error into `None`",
+            "It retries the operation once",
+            "It returns early from the current function with that error",
+            "It logs the error and keeps going"
+          ]
+        },
+        "q5": {
+          "question": "Why is `?` often preferred over nested `match` expressions for simple propagation?",
+          "options": [
+            "It removes boilerplate while keeping the same success-or-early-error flow",
+            "It hides errors from the type system",
+            "It works only in `main`",
+            "It automatically recovers from all failures"
+          ]
         }
       }
     },
@@ -706,6 +1138,24 @@
             "It converts `None` into `Some`",
             "It makes the code async-safe",
             "It panics with a custom message that explains the assumption"
+          ]
+        },
+        "q4": {
+          "question": "What is the practical difference between `unwrap()` and `expect(\"message\")`?",
+          "options": [
+            "`unwrap()` never panics, but `expect()` does",
+            "`expect()` panics with a custom message, which can make failures easier to diagnose",
+            "`expect()` returns `Option`, while `unwrap()` returns `Result`",
+            "There is no difference at all"
+          ]
+        },
+        "q5": {
+          "question": "When is using `unwrap()` usually a poor design choice?",
+          "options": [
+            "When failure is recoverable or likely in normal operation",
+            "When working in a tiny example or test",
+            "When you are certain a value exists",
+            "When debugging code paths locally"
           ]
         }
       }
@@ -734,6 +1184,24 @@
             "Because Rust requires every function to be blocking",
             "Because `await` only works inside macros"
           ]
+        },
+        "q4": {
+          "question": "What do you get immediately when you call an `async fn`?",
+          "options": [
+            "The final return value",
+            "A running background thread",
+            "A `Future` representing work that can be polled later",
+            "A macro expansion"
+          ]
+        },
+        "q5": {
+          "question": "What is the role of `.await` in async Rust?",
+          "options": [
+            "It blocks the entire process until completion",
+            "It polls the future and suspends the async context until the result is ready",
+            "It converts a future into a thread",
+            "It turns a `Result` into an `Option`"
+          ]
         }
       }
     },
@@ -760,6 +1228,24 @@
             "To share data across threads automatically",
             "To bypass ownership checks",
             "To make every method asynchronous"
+          ]
+        },
+        "q4": {
+          "question": "Why is `Box<T>` especially useful for some recursive or large values?",
+          "options": [
+            "It stores the value on the heap and gives the surrounding type a known, fixed size",
+            "It makes every operation on `T` asynchronous",
+            "It allows shared ownership across threads",
+            "It removes the need for dropping values"
+          ]
+        },
+        "q5": {
+          "question": "When you have a `Box<T>`, what part stays directly in the owner variable?",
+          "options": [
+            "The full `T` value inline on the stack",
+            "A pointer-like handle to heap-allocated data",
+            "A global singleton copy of `T`",
+            "Only the destructor and nothing else"
           ]
         }
       }
@@ -788,6 +1274,24 @@
             "Because cloning an `Rc` consumes the inner value",
             "Because `Rc` always leaks memory"
           ]
+        },
+        "q4": {
+          "question": "What happens when you call `Rc::clone(&value)`?",
+          "options": [
+            "The inner value is deep-copied every time",
+            "The reference count is increased so ownership is shared",
+            "The value is moved into a new thread",
+            "The original `Rc` becomes invalid"
+          ]
+        },
+        "q5": {
+          "question": "When is `Rc<T>` the right tool?",
+          "options": [
+            "When you need shared ownership in single-threaded code",
+            "When you need a mutable value across many threads",
+            "When you want to avoid all reference counting overhead",
+            "When you need compile-time borrow checking to be disabled"
+          ]
         }
       }
     },
@@ -814,6 +1318,24 @@
             "It can panic at runtime if borrow rules are broken",
             "It always copies the inner data",
             "It only works with `unsafe` blocks"
+          ]
+        },
+        "q4": {
+          "question": "What rule does `RefCell<T>` enforce at runtime instead of compile time?",
+          "options": [
+            "That values are always `Copy`",
+            "That you can have either one mutable borrow or many immutable borrows",
+            "That all borrows must be `'static`",
+            "That references always point to stack data"
+          ]
+        },
+        "q5": {
+          "question": "Why is `RefCell<T>` considered a tradeoff?",
+          "options": [
+            "It enables mutation through shared access, but borrow mistakes can panic at runtime",
+            "It removes the need for ownership rules entirely",
+            "It only works with numeric types",
+            "It guarantees better performance than normal borrowing"
           ]
         }
       }
@@ -842,6 +1364,24 @@
             "They replace the type system",
             "They only work in debug mode"
           ]
+        },
+        "q4": {
+          "question": "How do macros differ from ordinary functions in Rust?",
+          "options": [
+            "Macros transform syntax during compilation and can accept more flexible input patterns",
+            "Macros run only after the program exits",
+            "Functions can change syntax trees but macros cannot",
+            "Macros always return `String`"
+          ]
+        },
+        "q5": {
+          "question": "Why is `vec!` a good example of where a macro is convenient?",
+          "options": [
+            "It lets you build a vector with concise syntax that would be awkward as a plain function",
+            "It is the only way to create vectors in Rust",
+            "It avoids allocating memory entirely",
+            "It makes vectors immutable by default"
+          ]
         }
       }
     },
@@ -868,6 +1408,24 @@
             "By executing the code at runtime first",
             "By compiling a separate crate automatically",
             "By reading values from stdin"
+          ]
+        },
+        "q4": {
+          "question": "What does a `macro_rules!` definition mainly contain?",
+          "options": [
+            "Pattern-and-expansion rules that decide what code to generate",
+            "Only function signatures",
+            "A runtime parser for user input",
+            "A list of trait implementations"
+          ]
+        },
+        "q5": {
+          "question": "What is one downside of heavy macro use compared with plain functions?",
+          "options": [
+            "Macros cannot generate valid Rust code",
+            "Compiler errors can be harder to read because they point into generated code paths",
+            "Macros are always slower at runtime",
+            "Macros can only be used inside tests"
           ]
         }
       }
@@ -896,6 +1454,24 @@
             "It makes raw pointers safe automatically",
             "It removes the need for types"
           ]
+        },
+        "q4": {
+          "question": "Why does Rust include `unsafe` at all?",
+          "options": [
+            "To allow specific low-level operations that the compiler cannot fully verify, while keeping them explicit",
+            "To disable the type system for performance everywhere",
+            "To replace modules and traits",
+            "To force manual memory management in all code"
+          ]
+        },
+        "q5": {
+          "question": "What still remains true inside an `unsafe` block?",
+          "options": [
+            "The compiler turns off all checking",
+            "Only syntax errors are reported",
+            "Most of Rust still applies; `unsafe` mainly marks operations whose extra safety conditions you must uphold",
+            "Values stop being dropped automatically"
+          ]
         }
       }
     },
@@ -916,6 +1492,24 @@
             "Because vectors are immutable forever in Rust",
             "Because `push` returns a new vector",
             "Because all heap values require `mut`"
+          ]
+        },
+        "q4": {
+          "question": "What does `push` do on a `Vec<T>`?",
+          "options": [
+            "Inserts a new element at the front",
+            "Appends a new element to the end of the vector",
+            "Removes the last element",
+            "Sorts the vector after insertion"
+          ]
+        },
+        "q5": {
+          "question": "Why would you choose a `Vec<T>` over an array in many programs?",
+          "options": [
+            "Because a vector can grow or shrink at runtime",
+            "Because arrays cannot store numbers",
+            "Because vectors never allocate",
+            "Because vectors are always stack-only"
           ]
         }
       }
@@ -944,6 +1538,24 @@
             "It turns `Option` into `Result`",
             "It makes the match run at compile time"
           ]
+        },
+        "q4": {
+          "question": "What is a match guard in Rust?",
+          "options": [
+            "A macro that wraps `match`",
+            "An extra `if` condition attached to a pattern arm",
+            "A second enum variant generated automatically",
+            "A way to skip exhaustiveness checking"
+          ]
+        },
+        "q5": {
+          "question": "If a value matches `Some(n)` but the guard `if n > 10` is false, what happens?",
+          "options": [
+            "The program panics immediately",
+            "Rust treats the pattern as unmatched and continues to later arms",
+            "The guard is ignored because the variant matched",
+            "The value becomes `None`"
+          ]
         }
       }
     },
@@ -971,6 +1583,24 @@
             "Because `Arc` provides mutation and `Mutex` provides cloning",
             "Because neither can be used alone"
           ]
+        },
+        "q4": {
+          "question": "What problem does `Arc<T>` solve in `Arc<Mutex<T>>`?",
+          "options": [
+            "It provides thread-safe shared ownership of the same allocation",
+            "It makes all access automatically mutable",
+            "It removes the need for locking",
+            "It forces the value onto the stack"
+          ]
+        },
+        "q5": {
+          "question": "What problem does `Mutex<T>` solve in `Arc<Mutex<T>>`?",
+          "options": [
+            "It guarantees the value will never be dropped",
+            "It allows only one thread at a time to access the protected data mutably",
+            "It clones the value for each thread",
+            "It converts panics into `Result` automatically"
+          ]
         }
       }
     },
@@ -991,6 +1621,24 @@
             "Because each iteration item is a tuple of index and value",
             "Because Rust loops always need parentheses",
             "Because arrays cannot be iterated without tuple syntax"
+          ]
+        },
+        "q4": {
+          "question": "What does `enumerate()` add to an iterator?",
+          "options": [
+            "Automatic sorting",
+            "A running index paired with each item",
+            "Mutable access to every item",
+            "A final total count only"
+          ]
+        },
+        "q5": {
+          "question": "Why is `enumerate()` often preferable to managing a manual counter variable?",
+          "options": [
+            "It keeps the index tied to the iterator pipeline and avoids separate counter bookkeeping",
+            "It makes loops run in parallel",
+            "It changes all items into strings",
+            "It is required for `for` loops to compile"
           ]
         }
       }
@@ -1019,6 +1667,24 @@
             "A `Mutex` protecting the thread",
             "A `Result<String, String>`"
           ]
+        },
+        "q4": {
+          "question": "Why is `join()` important after spawning a thread in examples like this?",
+          "options": [
+            "It waits for the thread to finish before the main thread continues or exits",
+            "It moves the thread onto the heap",
+            "It makes the thread run faster",
+            "It converts the thread into async code"
+          ]
+        },
+        "q5": {
+          "question": "Why do spawned thread closures often use `move`?",
+          "options": [
+            "To transfer ownership of captured data into the thread so it can outlive the caller safely",
+            "To make the closure recursive",
+            "To force the closure to borrow everything instead",
+            "To disable synchronization"
+          ]
         }
       }
     },
@@ -1044,6 +1710,24 @@
             "It copies the protected data into a new thread",
             "It removes the need to handle lock poisoning",
             "It automatically converts shared data into `Rc<T>`"
+          ]
+        },
+        "q4": {
+          "question": "What is a `MutexGuard`?",
+          "options": [
+            "A compile-time proof that no deadlocks exist",
+            "A value representing the held lock that unlocks automatically when dropped",
+            "A background thread that watches the mutex",
+            "A macro that expands into `lock()`"
+          ]
+        },
+        "q5": {
+          "question": "Why is it good practice to keep mutex lock scopes small?",
+          "options": [
+            "To reduce contention and lower the chance of deadlock-prone designs",
+            "Because Rust forbids long lock scopes",
+            "Because small scopes make the data `Copy`",
+            "Because the guard stops working after one statement"
           ]
         }
       }
@@ -1082,6 +1766,24 @@
             "Correct. This is the key design distinction."
           ],
           "answerReason": "The trait-object versus generic choice changes dispatch and what type information stays available."
+        },
+        "q4": {
+          "question": "What do trait objects like `&dyn Draw` enable?",
+          "options": [
+            "Storing or passing different concrete types behind one shared behavior interface",
+            "Compile-time inlining of every method call",
+            "Automatic deep cloning of values",
+            "Access to private struct fields"
+          ]
+        },
+        "q5": {
+          "question": "What is a key tradeoff of trait objects compared with generics?",
+          "options": [
+            "Trait objects require no trait implementations",
+            "Trait objects use dynamic dispatch and type erasure instead of one monomorphized concrete type",
+            "Trait objects are always faster",
+            "Generics can only work with references"
+          ]
         }
       }
     },
@@ -1119,6 +1821,24 @@
             "Correct. The tradeoff is about where guarantees come from."
           ],
           "answerReason": "Interior mutability is powerful, but it is not a free replacement for simpler ownership models."
+        },
+        "q4": {
+          "question": "What is the design appeal of interior mutability?",
+          "options": [
+            "It allows controlled mutation even through shared-looking access patterns",
+            "It removes the need for borrowing rules entirely",
+            "It guarantees no runtime overhead",
+            "It works only for thread-safe types"
+          ]
+        },
+        "q5": {
+          "question": "When is interior mutability often justified?",
+          "options": [
+            "When an API is externally immutable but needs hidden state changes like caching, counters, or test doubles",
+            "Whenever you want to avoid thinking about ownership",
+            "Only for numeric algorithms",
+            "Only inside unsafe code"
+          ]
         }
       }
     },
@@ -1156,6 +1876,24 @@
             "Unsafe code is not removed automatically."
           ],
           "answerReason": "Good boundaries make large codebases easier to reason about and evolve."
+        },
+        "q4": {
+          "question": "How do crate boundaries help on larger Rust codebases?",
+          "options": [
+            "They encourage explicit interfaces and clearer ownership of modules between teams",
+            "They remove the need for public APIs",
+            "They guarantee zero compile times",
+            "They force every function to become generic"
+          ]
+        },
+        "q5": {
+          "question": "Why do crate boundaries improve architecture beyond just folder organization?",
+          "options": [
+            "They push you to define dependency directions and reduce accidental coupling",
+            "They make traits unnecessary",
+            "They allow circular dependencies by default",
+            "They prevent testing across crates"
+          ]
         }
       }
     },
@@ -1193,6 +1931,24 @@
             "Type checking still applies."
           ],
           "answerReason": "Implicit duplication is why `Copy` often matches value-type intuition."
+        },
+        "q4": {
+          "question": "When is `Clone` needed even if `Copy` is not available?",
+          "options": [
+            "When you need an explicit duplicate of a value whose type does not allow implicit copying",
+            "When you want Rust to skip ownership checks",
+            "Only when working with integers",
+            "Only inside trait objects"
+          ]
+        },
+        "q5": {
+          "question": "Why are many types with owned heap data, like `String`, not `Copy`?",
+          "options": [
+            "Because implicit duplication of owned resources would be expensive or semantically wrong",
+            "Because heap values cannot be moved",
+            "Because `Copy` is reserved for structs only",
+            "Because `Clone` and `Copy` cannot coexist"
+          ]
         }
       }
     },
@@ -1230,6 +1986,24 @@
             "Formatting is unrelated."
           ],
           "answerReason": "These traits are Rust’s vocabulary for thread-safety guarantees."
+        },
+        "q4": {
+          "question": "What does it mean for a type to implement `Send`?",
+          "options": [
+            "Values of the type can be transferred safely to another thread",
+            "The type can be serialized into JSON",
+            "References to the type are always mutable",
+            "The type can be pinned in memory"
+          ]
+        },
+        "q5": {
+          "question": "What does it mean for a type to implement `Sync`?",
+          "options": [
+            "The type can be copied bit-for-bit",
+            "A shared reference `&T` can be used from multiple threads safely",
+            "The type automatically uses a mutex",
+            "The type only works in synchronous code"
+          ]
         }
       }
     },
@@ -1267,6 +2041,24 @@
             "Blocking does not automatically improve fairness."
           ],
           "answerReason": "Architecture choices have to respect the executor’s concurrency model."
+        },
+        "q4": {
+          "question": "Why is blocking work inside async code a design problem?",
+          "options": [
+            "It can occupy an executor thread and delay unrelated async tasks",
+            "It turns every future into `None`",
+            "It disables `await` syntax permanently",
+            "It forces all values to become pinned"
+          ]
+        },
+        "q5": {
+          "question": "What is usually a better approach for CPU-heavy or blocking operations in an async program?",
+          "options": [
+            "Use async-aware nonblocking APIs or move blocking work to a dedicated blocking thread pool",
+            "Call `unwrap()` more aggressively",
+            "Replace `Future` with `Rc`",
+            "Add more match guards"
+          ]
         }
       }
     },
@@ -1304,6 +2096,24 @@
             "Shadowing is a normal language feature."
           ],
           "answerReason": "Shadowing and mutation affect how you reason about the binding and its lifetime."
+        },
+        "q4": {
+          "question": "What can shadowing do that ordinary mutation cannot?",
+          "options": [
+            "Reuse the same name for a new binding, even with a different type",
+            "Change an immutable variable in place",
+            "Bypass all ownership rules",
+            "Modify values through shared references"
+          ]
+        },
+        "q5": {
+          "question": "Why is shadowing often useful in transformation-heavy code?",
+          "options": [
+            "It lets you keep a meaningful name as a value is refined step by step",
+            "It guarantees zero allocations",
+            "It makes values global",
+            "It replaces the need for functions"
+          ]
         }
       }
     },
@@ -1341,6 +2151,24 @@
             "Macros are unrelated."
           ],
           "answerReason": "Pinning becomes relevant when movement itself can break invariants."
+        },
+        "q4": {
+          "question": "What problem is `Pin` designed to address?",
+          "options": [
+            "Making values execute faster",
+            "Preventing certain values from being moved after they rely on a stable memory location",
+            "Sharing ownership across threads",
+            "Replacing lifetimes in all borrowed code"
+          ]
+        },
+        "q5": {
+          "question": "Where does this concern show up especially often in modern Rust?",
+          "options": [
+            "In async state machines and other self-referential patterns",
+            "Only in arithmetic code",
+            "Only inside declarative macros",
+            "In every `Copy` type"
+          ]
         }
       }
     }

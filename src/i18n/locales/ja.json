@@ -11,21 +11,89 @@
     "predictPlaceholder": "プログラムの正確な出力を入力...",
     "heroTitle": "クイズで Rust を学ぶ",
     "heroBody": "短いレッスンを順に解いていきます。各レッスンは実際の Rust コードを実行し、出力を予測したり正解を選んだりするクイズを出題します。無料、アカウント不要、ブラウザだけで完結。",
-    "startLearning": "学習を始める"
+    "startLearning": "学習を始める",
+    "runHere": "Run here",
+    "running": "Running...",
+    "resetCode": "Reset",
+    "output": "Output",
+    "outputReady": "Ready for execution",
+    "stdout": "Stdout",
+    "stderr": "Compiler log",
+    "outputPlaceholder": "Run the code to see program output here.",
+    "stderrPlaceholder": "Compiler details appear here after each run.",
+    "runInlineHint": "This editor runs Rust inline from the lesson page, so you can test changes without leaving the site.",
+    "runFailed": "The inline runner could not reach the Rust execution service.",
+    "compileFailed": "Rust returned compiler errors. Check the compiler log.",
+    "runTimedOut": "The run timed out. Try a smaller example or use the full playground.",
+    "yourOrder": "Your order",
+    "available": "Available",
+    "tapItemsBelow": "Tap items below to build your answer.",
+    "search": "Search lessons...",
+    "theme": "Theme",
+    "lessonComplete": "Lesson complete — every quiz solved!",
+    "courseComplete": "You've completed every lesson. Congratulations!",
+    "courseCompleteBadge": "Course complete",
+    "keyboardHint": "Tip: use the arrow keys to move between lessons.",
+    "incorrectReasonFallback": "That choice does not match what Rust allows in this example."
   },
   "topics": {
     "basics": "基礎",
-    "ownership": "所有権"
+    "ownership": "所有権",
+    "closures": "Closures",
+    "iterators": "Iterators",
+    "traits": "Traits",
+    "generics": "Generics",
+    "lifetimes": "Lifetimes",
+    "error_handling": "Error handling",
+    "async": "Async",
+    "smart_pointers": "Smart pointers",
+    "concurrency": "Concurrency",
+    "macros": "Macros",
+    "unsafe": "Unsafe"
   },
   "lessons": {
     "01_hello": {
       "title": "Hello, world!",
       "description": "あなたの最初の Rust プログラム。println! マクロは標準出力に文字列を出力します。フォーマット文字列の中に変数を直接埋め込むことができます。",
       "quizzes": {
-        "q1": { "question": "このプログラムは何を出力しますか? (出力を正確に入力してください。)" },
+        "q1": {
+          "question": "このプログラムは何を出力しますか? (出力を正確に入力してください。)"
+        },
         "q2": {
           "question": "println! とは何ですか?",
-          "options": ["関数", "マクロ", "トレイト", "キーワード"]
+          "options": [
+            "関数",
+            "マクロ",
+            "トレイト",
+            "キーワード"
+          ]
+        },
+        "q3": {
+          "question": "In `println!(\"Hello, {name}!\")`, what does `{name}` do?",
+          "options": [
+            "Creates a new variable called `name`",
+            "Prints the braces literally",
+            "Inserts the value of `name` into the output",
+            "Calls a method on `name`"
+          ]
+        },
+        "q4": {
+          "question": "Why does `println!` end with `!` in Rust?",
+          "options": [
+            "Because it is a macro invocation",
+            "Because it mutates global output state",
+            "Because it returns `!`",
+            "Because all printing syntax uses punctuation"
+          ]
+        },
+        "q5": {
+          "question": "If a program calls `println!(\"Hello\");` and then `println!(\"Rust\");`, what is printed?",
+          "options": [
+            "`Hello Rust` on one line",
+            "`Hello` and `Rust` on separate lines",
+            "Only `Rust`",
+            "Nothing until `flush()` is called"
+          ]
         }
       }
     },
@@ -33,10 +101,51 @@
       "title": "変数と可変性",
       "description": "Rust の変数はデフォルトで不変です。再代入を許可するには `mut` を付けます。コンパイラが推論できる場合、型注釈は省略できます。",
       "quizzes": {
-        "q1": { "question": "プログラムの出力を予測してください:" },
+        "q1": {
+          "question": "プログラムの出力を予測してください:"
+        },
         "q2": {
           "question": "`let y: i32 = 10;` (mut なし) の後に追加した場合、コンパイルが通る行はどれですか?",
-          "options": ["y = y + 1;", "y += 1;", "let y = y + 1;", "y.set(11);"]
+          "options": [
+            "y = y + 1;",
+            "y += 1;",
+            "let y = y + 1;",
+            "y.set(11);"
+          ],
+          "explanations": [
+            "This tries to assign a new value to `y`, but `y` is immutable because it was not declared with `mut`.",
+            "This is also a mutation. `+=` still changes the existing variable, so it needs `mut`.",
+            "This works because it creates a new variable named `y` that shadows the old one instead of mutating it.",
+            "`i32` does not have a `.set(...)` method, so this fails before mutability even matters."
+          ],
+          "answerReason": "The correct choice is `let y = y + 1;` because it shadows the original binding with a new one."
+        },
+        "q3": {
+          "question": "What is happening in `let y = y + 1;`?",
+          "options": [
+            "The old `y` is mutated in place",
+            "A new `y` shadows the old one",
+            "Rust automatically adds `mut`",
+            "The type of `y` changes to `usize`"
+          ]
+        },
+        "q4": {
+          "question": "When is an explicit type annotation like `let y: i32 = 10;` most useful?",
+          "options": [
+            "When you need to guide the compiler or document the intended type",
+            "When you want to make a variable mutable",
+            "When you want Rust to skip type checking",
+            "When shadowing is not allowed"
+          ]
+        },
+        "q5": {
+          "question": "What is the key difference between mutation and shadowing in Rust?",
+          "options": [
+            "Mutation creates a new binding, while shadowing edits the old one",
+            "Shadowing creates a new binding, while mutation changes an existing one",
+            "They are identical except for style",
+            "Mutation works only for numbers, shadowing only for strings"
+          ]
         }
       }
     },
@@ -44,10 +153,2022 @@
       "title": "所有権と借用",
       "description": "Rust のすべての値には正確に 1 つの所有者があります。参照(&)で渡すと所有権を奪わずに値を借用します。値が move された後は、元のバインディングは使えなくなります。",
       "quizzes": {
-        "q1": { "question": "プログラムの出力を予測してください:" },
+        "q1": {
+          "question": "プログラムの出力を予測してください:"
+        },
         "q2": {
           "question": "`takes_ownership(owned)` の呼び出し後、`owned` を再び使おうとするとどうなりますか?",
-          "options": ["コンパイルエラー: 値が move されました", "ランタイムパニック", "空文字列が出力される", "正常に動作する"]
+          "options": [
+            "コンパイルエラー: 値が move されました",
+            "ランタイムパニック",
+            "空文字列が出力される",
+            "正常に動作する"
+          ]
+        },
+        "q3": {
+          "question": "Which argument style borrows a value instead of moving it?",
+          "options": [
+            "`String`",
+            "`Vec<i32>`",
+            "`Box<T>`",
+            "`&String`"
+          ]
+        },
+        "q4": {
+          "question": "Why would a function take `&String` instead of `String` when reading text?",
+          "options": [
+            "To borrow the value without taking ownership",
+            "To force Rust to copy the heap allocation",
+            "Because `String` cannot be passed to functions",
+            "To convert the value into a trait object"
+          ]
+        },
+        "q5": {
+          "question": "If a function needs to modify a caller's `String` in place, which parameter type best communicates that intent?",
+          "options": [
+            "`String`",
+            "`&String`",
+            "`&mut String`",
+            "`&&String`"
+          ]
+        }
+      }
+    },
+    "04_control_flow": {
+      "title": "Control flow",
+      "description": "Use `if`, `while`, and `for` to control execution.\n\n```rust\nif x > 0 {\n    println!(\"positive\");\n}\n```\n\nRanges like `0..3` stop before the last number.\n\n```rust\nfor n in 0..3 {\n    println!(\"{n}\");\n}\n```\n\nThis prints `0`, `1`, and `2`.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "How many times does `for x in 0..3` iterate?",
+          "options": [
+            "0 times",
+            "2 times",
+            "3 times",
+            "4 times"
+          ]
+        },
+        "q3": {
+          "question": "Which range includes the final value `3`?",
+          "options": [
+            "`1..=3`",
+            "`1..3`",
+            "`0..3`",
+            "`0..=2`"
+          ]
+        },
+        "q4": {
+          "question": "Why does the range `0..3` stop before `3`?",
+          "options": [
+            "Because `..` means an inclusive range",
+            "Because the upper bound of `a..b` is exclusive",
+            "Because loops in Rust always skip the last item",
+            "Because `3` is reserved for indexing"
+          ]
+        },
+        "q5": {
+          "question": "When is a `while` loop usually the better fit than `for x in 0..n`?",
+          "options": [
+            "When the number of iterations depends on a changing condition",
+            "When you want Rust to unroll the loop",
+            "When iterating over a fixed range",
+            "When you need pattern matching"
+          ]
+        }
+      }
+    },
+    "05_functions": {
+      "title": "Functions and expressions",
+      "description": "Functions declare parameter types and optional return types.\n\n```rust\nfn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n```\n\nThe last line has no semicolon, so it becomes the return value.\n\n```rust\nfn log_value(x: i32) {\n    println!(\"{x}\");\n}\n```\n\nA trailing semicolon turns a line into a statement instead of a returned expression.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Why does `fn add(a, b) -> i32 { a + b }` return `a + b` without a `return` keyword?",
+          "options": [
+            "All Rust functions auto-return their last variable",
+            "The last expression without a semicolon is the block's value",
+            "`return` is illegal in Rust",
+            "The compiler inserts a return at the end"
+          ]
+        },
+        "q3": {
+          "question": "What happens if you add a semicolon after `a + b` in that function?",
+          "options": [
+            "The function returns `a + b` faster",
+            "Rust ignores the semicolon",
+            "The block no longer returns `a + b` as its value",
+            "The return type changes to `bool`"
+          ]
+        },
+        "q4": {
+          "question": "Why must Rust function parameters include their types in the signature?",
+          "options": [
+            "So macros can rewrite the function body",
+            "So the compiler knows the contract at compile time",
+            "So runtime reflection can inspect them",
+            "So parameters can be mutated automatically"
+          ]
+        },
+        "q5": {
+          "question": "What value does a block evaluate to when its last line ends with a semicolon?",
+          "options": [
+            "The last expression's value",
+            "The block's line count",
+            "The unit value `()`",
+            "A hidden `Result`"
+          ]
+        }
+      }
+    },
+    "06_strings": {
+      "title": "Strings: String vs &str",
+      "description": "Use `&str` for borrowed text.\n\n```rust\nlet name: &str = \"Rust\";\n```\n\nUse `String` for owned, growable text.\n\n```rust\nlet mut name = String::from(\"Rust\");\nname.push('!');\n```\n\n`format!` builds and returns a new `String`.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Which statement is true?",
+          "options": [
+            "&str owns its data",
+            "String is heap-allocated and growable",
+            "String is always shorter than &str",
+            "&str cannot hold UTF-8"
+          ]
+        },
+        "q3": {
+          "question": "Which type can grow with methods like `push`?",
+          "options": [
+            "`String`",
+            "`&str`",
+            "`char`",
+            "`usize`"
+          ]
+        },
+        "q4": {
+          "question": "Why do many APIs prefer taking `&str` instead of `String` for text input?",
+          "options": [
+            "`&str` guarantees ASCII only",
+            "`&str` lets callers pass borrowed text without transferring ownership",
+            "`String` cannot be read by functions",
+            "`&str` always allocates less memory at runtime"
+          ]
+        },
+        "q5": {
+          "question": "What does `format!(...)` produce?",
+          "options": [
+            "A borrowed `&str` tied to the current scope",
+            "A new owned `String` built from the formatted data",
+            "A `char` array on the stack",
+            "It prints directly to stdout and returns `()`"
+          ]
+        }
+      }
+    },
+    "07_tuples_arrays": {
+      "title": "Tuples and arrays",
+      "description": "Tuples can mix types.\n\n```rust\nlet pair = (1, \"two\");\nlet (a, b) = pair;\n```\n\nArrays hold values of one type and a fixed length.\n\n```rust\nlet nums = [10, 20, 30];\nprintln!(\"{}\", nums[0]);\n```\n\nThe array length is part of its type.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Fill in the blank to destructure the tuple."
+        },
+        "q3": {
+          "question": "Which statement about arrays is true?",
+          "options": [
+            "An array can mix `i32` and `&str` freely",
+            "All array elements must have the same type",
+            "Array length is decided only at runtime",
+            "Arrays cannot be indexed"
+          ]
+        },
+        "q4": {
+          "question": "Why is array length considered part of the type in Rust?",
+          "options": [
+            "So `[i32; 3]` and `[i32; 4]` are treated as different fixed-size types",
+            "So arrays can store mixed types",
+            "So array indexing becomes optional",
+            "So arrays can only live on the heap"
+          ]
+        },
+        "q5": {
+          "question": "When is a tuple usually a better fit than an array?",
+          "options": [
+            "When you need a growable sequence",
+            "When you need to store values of different types together",
+            "When every element must share one type",
+            "When you need to sort values in place"
+          ]
+        }
+      }
+    },
+    "08_enums": {
+      "title": "Enums and match",
+      "description": "An enum lets one value have several possible shapes.\n\n```rust\nenum Direction {\n    Left,\n    Right,\n}\n```\n\nUse `match` to handle each variant.\n\n```rust\nmatch dir {\n    Direction::Left => println!(\"L\"),\n    Direction::Right => println!(\"R\"),\n}\n```\n\n`match` must cover every variant.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Which statement about `match` on an enum is true?",
+          "options": [
+            "Enums can't carry data",
+            "match needs exhaustiveness only for primitive types",
+            "match must cover every variant",
+            "All variants must share the same data type"
+          ]
+        },
+        "q3": {
+          "question": "What does one `match` arm usually handle?",
+          "options": [
+            "A single line comment",
+            "A function call only",
+            "A type annotation",
+            "One enum variant or pattern"
+          ]
+        },
+        "q4": {
+          "question": "Why is an enum often better than a few unrelated booleans for state like direction?",
+          "options": [
+            "Enums compile faster than booleans",
+            "An enum models one valid state from a finite set more explicitly",
+            "Booleans cannot be matched with `match`",
+            "Enums are the only way to store text"
+          ]
+        },
+        "q5": {
+          "question": "What does exhaustiveness in `match` protect you from?",
+          "options": [
+            "Forgetting to handle one of the possible variants",
+            "Allocating too much stack space",
+            "Using methods inside the arms",
+            "Creating references in pattern matching"
+          ]
+        }
+      }
+    },
+    "09_structs": {
+      "title": "Structs and methods",
+      "description": "A Rust `struct` is the closest thing to class-like data: it groups fields, but it does not bundle methods inside the type body.\n\n```rust\nstruct User {\n    name: String,\n    age: u32,\n}\n```\n\nMethods live in a separate `impl` block.\n\n```rust\nimpl User {\n    fn is_adult(&self) -> bool {\n        self.age >= 18\n    }\n}\n```\n\nA useful mental map is:\n\n```text\nclass-like data         -> struct\nclass-like methods      -> impl\ninterface-like behavior -> trait\nvariant type            -> enum\n```\n\nBut the mapping is not exact. Rust structs participate in ownership rules. Assigning a struct usually moves it unless the type implements `Copy`.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "What does an `impl` block do for a struct?",
+          "options": [
+            "Attaches methods and associated functions",
+            "Hides all fields from outside code",
+            "Replaces the struct's fields",
+            "Runs at program startup"
+          ]
+        },
+        "q3": {
+          "question": "Which statement about assigning a struct value is true by default?",
+          "options": [
+            "It always deep-copies every field",
+            "It usually moves the value unless the type implements `Copy`",
+            "It converts the struct into a trait object",
+            "It is only allowed inside an `impl` block"
+          ]
+        },
+        "q4": {
+          "question": "Why is `&self` a common method receiver for structs?",
+          "options": [
+            "It borrows the instance so the method can read it without taking ownership",
+            "It copies the whole struct before every call",
+            "It forces all fields to be public",
+            "It means the method is static"
+          ]
+        },
+        "q5": {
+          "question": "Where do methods for a struct live in Rust?",
+          "options": [
+            "Inside the field list",
+            "In a neighboring `impl` block",
+            "Inside the `main` function only",
+            "In the crate root automatically"
+          ]
+        }
+      }
+    },
+    "10_closures_basic": {
+      "title": "Closures",
+      "description": "A closure is an anonymous function stored in a value.\n\n```rust\nlet add = |a: i32, b: i32| a + b;\nprintln!(\"{}\", add(2, 3));\n```\n\nRust often infers the types, so closures can stay compact.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Which best describes `let add = |a: i32, b: i32| a + b;` ?",
+          "options": [
+            "A type alias",
+            "A closure value bound to `add`",
+            "A trait implementation",
+            "A macro invocation"
+          ]
+        },
+        "q3": {
+          "question": "Why are closures useful?",
+          "options": [
+            "They can only exist inside macros",
+            "They can be stored in variables and passed around",
+            "They replace every function in Rust",
+            "They always require explicit return types"
+          ]
+        },
+        "q4": {
+          "question": "What capability makes closures different from plain function items?",
+          "options": [
+            "Closures can capture values from the surrounding scope",
+            "Closures can return values but functions cannot",
+            "Closures must always allocate on the heap",
+            "Closures are the only callable form in Rust"
+          ]
+        },
+        "q5": {
+          "question": "Why can closure parameter types often be omitted?",
+          "options": [
+            "Because closures are dynamically typed",
+            "Because the compiler can often infer them from usage",
+            "Because closures ignore their inputs",
+            "Because omitted types default to `i32`"
+          ]
+        }
+      }
+    },
+    "11_closures_capture": {
+      "title": "Closures: capturing state",
+      "description": "Closures can use values from the surrounding scope.\n\n```rust\nlet mut count = 0;\nlet mut inc = || {\n    count += 1;\n};\n```\n\nBecause the closure changes captured state, the closure binding itself must be `mut`.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Why must `increment` be declared `mut`?",
+          "options": [
+            "Because it mutates the captured `counter`",
+            "Because all closures must be `mut`",
+            "Because `counter` is copied each call",
+            "Removing `mut` would still compile"
+          ]
+        },
+        "q3": {
+          "question": "What is the closure using when it reads or changes `counter`?",
+          "options": [
+            "A new local variable unrelated to `counter`",
+            "A macro-generated global variable",
+            "A captured value from the surrounding scope",
+            "A struct field named `counter`"
+          ]
+        },
+        "q4": {
+          "question": "If a closure only reads a captured variable and does not mutate anything, what usually changes?",
+          "options": [
+            "The closure must still be declared `mut`",
+            "The captured variable must become `static`",
+            "The closure binding often no longer needs to be `mut`",
+            "The closure stops being callable"
+          ]
+        },
+        "q5": {
+          "question": "What does it mean for a closure to capture a value?",
+          "options": [
+            "It stores or borrows access to a variable from its surrounding scope",
+            "It converts the variable into a constant",
+            "It moves every variable in the function automatically",
+            "It serializes the variable into the binary"
+          ]
+        }
+      }
+    },
+    "12_iter_map": {
+      "title": "Iterators: map",
+      "description": "`map` transforms each item in an iterator.\n\n```rust\nlet nums = vec![1, 2, 3];\nlet doubled: Vec<i32> = nums.iter().map(|x| x * 2).collect();\n```\n\n`map` is lazy, so the work happens only when the iterator is consumed, such as by `collect()`.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Which iterator method transforms each element? Fill in the blank."
+        },
+        "q3": {
+          "question": "What does `collect()` do after `map(...)`?",
+          "options": [
+            "Consumes the iterator and builds a collection",
+            "Sorts the iterator in place",
+            "Turns the iterator into a trait",
+            "Makes `map` run forever"
+          ]
+        },
+        "q4": {
+          "question": "Why is iterator laziness useful with `map`?",
+          "options": [
+            "It delays work until consumption, which helps composition and avoids unnecessary intermediate results",
+            "It guarantees parallel execution",
+            "It forces every iterator into a `Vec`",
+            "It prevents closures from capturing values"
+          ]
+        },
+        "q5": {
+          "question": "What kind of items does `nums.iter()` yield for a `Vec<i32>`?",
+          "options": [
+            "Owned `i32` values moved out of the vector",
+            "Mutable references by default",
+            "Shared references to each element",
+            "Tuple pairs of `(index, value)`"
+          ]
+        }
+      }
+    },
+    "13_iter_filter": {
+      "title": "Iterators: filter",
+      "description": "`filter` keeps only items that match a condition.\n\n```rust\nlet nums = vec![1, 2, 3, 4];\nlet evens: Vec<i32> = nums.into_iter().filter(|n| n % 2 == 0).collect();\n```\n\nLike `map`, `filter` is lazy until the iterator is consumed.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "When does `filter`'s predicate run?",
+          "options": [
+            "Immediately when filter is called",
+            "Once per element, eagerly into a Vec",
+            "Lazily, only when the iterator is consumed",
+            "Filter requires a boolean array as input"
+          ]
+        },
+        "q3": {
+          "question": "Which items does `filter` keep?",
+          "options": [
+            "Items that return numbers larger than zero",
+            "Items for which the predicate returns `true`",
+            "Every item after the first one",
+            "Only items at even indexes"
+          ]
+        },
+        "q4": {
+          "question": "What happens to an item when a `filter` predicate returns `false`?",
+          "options": [
+            "The item is cloned and retried",
+            "The item is discarded from the resulting iterator",
+            "The whole iterator panics",
+            "The item is turned into `None`"
+          ]
+        },
+        "q5": {
+          "question": "What is the main semantic difference between `iter()` and `into_iter()` on a collection?",
+          "options": [
+            "`iter()` borrows items, while `into_iter()` consumes the collection to yield owned items",
+            "`iter()` sorts items, while `into_iter()` preserves order",
+            "`into_iter()` only works on arrays",
+            "There is no difference in ownership"
+          ]
+        }
+      }
+    },
+    "14_iter_fold": {
+      "title": "Iterators: fold",
+      "description": "`fold` combines many items into one result.\n\n```rust\nlet nums = [1, 2, 3];\nlet total = nums.iter().fold(0, |acc, n| acc + n);\n```\n\nThe first argument is the starting accumulator.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Which statement is true about `fold`?",
+          "options": [
+            "It takes an initial accumulator and combines elements",
+            "It cannot produce an i32",
+            "Its initial value must always be 0",
+            "It runs in parallel"
+          ]
+        },
+        "q3": {
+          "question": "What value is carried from one `fold` step to the next?",
+          "options": [
+            "The loop index only",
+            "The input vector itself",
+            "The accumulator",
+            "A hidden mutable global"
+          ]
+        },
+        "q4": {
+          "question": "If you call `fold(10, |acc, n| acc + n)` on `[1, 2, 3]`, what final value do you get?",
+          "options": [
+            "6",
+            "10",
+            "16",
+            "60"
+          ]
+        },
+        "q5": {
+          "question": "When is `fold` preferable to a helper like `sum()`?",
+          "options": [
+            "When you need custom accumulation logic or a nonstandard result",
+            "Only when the iterator is empty",
+            "Only when working with strings",
+            "When you want the compiler to skip type inference"
+          ]
+        }
+      }
+    },
+    "15_iter_sum": {
+      "title": "Iterators: sum and max",
+      "description": "Methods like `sum()` and `max()` consume an iterator and return a final result.\n\n```rust\nlet nums = vec![1, 2, 3];\nlet total: i32 = nums.iter().sum();\n```\n\n`sum()` often needs a type annotation so Rust knows the output type.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "The snippet below has one line that won't compile. Which line is it?"
+        },
+        "q3": {
+          "question": "What does `sum()` return when the iterator items are numbers?",
+          "options": [
+            "A single total value",
+            "A new iterator of partial sums",
+            "Always a `String`",
+            "A tuple of `(sum, max)`"
+          ]
+        },
+        "q4": {
+          "question": "Why does `sum()` often need a type annotation somewhere nearby?",
+          "options": [
+            "Because iterators cannot contain numbers without annotation",
+            "Because the compiler may need help deciding the result type",
+            "Because `sum()` always returns a tuple",
+            "Because annotations turn lazy iterators into eager ones"
+          ]
+        },
+        "q5": {
+          "question": "Why does `max()` typically return an `Option<T>` instead of just `T`?",
+          "options": [
+            "Because iterators may be empty and have no maximum value",
+            "Because `max()` always allocates on the heap",
+            "Because it might need to return multiple maxima",
+            "Because `Option` is required for all numeric APIs"
+          ]
+        }
+      }
+    },
+    "16_traits_basic": {
+      "title": "Traits",
+      "description": "A trait describes shared behavior.\n\n```rust\ntrait Greet {\n    fn greet(&self);\n}\n```\n\nA type implements the trait like this.\n\n```rust\nimpl Greet for Person {\n    fn greet(&self) {\n        println!(\"hi\");\n    }\n}\n```",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "What does `impl Greet for Person` do?",
+          "options": [
+            "Defines a free function called `greet`",
+            "Provides the `Greet` trait's methods for `Person`",
+            "Removes the `Greet` trait from `Person`",
+            "Renames Person to Greet"
+          ]
+        },
+        "q3": {
+          "question": "Why are traits useful?",
+          "options": [
+            "They make all types have the same fields",
+            "They replace enums",
+            "They remove the need for methods",
+            "They let different types share the same behavior contract"
+          ]
+        },
+        "q4": {
+          "question": "What is the main role of a trait in Rust?",
+          "options": [
+            "To define a shared behavior contract that multiple types can implement",
+            "To store fields shared by several structs",
+            "To replace all generics with inheritance",
+            "To force runtime dispatch"
+          ]
+        },
+        "q5": {
+          "question": "Why is a function parameter like `impl Greet` or `T: Greet` useful?",
+          "options": [
+            "It lets the function call trait methods on different concrete types that implement the trait",
+            "It erases all type information before compilation",
+            "It means the function can only accept one exact type forever",
+            "It automatically allocates arguments on the heap"
+          ]
+        }
+      }
+    },
+    "17_traits_default": {
+      "title": "Traits: default methods",
+      "description": "Trait methods can have default behavior.\n\n```rust\ntrait Speak {\n    fn sound(&self) -> &'static str {\n        \"...\"\n    }\n}\n```\n\nA type may override that method, but it does not have to.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Why does `Dog` print `dog: ...`?",
+          "options": [
+            "Both Cat and Dog override `sound()`",
+            "Dog uses the default `sound()` because it doesn't override it",
+            "Default methods cannot be overridden",
+            "Cat doesn't implement the trait"
+          ]
+        },
+        "q3": {
+          "question": "Why are default trait methods useful in practice?",
+          "options": [
+            "They force every type to use the same exact implementation",
+            "They remove the need for trait implementations entirely",
+            "They let a trait provide shared behavior while still allowing overrides",
+            "They make traits work only for enums"
+          ]
+        },
+        "q4": {
+          "question": "When would a type override a default trait method?",
+          "options": [
+            "When it needs behavior different from the shared default",
+            "Only when the trait has no required methods",
+            "Default methods cannot actually be overridden",
+            "Only inside `unsafe` code"
+          ]
+        },
+        "q5": {
+          "question": "Why are default trait methods useful across many implementations?",
+          "options": [
+            "They eliminate the need to implement the trait",
+            "They let a trait provide common behavior while allowing selective customization",
+            "They make every implementation identical and unchangeable",
+            "They work only for enums"
+          ]
+        }
+      }
+    },
+    "18_traits_derive": {
+      "title": "Traits: derive",
+      "description": "`derive` asks Rust to generate trait implementations for you.\n\n```rust\n#[derive(Debug, Copy, Clone, PartialEq)]\nstruct Point {\n    x: i32,\n    y: i32,\n}\n```\n\nThis matters for value-like structs. With `Copy`, assigning `p1` into `p2` duplicates the bits, so both variables stay usable.\n\n```rust\nlet p1 = Point { x: 1, y: 2 };\nlet p2 = p1;\n```\n\nWithout `Copy`, that assignment would move the value and `p1` could not be used afterward. `Clone` is the explicit duplicate operation when automatic copying is not available or not desired.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "What does `#[derive(Debug, Copy, Clone, PartialEq)]` do?",
+          "options": [
+            "Auto-generates implementations of those traits",
+            "Turns every field into a reference",
+            "Replaces the struct's fields",
+            "Runs at runtime"
+          ]
+        },
+        "q3": {
+          "question": "Why can `p1` still be used after `let p2 = p1;` in this lesson?",
+          "options": [
+            "Because `PartialEq` keeps the old binding alive",
+            "Because `Debug` prevents moves",
+            "Because the struct implements `Copy`, so assignment copies instead of moving",
+            "Because all structs in Rust are copied by default"
+          ]
+        },
+        "q4": {
+          "question": "What is the practical difference between `Copy` and `Clone`?",
+          "options": [
+            "`Copy` is explicit and `Clone` is implicit",
+            "`Copy` allows implicit duplication on assignment, while `Clone` is an explicit operation",
+            "They are exactly the same trait with different names",
+            "`Clone` only works for primitive integers"
+          ]
+        },
+        "q5": {
+          "question": "Why is `Debug` commonly derived on structs during learning and development?",
+          "options": [
+            "It enables printing values with formatting like `{:?}` for inspection",
+            "It makes the struct thread-safe",
+            "It disables move semantics",
+            "It allows pattern matching on private fields"
+          ]
+        }
+      }
+    },
+    "19_generics_basic": {
+      "title": "Generics",
+      "description": "Generics let one function work with many types.\n\n```rust\nfn largest<T: PartialOrd + Copy>(a: T, b: T) -> T {\n    if a > b { a } else { b }\n}\n```\n\n`T: PartialOrd + Copy` means `T` must support comparison and cheap copying.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Which is the correct syntax for a bounded generic?",
+          "options": [
+            "T must be a number",
+            "T = PartialOrd + Copy",
+            "T: PartialOrd + Copy",
+            "T :: PartialOrd, Copy"
+          ]
+        },
+        "q3": {
+          "question": "Why does `largest<T: PartialOrd + Copy>` need `Copy` in this example?",
+          "options": [
+            "So Rust can sort values automatically",
+            "So the function can return `a` or `b` by value without moving out of borrowed data",
+            "Because every generic type must implement `Copy`",
+            "Because `PartialOrd` only works together with `Copy`"
+          ]
+        },
+        "q4": {
+          "question": "Why are generics valuable in Rust APIs?",
+          "options": [
+            "They let one function or type work across multiple concrete types while preserving static type checking",
+            "They convert all values into trait objects",
+            "They remove the need for function signatures",
+            "They delay type checking until runtime"
+          ]
+        },
+        "q5": {
+          "question": "What does the compiler typically do with generic code at compile time?",
+          "options": [
+            "It interprets it line by line at runtime",
+            "It generates concrete versions for the types you actually use",
+            "It stores the generic body only once and skips type checking",
+            "It converts every generic into a macro"
+          ]
+        }
+      }
+    },
+    "20_lifetimes_basic": {
+      "title": "Lifetimes",
+      "description": "Lifetimes describe how long references stay valid.\n\n```rust\nfn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() { x } else { y }\n}\n```\n\n`'a` tells Rust the returned reference cannot outlive the input references.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "What does the `'a` in `fn longest<'a>(x: &'a str, y: &'a str) -> &'a str` mean?",
+          "options": [
+            "'a is a runtime variable",
+            "The returned reference lives at least as long as both inputs",
+            "'a is required for every function",
+            "'a only applies to Strings"
+          ]
+        },
+        "q3": {
+          "question": "What problem are lifetimes solving here?",
+          "options": [
+            "They let Rust track how long returned references may safely point to input data",
+            "They make the function run longer",
+            "They allocate strings on the heap",
+            "They replace ownership with garbage collection"
+          ]
+        },
+        "q4": {
+          "question": "What do lifetime annotations describe in Rust?",
+          "options": [
+            "How long the program will run",
+            "Relationships between borrowed references so the compiler can verify validity",
+            "How many times a loop executes",
+            "Which values are allocated on the heap"
+          ]
+        },
+        "q5": {
+          "question": "Why are lifetime annotations often needed when a function returns a reference derived from its inputs?",
+          "options": [
+            "To tell the compiler which input reference the output is tied to",
+            "To make the returned reference live forever",
+            "To disable borrow checking temporarily",
+            "To force the function to allocate a new value"
+          ]
+        }
+      }
+    },
+    "21_lifetimes_struct": {
+      "title": "Lifetimes in structs",
+      "description": "A struct that stores a reference needs a lifetime parameter.\n\n```rust\nstruct Borrower<'a> {\n    name: &'a str,\n}\n```\n\nWithout `'a`, Rust would not know how long `name` is allowed to live.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Which line below has the missing lifetime that prevents this from compiling?"
+        },
+        "q3": {
+          "question": "Why must `Borrower` declare a lifetime parameter?",
+          "options": [
+            "Because the struct stores a reference and Rust must know how long that reference may live",
+            "Because every struct in Rust needs a lifetime",
+            "Because `String` always requires `'static`",
+            "Because structs cannot hold fields without trait bounds"
+          ]
+        },
+        "q4": {
+          "question": "Why does a struct that stores a reference usually need a lifetime parameter?",
+          "options": [
+            "To guarantee the referenced data outlives the struct value",
+            "To make the struct copyable",
+            "To allow methods inside `impl` blocks",
+            "To force the struct onto the stack"
+          ]
+        },
+        "q5": {
+          "question": "What is one common way to avoid lifetime parameters in a struct design?",
+          "options": [
+            "Store owned data like `String` instead of borrowed references when appropriate",
+            "Replace the struct with a trait object",
+            "Mark every field as `mut`",
+            "Use `unsafe` for all fields"
+          ]
+        }
+      }
+    },
+    "22_result_basic": {
+      "title": "Result and match",
+      "description": "`Result<T, E>` represents success or failure.\n\n```rust\nlet value: Result<i32, &str> = Ok(42);\n```\n\nUse `match` to handle both cases.\n\n```rust\nmatch value {\n    Ok(n) => println!(\"{n}\"),\n    Err(e) => println!(\"error: {e}\"),\n}\n```",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Which is true about Result?",
+          "options": [
+            "It's an enum with Ok and Err variants",
+            "It's a struct",
+            "Err always panics",
+            "match cannot pattern-match Result"
+          ]
+        },
+        "q3": {
+          "question": "Why is `Result` preferred over panicking for recoverable failures?",
+          "options": [
+            "It forces the caller to handle or propagate the failure explicitly",
+            "It makes the compiler run faster",
+            "It removes the need for return types",
+            "It guarantees the program never exits early"
+          ]
+        },
+        "q4": {
+          "question": "What do the `Ok` and `Err` variants of `Result<T, E>` represent?",
+          "options": [
+            "Two ways to borrow the same value",
+            "Success with a value, or failure with an error",
+            "Synchronous and asynchronous execution",
+            "Stack and heap allocation"
+          ]
+        },
+        "q5": {
+          "question": "Why is matching on `Result` a useful beginner pattern?",
+          "options": [
+            "It forces you to consider both the success and error paths explicitly",
+            "It automatically retries failed operations",
+            "It turns every error into a panic",
+            "It prevents functions from returning values"
+          ]
+        }
+      }
+    },
+    "23_option_basic": {
+      "title": "Option and unwrap_or",
+      "description": "`Option<T>` means a value may or may not exist.\n\n```rust\nlet name = Some(\"Rust\");\nlet empty: Option<&str> = None;\n```\n\n`unwrap_or` gives the value or a fallback.\n\n```rust\nprintln!(\"{}\", empty.unwrap_or(\"none\"));\n```",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "What does `unwrap_or(\"none\")` do when called on `None`?",
+          "options": [
+            "Panics",
+            "Returns the empty string",
+            "Returns the default \"none\"",
+            "Calls the function again"
+          ]
+        },
+        "q3": {
+          "question": "When would you choose `Option<T>` instead of `Result<T, E>`?",
+          "options": [
+            "When the absence of a value is expected and you do not need an error message",
+            "When you need to store two successful values",
+            "When parsing integers from text",
+            "Only when working with traits"
+          ]
+        },
+        "q4": {
+          "question": "When is `Option<T>` usually a better model than `Result<T, E>`?",
+          "options": [
+            "When absence is expected and not an error condition by itself",
+            "When you need to attach a detailed error message",
+            "When the value must always exist",
+            "When you need thread-safe sharing"
+          ]
+        },
+        "q5": {
+          "question": "What does `unwrap_or(\"none\")` return when the option is `Some(\"Rust\")`?",
+          "options": [
+            "`none`",
+            "A panic",
+            "`Rust`",
+            "`Some(\"Rust\")`"
+          ]
+        }
+      }
+    },
+    "24_error_propagation": {
+      "title": "Error propagation with ?",
+      "description": "The `?` operator unwraps success and returns early on failure.\n\n```rust\nfn read_num(text: &str) -> Result<i32, std::num::ParseIntError> {\n    let n = text.parse()?;\n    Ok(n)\n}\n```\n\nThis works only inside functions that return `Result` or `Option`.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Order what happens when `parse_and_double(\"21\")` is called, in execution order.",
+          "options": [
+            "Try to parse \"21\" as i32",
+            "Parsing succeeds; `?` unwraps Ok(21) into n",
+            "Multiply 21 by 2 to get 42",
+            "Wrap 42 in Ok and return"
+          ]
+        },
+        "q3": {
+          "question": "What happens if the parse step returns `Err` before multiplication?",
+          "options": [
+            "The function keeps going with `0`",
+            "The error is ignored",
+            "The `?` returns that error early from the function",
+            "Rust retries the parse automatically"
+          ]
+        },
+        "q4": {
+          "question": "What does the `?` operator do when applied to a `Result` that is `Err`?",
+          "options": [
+            "It converts the error into `None`",
+            "It retries the operation once",
+            "It returns early from the current function with that error",
+            "It logs the error and keeps going"
+          ]
+        },
+        "q5": {
+          "question": "Why is `?` often preferred over nested `match` expressions for simple propagation?",
+          "options": [
+            "It removes boilerplate while keeping the same success-or-early-error flow",
+            "It hides errors from the type system",
+            "It works only in `main`",
+            "It automatically recovers from all failures"
+          ]
+        }
+      }
+    },
+    "25_panic_unwrap": {
+      "title": "panic, unwrap, expect",
+      "description": "`unwrap()` and `expect()` extract the inner value.\n\n```rust\nlet value = Some(10);\nprintln!(\"{}\", value.unwrap());\n```\n\nIf the value is missing, the program panics.\n\n```rust\nlet missing: Option<i32> = None;\nmissing.expect(\"value should exist\");\n```",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "What happens if `value.unwrap()` is called when `value` is `None`?",
+          "options": [
+            "Returns a default",
+            "Panics at runtime",
+            "Returns Err",
+            "Returns 0"
+          ]
+        },
+        "q3": {
+          "question": "Why is `expect(\"message\")` often better than plain `unwrap()` during debugging?",
+          "options": [
+            "It never panics",
+            "It converts `None` into `Some`",
+            "It makes the code async-safe",
+            "It panics with a custom message that explains the assumption"
+          ]
+        },
+        "q4": {
+          "question": "What is the practical difference between `unwrap()` and `expect(\"message\")`?",
+          "options": [
+            "`unwrap()` never panics, but `expect()` does",
+            "`expect()` panics with a custom message, which can make failures easier to diagnose",
+            "`expect()` returns `Option`, while `unwrap()` returns `Result`",
+            "There is no difference at all"
+          ]
+        },
+        "q5": {
+          "question": "When is using `unwrap()` usually a poor design choice?",
+          "options": [
+            "When failure is recoverable or likely in normal operation",
+            "When working in a tiny example or test",
+            "When you are certain a value exists",
+            "When debugging code paths locally"
+          ]
+        }
+      }
+    },
+    "26_async_basic": {
+      "title": "async / await",
+      "description": "`async fn` returns a future.\n\n```rust\nasync fn fetch() -> i32 {\n    42\n}\n```\n\nThe function body does not finish immediately. Something must await or poll the future.\n\n```rust\nlet value = pollster::block_on(fetch());\n```",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "What does calling an `async fn` actually do?",
+          "options": [
+            "Runs the body immediately",
+            "Polls the OS scheduler",
+            "Returns a future that needs to be awaited or polled",
+            "Spawns an OS thread"
+          ]
+        },
+        "q3": {
+          "question": "Why do we need something like `block_on` in this example?",
+          "options": [
+            "Because a future does not complete by itself until an executor polls it",
+            "Because async functions cannot return values",
+            "Because Rust requires every function to be blocking",
+            "Because `await` only works inside macros"
+          ]
+        },
+        "q4": {
+          "question": "What do you get immediately when you call an `async fn`?",
+          "options": [
+            "The final return value",
+            "A running background thread",
+            "A `Future` representing work that can be polled later",
+            "A macro expansion"
+          ]
+        },
+        "q5": {
+          "question": "What is the role of `.await` in async Rust?",
+          "options": [
+            "It blocks the entire process until completion",
+            "It polls the future and suspends the async context until the result is ready",
+            "It converts a future into a thread",
+            "It turns a `Result` into an `Option`"
+          ]
+        }
+      }
+    },
+    "27_box_basic": {
+      "title": "Smart pointers: Box",
+      "description": "`Box<T>` stores a value on the heap.\n\n```rust\nlet n = Box::new(5);\nprintln!(\"{}\", n);\n```\n\nIt is useful for heap allocation and recursive data structures.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Where does Box<T> store its data?",
+          "options": [
+            "On the stack",
+            "On the heap",
+            "In thread-local storage",
+            "In a static segment"
+          ]
+        },
+        "q3": {
+          "question": "Why would you choose `Box<T>` over a plain `T`?",
+          "options": [
+            "To move the value to the heap or to build recursive structures",
+            "To share data across threads automatically",
+            "To bypass ownership checks",
+            "To make every method asynchronous"
+          ]
+        },
+        "q4": {
+          "question": "Why is `Box<T>` especially useful for some recursive or large values?",
+          "options": [
+            "It stores the value on the heap and gives the surrounding type a known, fixed size",
+            "It makes every operation on `T` asynchronous",
+            "It allows shared ownership across threads",
+            "It removes the need for dropping values"
+          ]
+        },
+        "q5": {
+          "question": "When you have a `Box<T>`, what part stays directly in the owner variable?",
+          "options": [
+            "The full `T` value inline on the stack",
+            "A pointer-like handle to heap-allocated data",
+            "A global singleton copy of `T`",
+            "Only the destructor and nothing else"
+          ]
+        }
+      }
+    },
+    "28_rc_basic": {
+      "title": "Smart pointers: Rc",
+      "description": "`Rc<T>` lets multiple variables share ownership.\n\n```rust\nuse std::rc::Rc;\nlet a = Rc::new(String::from(\"hi\"));\nlet b = Rc::clone(&a);\n```\n\nThe value is dropped only when the last `Rc` is gone. `Rc` is for single-threaded code.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Which best describes Rc<T>?",
+          "options": [
+            "Multiple owners via reference counting",
+            "Thread-safe across threads",
+            "Deep-copies on clone",
+            "Can't hold strings"
+          ]
+        },
+        "q3": {
+          "question": "Why is `Rc<T>` not used across threads?",
+          "options": [
+            "Because its reference counting is not thread-safe",
+            "Because it can only store integers",
+            "Because cloning an `Rc` consumes the inner value",
+            "Because `Rc` always leaks memory"
+          ]
+        },
+        "q4": {
+          "question": "What happens when you call `Rc::clone(&value)`?",
+          "options": [
+            "The inner value is deep-copied every time",
+            "The reference count is increased so ownership is shared",
+            "The value is moved into a new thread",
+            "The original `Rc` becomes invalid"
+          ]
+        },
+        "q5": {
+          "question": "When is `Rc<T>` the right tool?",
+          "options": [
+            "When you need shared ownership in single-threaded code",
+            "When you need a mutable value across many threads",
+            "When you want to avoid all reference counting overhead",
+            "When you need compile-time borrow checking to be disabled"
+          ]
+        }
+      }
+    },
+    "29_refcell_basic": {
+      "title": "Smart pointers: RefCell",
+      "description": "`RefCell<T>` allows interior mutability.\n\n```rust\nuse std::cell::RefCell;\nlet cell = RefCell::new(5);\n*cell.borrow_mut() += 1;\n```\n\nThe borrow rules are checked at runtime instead of compile time.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Order the steps the program performs.",
+          "options": [
+            "Create a RefCell holding the value 5",
+            "Borrow mutably and add 10 to the inner value",
+            "Drop the mutable borrow when its scope ends",
+            "Borrow immutably to print the final value"
+          ]
+        },
+        "q3": {
+          "question": "What extra risk comes with `RefCell<T>` compared with normal borrowing?",
+          "options": [
+            "It disables type checking",
+            "It can panic at runtime if borrow rules are broken",
+            "It always copies the inner data",
+            "It only works with `unsafe` blocks"
+          ]
+        },
+        "q4": {
+          "question": "What rule does `RefCell<T>` enforce at runtime instead of compile time?",
+          "options": [
+            "That values are always `Copy`",
+            "That you can have either one mutable borrow or many immutable borrows",
+            "That all borrows must be `'static`",
+            "That references always point to stack data"
+          ]
+        },
+        "q5": {
+          "question": "Why is `RefCell<T>` considered a tradeoff?",
+          "options": [
+            "It enables mutation through shared access, but borrow mistakes can panic at runtime",
+            "It removes the need for ownership rules entirely",
+            "It only works with numeric types",
+            "It guarantees better performance than normal borrowing"
+          ]
+        }
+      }
+    },
+    "30_macros_basic": {
+      "title": "Macros: built-in",
+      "description": "Built-in macros end with `!`.\n\n```rust\nlet v = vec![1, 2, 3];\nprintln!(\"{:?}\", v);\nlet text = format!(\"{}+{}={}\", 2, 3, 5);\n```\n\nMacros expand into code at compile time.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "When do macros run?",
+          "options": [
+            "When the binary starts up",
+            "On every function call",
+            "At compile time, expanding into code",
+            "Lazily, on first use"
+          ]
+        },
+        "q3": {
+          "question": "Why are macros useful for things like `println!` and `vec!`?",
+          "options": [
+            "They can accept flexible syntax and expand into regular Rust before compilation finishes",
+            "They run faster than machine code",
+            "They replace the type system",
+            "They only work in debug mode"
+          ]
+        },
+        "q4": {
+          "question": "How do macros differ from ordinary functions in Rust?",
+          "options": [
+            "Macros transform syntax during compilation and can accept more flexible input patterns",
+            "Macros run only after the program exits",
+            "Functions can change syntax trees but macros cannot",
+            "Macros always return `String`"
+          ]
+        },
+        "q5": {
+          "question": "Why is `vec!` a good example of where a macro is convenient?",
+          "options": [
+            "It lets you build a vector with concise syntax that would be awkward as a plain function",
+            "It is the only way to create vectors in Rust",
+            "It avoids allocating memory entirely",
+            "It makes vectors immutable by default"
+          ]
+        }
+      }
+    },
+    "31_macros_custom": {
+      "title": "Macros: macro_rules!",
+      "description": "`macro_rules!` defines a declarative macro.\n\n```rust\nmacro_rules! say_hi {\n    () => {\n        println!(\"hi\");\n    };\n}\n```\n\nThe macro matches a pattern and expands into regular Rust code.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "What does `macro_rules!` define?",
+          "options": [
+            "A regular function",
+            "A declarative macro",
+            "An unsafe block",
+            "A trait"
+          ]
+        },
+        "q3": {
+          "question": "How does a declarative macro decide what code to generate?",
+          "options": [
+            "By matching the input against patterns and expanding the matching rule",
+            "By executing the code at runtime first",
+            "By compiling a separate crate automatically",
+            "By reading values from stdin"
+          ]
+        },
+        "q4": {
+          "question": "What does a `macro_rules!` definition mainly contain?",
+          "options": [
+            "Pattern-and-expansion rules that decide what code to generate",
+            "Only function signatures",
+            "A runtime parser for user input",
+            "A list of trait implementations"
+          ]
+        },
+        "q5": {
+          "question": "What is one downside of heavy macro use compared with plain functions?",
+          "options": [
+            "Macros cannot generate valid Rust code",
+            "Compiler errors can be harder to read because they point into generated code paths",
+            "Macros are always slower at runtime",
+            "Macros can only be used inside tests"
+          ]
+        }
+      }
+    },
+    "32_unsafe_basic": {
+      "title": "Unsafe Rust",
+      "description": "`unsafe` allows operations Rust cannot verify automatically.\n\n```rust\nlet mut x = 10;\nlet p: *mut i32 = &mut x;\nunsafe {\n    *p += 1;\n}\n```\n\nThis does not disable the whole language. It only allows specific unsafe actions inside the block.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Which is true about `unsafe { }`?",
+          "options": [
+            "Inside it you can dereference raw pointers",
+            "It disables the type system",
+            "It makes Rust as memory-safe as Java",
+            "Raw pointers are checked at runtime"
+          ]
+        },
+        "q3": {
+          "question": "What does `unsafe` actually change?",
+          "options": [
+            "It turns off all borrow checking forever",
+            "It allows specific operations the compiler cannot verify, while the rest of Rust rules still apply",
+            "It makes raw pointers safe automatically",
+            "It removes the need for types"
+          ]
+        },
+        "q4": {
+          "question": "Why does Rust include `unsafe` at all?",
+          "options": [
+            "To allow specific low-level operations that the compiler cannot fully verify, while keeping them explicit",
+            "To disable the type system for performance everywhere",
+            "To replace modules and traits",
+            "To force manual memory management in all code"
+          ]
+        },
+        "q5": {
+          "question": "What still remains true inside an `unsafe` block?",
+          "options": [
+            "The compiler turns off all checking",
+            "Only syntax errors are reported",
+            "Most of Rust still applies; `unsafe` mainly marks operations whose extra safety conditions you must uphold",
+            "Values stop being dropped automatically"
+          ]
+        }
+      }
+    },
+    "33_vec_push": {
+      "title": "Vectors and push",
+      "description": "`Vec<T>` is Rust's growable array type.\n\n```rust\nlet mut nums = vec![1, 2];\nnums.push(3);\n```\n\n`push()` appends a value to the end of the vector.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Fill in the method used to append `3` to the vector."
+        },
+        "q3": {
+          "question": "Why does the vector need `mut` before calling `push`?",
+          "options": [
+            "Because `push` changes the vector's contents and possibly its length",
+            "Because vectors are immutable forever in Rust",
+            "Because `push` returns a new vector",
+            "Because all heap values require `mut`"
+          ]
+        },
+        "q4": {
+          "question": "What does `push` do on a `Vec<T>`?",
+          "options": [
+            "Inserts a new element at the front",
+            "Appends a new element to the end of the vector",
+            "Removes the last element",
+            "Sorts the vector after insertion"
+          ]
+        },
+        "q5": {
+          "question": "Why would you choose a `Vec<T>` over an array in many programs?",
+          "options": [
+            "Because a vector can grow or shrink at runtime",
+            "Because arrays cannot store numbers",
+            "Because vectors never allocate",
+            "Because vectors are always stack-only"
+          ]
+        }
+      }
+    },
+    "34_option_match": {
+      "title": "Option with match guards",
+      "description": "`match` arms can use guards.\n\n```rust\nmatch value {\n    Some(n) if n > 10 => \"big\",\n    Some(_) => \"small\",\n    None => \"none\",\n}\n```\n\nThe `if n > 10` part is a guard that adds an extra condition.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Why does `Some(25)` print `big`?",
+          "options": [
+            "Because every Some value is treated as big",
+            "Because the `Some(n) if n > 10` guard matches",
+            "Because match checks None first",
+            "Because Option automatically unwraps values over 10"
+          ]
+        },
+        "q3": {
+          "question": "What is the benefit of a match guard here?",
+          "options": [
+            "It lets one pattern split into more precise cases without nesting another `if`",
+            "It removes the need for `Some` and `None`",
+            "It turns `Option` into `Result`",
+            "It makes the match run at compile time"
+          ]
+        },
+        "q4": {
+          "question": "What is a match guard in Rust?",
+          "options": [
+            "A macro that wraps `match`",
+            "An extra `if` condition attached to a pattern arm",
+            "A second enum variant generated automatically",
+            "A way to skip exhaustiveness checking"
+          ]
+        },
+        "q5": {
+          "question": "If a value matches `Some(n)` but the guard `if n > 10` is false, what happens?",
+          "options": [
+            "The program panics immediately",
+            "Rust treats the pattern as unmatched and continues to later arms",
+            "The guard is ignored because the variant matched",
+            "The value becomes `None`"
+          ]
+        }
+      }
+    },
+    "35_arc_mutex": {
+      "title": "Arc and Mutex",
+      "description": "`Arc<T>` shares ownership across threads.\n\n```rust\nuse std::sync::{Arc, Mutex};\nlet count = Arc::new(Mutex::new(0));\n```\n\n`Mutex<T>` protects mutable shared data.\n\n```rust\nlet mut value = count.lock().unwrap();\n*value += 1;\n```",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Order what happens in this program.",
+          "options": [
+            "Create an Arc holding a Mutex with 0 inside",
+            "Clone the Arc so two owners point to the same Mutex",
+            "Lock the Mutex and add 2 to the inner value",
+            "Lock again to print the final count"
+          ]
+        },
+        "q3": {
+          "question": "Why are `Arc` and `Mutex` often paired together?",
+          "options": [
+            "Because `Arc` shares ownership and `Mutex` protects mutable access to shared data",
+            "Because both are required for string formatting",
+            "Because `Arc` provides mutation and `Mutex` provides cloning",
+            "Because neither can be used alone"
+          ]
+        },
+        "q4": {
+          "question": "What problem does `Arc<T>` solve in `Arc<Mutex<T>>`?",
+          "options": [
+            "It provides thread-safe shared ownership of the same allocation",
+            "It makes all access automatically mutable",
+            "It removes the need for locking",
+            "It forces the value onto the stack"
+          ]
+        },
+        "q5": {
+          "question": "What problem does `Mutex<T>` solve in `Arc<Mutex<T>>`?",
+          "options": [
+            "It guarantees the value will never be dropped",
+            "It allows only one thread at a time to access the protected data mutably",
+            "It clones the value for each thread",
+            "It converts panics into `Result` automatically"
+          ]
+        }
+      }
+    },
+    "36_iter_enumerate": {
+      "title": "Iterators: enumerate",
+      "description": "`enumerate()` adds an index to each item.\n\n```rust\nfor (index, name) in names.iter().enumerate() {\n    println!(\"{index}: {name}\");\n}\n```\n\nBecause each item is a tuple, the loop pattern must use parentheses.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "The snippet below has one line that won't compile. Which line is it?"
+        },
+        "q3": {
+          "question": "Why does `enumerate()` require a loop pattern like `(index, item)`?",
+          "options": [
+            "Because `enumerate()` returns a closure",
+            "Because each iteration item is a tuple of index and value",
+            "Because Rust loops always need parentheses",
+            "Because arrays cannot be iterated without tuple syntax"
+          ]
+        },
+        "q4": {
+          "question": "What does `enumerate()` add to an iterator?",
+          "options": [
+            "Automatic sorting",
+            "A running index paired with each item",
+            "Mutable access to every item",
+            "A final total count only"
+          ]
+        },
+        "q5": {
+          "question": "Why is `enumerate()` often preferable to managing a manual counter variable?",
+          "options": [
+            "It keeps the index tied to the iterator pipeline and avoids separate counter bookkeeping",
+            "It makes loops run in parallel",
+            "It changes all items into strings",
+            "It is required for `for` loops to compile"
+          ]
+        }
+      }
+    },
+    "37_thread_basic": {
+      "title": "Threads: spawn and join",
+      "description": "Use `thread::spawn` to start a new thread.\n\n```rust\nlet handle = thread::spawn(|| {\n    println!(\"worker thread\");\n});\n```\n\n`join()` waits for that thread to finish before the main thread continues.\n\n```rust\nhandle.join().unwrap();\nprintln!(\"main thread\");\n```",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Why does the program call `handle.join().unwrap()`?",
+          "options": [
+            "To start the thread lazily",
+            "To make the closure mutable",
+            "To wait for the spawned thread to finish",
+            "To clone the thread handle"
+          ]
+        },
+        "q3": {
+          "question": "What does `thread::spawn` return?",
+          "options": [
+            "A borrowed reference to the thread body",
+            "A `JoinHandle` that can be used to wait for the thread",
+            "A `Mutex` protecting the thread",
+            "A `Result<String, String>`"
+          ]
+        },
+        "q4": {
+          "question": "Why is `join()` important after spawning a thread in examples like this?",
+          "options": [
+            "It waits for the thread to finish before the main thread continues or exits",
+            "It moves the thread onto the heap",
+            "It makes the thread run faster",
+            "It converts the thread into async code"
+          ]
+        },
+        "q5": {
+          "question": "Why do spawned thread closures often use `move`?",
+          "options": [
+            "To transfer ownership of captured data into the thread so it can outlive the caller safely",
+            "To make the closure recursive",
+            "To force the closure to borrow everything instead",
+            "To disable synchronization"
+          ]
+        }
+      }
+    },
+    "38_mutex_basic": {
+      "title": "Locks: Mutex",
+      "description": "`Mutex<T>` protects shared mutable data.\n\n```rust\nlet counter = Mutex::new(0);\n```\n\nTo access the inner value, you lock the mutex and receive a guard.\n\n```rust\nlet mut value = counter.lock().unwrap();\n*value += 5;\n```\n\nWhen the guard goes out of scope, the lock is released.",
+      "quizzes": {
+        "q1": {
+          "question": "Predict the program's output:"
+        },
+        "q2": {
+          "question": "Order what happens in this program.",
+          "options": [
+            "Create a mutex holding `0`",
+            "Lock the mutex and add `5` to the inner value",
+            "Lock it again to print the final count"
+          ]
+        },
+        "q3": {
+          "question": "Why is a `MutexGuard` useful?",
+          "options": [
+            "It keeps the lock held only while the guarded value is in scope",
+            "It copies the protected data into a new thread",
+            "It removes the need to handle lock poisoning",
+            "It automatically converts shared data into `Rc<T>`"
+          ]
+        },
+        "q4": {
+          "question": "What is a `MutexGuard`?",
+          "options": [
+            "A compile-time proof that no deadlocks exist",
+            "A value representing the held lock that unlocks automatically when dropped",
+            "A background thread that watches the mutex",
+            "A macro that expands into `lock()`"
+          ]
+        },
+        "q5": {
+          "question": "Why is it good practice to keep mutex lock scopes small?",
+          "options": [
+            "To reduce contention and lower the chance of deadlock-prone designs",
+            "Because Rust forbids long lock scopes",
+            "Because small scopes make the data `Copy`",
+            "Because the guard stops working after one statement"
+          ]
+        }
+      }
+    },
+    "41_trait_objects": {
+      "title": "Trait Objects and Dynamic Dispatch",
+      "description": "A trait object such as `&dyn Draw` hides the concrete type behind a shared behavior interface.\n\n```rust\nfn render(item: &dyn Draw) {\n    item.draw();\n}\n```\n\nThis is a runtime-polymorphism choice, unlike monomorphized generics.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "What does `&dyn Draw` represent?",
+          "options": [
+            "A reference to any value that implements `Draw`, using dynamic dispatch.",
+            "A macro that creates buttons.",
+            "A mutable borrow of every type at once."
+          ],
+          "explanations": [
+            "Correct. The concrete type is hidden behind trait-object behavior.",
+            "It is not a macro.",
+            "That is not what trait objects mean."
+          ],
+          "answerReason": "Trait objects provide behavior-based polymorphism at runtime."
+        },
+        "q3": {
+          "question": "How is this different from a generic `T: Draw` parameter?",
+          "options": [
+            "Generics always allocate on the heap.",
+            "Trait objects can only be used in tests.",
+            "Generics preserve compile-time concrete type information, while trait objects erase it behind a runtime interface."
+          ],
+          "explanations": [
+            "Generics do not always allocate.",
+            "Trait objects are a normal production feature.",
+            "Correct. This is the key design distinction."
+          ],
+          "answerReason": "The trait-object versus generic choice changes dispatch and what type information stays available."
+        },
+        "q4": {
+          "question": "What do trait objects like `&dyn Draw` enable?",
+          "options": [
+            "Storing or passing different concrete types behind one shared behavior interface",
+            "Compile-time inlining of every method call",
+            "Automatic deep cloning of values",
+            "Access to private struct fields"
+          ]
+        },
+        "q5": {
+          "question": "What is a key tradeoff of trait objects compared with generics?",
+          "options": [
+            "Trait objects require no trait implementations",
+            "Trait objects use dynamic dispatch and type erasure instead of one monomorphized concrete type",
+            "Trait objects are always faster",
+            "Generics can only work with references"
+          ]
+        }
+      }
+    },
+    "44_interior_mutability": {
+      "title": "Interior Mutability Tradeoffs",
+      "description": "Interior mutability allows mutation through shared ownership patterns by moving some checks to runtime or abstraction boundaries.\n\n```rust\nlet value = RefCell::new(1);\n```\n\nThis is useful, but it changes where borrow-rule enforcement happens.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why is `RefCell<T>` a tradeoff?",
+          "options": [
+            "Because it moves some borrow enforcement from compile time to runtime.",
+            "Because it removes all ownership reasoning.",
+            "Because it is always thread-safe shared state."
+          ],
+          "explanations": [
+            "Correct. Flexibility comes with different enforcement timing.",
+            "Ownership reasoning still matters.",
+            "`RefCell` is not the thread-safe shared-state default."
+          ],
+          "answerReason": "Interior mutability increases flexibility by changing where correctness is checked."
+        },
+        "q3": {
+          "question": "What is the main design lesson?",
+          "options": [
+            "Runtime borrow checks are always better.",
+            "Compile-time checks no longer matter in Rust.",
+            "Extra flexibility should be used deliberately because it changes failure modes and API expectations."
+          ],
+          "explanations": [
+            "That is too absolute.",
+            "Compile-time checks still matter a lot.",
+            "Correct. The tradeoff is about where guarantees come from."
+          ],
+          "answerReason": "Interior mutability is powerful, but it is not a free replacement for simpler ownership models."
+        },
+        "q4": {
+          "question": "What is the design appeal of interior mutability?",
+          "options": [
+            "It allows controlled mutation even through shared-looking access patterns",
+            "It removes the need for borrowing rules entirely",
+            "It guarantees no runtime overhead",
+            "It works only for thread-safe types"
+          ]
+        },
+        "q5": {
+          "question": "When is interior mutability often justified?",
+          "options": [
+            "When an API is externally immutable but needs hidden state changes like caching, counters, or test doubles",
+            "Whenever you want to avoid thinking about ownership",
+            "Only for numeric algorithms",
+            "Only inside unsafe code"
+          ]
+        }
+      }
+    },
+    "46_crate_boundaries": {
+      "title": "Crate Boundaries and Architecture",
+      "description": "Crate boundaries are part of architecture because they shape API ownership, visibility, and dependency direction.\n\n```rust\npub mod api;\nmod internal;\n```\n\nPackage structure is one way to encode coupling rules in larger Rust systems.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why do crate boundaries matter beyond build organization?",
+          "options": [
+            "Because only crates can contain traits.",
+            "Because modules cannot be tested.",
+            "Because they help encode API ownership, dependency direction, and isolation boundaries."
+          ],
+          "explanations": [
+            "Traits are not limited to crates that way.",
+            "Modules can be tested.",
+            "Correct. Package boundaries are part of system structure."
+          ],
+          "answerReason": "Crate boundaries influence coupling and what invariants are enforced where."
+        },
+        "q3": {
+          "question": "What is the main architecture benefit?",
+          "options": [
+            "Only faster formatting.",
+            "A clearer public surface and better control over internal coupling.",
+            "Automatic removal of all unsafe code."
+          ],
+          "explanations": [
+            "Formatting is unrelated.",
+            "Correct. Structure helps keep large systems disciplined.",
+            "Unsafe code is not removed automatically."
+          ],
+          "answerReason": "Good boundaries make large codebases easier to reason about and evolve."
+        },
+        "q4": {
+          "question": "How do crate boundaries help on larger Rust codebases?",
+          "options": [
+            "They encourage explicit interfaces and clearer ownership of modules between teams",
+            "They remove the need for public APIs",
+            "They guarantee zero compile times",
+            "They force every function to become generic"
+          ]
+        },
+        "q5": {
+          "question": "Why do crate boundaries improve architecture beyond just folder organization?",
+          "options": [
+            "They push you to define dependency directions and reduce accidental coupling",
+            "They make traits unnecessary",
+            "They allow circular dependencies by default",
+            "They prevent testing across crates"
+          ]
+        }
+      }
+    },
+    "40_copy_clone_value": {
+      "title": "Copy, Clone, and Value Semantics",
+      "description": "A `Copy` type behaves more like a traditional value type because assignment duplicates it implicitly.\n\n```rust\n#[derive(Copy, Clone)]\nstruct Point { x: i32, y: i32 }\n```\n\nWithout `Copy`, moving the value would make the old binding unusable.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why can `p1` still be used after `let p2 = p1;`?",
+          "options": [
+            "Because structs are always shared by reference.",
+            "Because `Clone` runs automatically on every assignment.",
+            "Because `Point` implements `Copy`, so the assignment duplicates the value implicitly."
+          ],
+          "explanations": [
+            "That is not how ordinary struct assignment works here.",
+            "`Clone` is explicit; `Copy` is the implicit behavior.",
+            "Correct. `Copy` gives assignment-like duplication semantics."
+          ],
+          "answerReason": "`Copy` changes assignment from a move into an implicit duplication."
+        },
+        "q3": {
+          "question": "Why does `Copy` often feel like value semantics?",
+          "options": [
+            "Because `Copy` values are not stored in memory.",
+            "Because passing or assigning them does not transfer exclusive ownership away from the old binding.",
+            "Because `Copy` disables type checking."
+          ],
+          "explanations": [
+            "All values are still stored somewhere in memory.",
+            "Correct. The original binding remains usable after assignment-like operations.",
+            "Type checking still applies."
+          ],
+          "answerReason": "Implicit duplication is why `Copy` often matches value-type intuition."
+        },
+        "q4": {
+          "question": "When is `Clone` needed even if `Copy` is not available?",
+          "options": [
+            "When you need an explicit duplicate of a value whose type does not allow implicit copying",
+            "When you want Rust to skip ownership checks",
+            "Only when working with integers",
+            "Only inside trait objects"
+          ]
+        },
+        "q5": {
+          "question": "Why are many types with owned heap data, like `String`, not `Copy`?",
+          "options": [
+            "Because implicit duplication of owned resources would be expensive or semantically wrong",
+            "Because heap values cannot be moved",
+            "Because `Copy` is reserved for structs only",
+            "Because `Clone` and `Copy` cannot coexist"
+          ]
+        }
+      }
+    },
+    "42_send_sync": {
+      "title": "Send, Sync, and Thread Safety",
+      "description": "`Send` and `Sync` describe what ownership and shared references may safely cross thread boundaries.\n\n```rust\nlet data = Arc::new(String::from(\"shared\"));\n```\n\nThese traits shape what concurrent Rust designs are legal.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why is `Arc` used here instead of plain `Rc`?",
+          "options": [
+            "Because `Rc` is always mutable.",
+            "Because `Arc` is thread-safe shared ownership, while `Rc` is not for cross-thread sharing.",
+            "Because `Arc` removes the need for ownership."
+          ],
+          "explanations": [
+            "`Rc` being always mutable is false.",
+            "Correct. `Arc` is the thread-safe shared-ownership choice.",
+            "Ownership still exists."
+          ],
+          "answerReason": "Shared ownership across threads needs thread-safe reference counting."
+        },
+        "q3": {
+          "question": "What do `Send` and `Sync` help express?",
+          "options": [
+            "Whether ownership or shared references can cross thread boundaries safely.",
+            "Only how TCP packets are routed.",
+            "How the formatter aligns code."
+          ],
+          "explanations": [
+            "Correct. They encode thread-safety properties.",
+            "Networking is unrelated.",
+            "Formatting is unrelated."
+          ],
+          "answerReason": "These traits are Rust’s vocabulary for thread-safety guarantees."
+        },
+        "q4": {
+          "question": "What does it mean for a type to implement `Send`?",
+          "options": [
+            "Values of the type can be transferred safely to another thread",
+            "The type can be serialized into JSON",
+            "References to the type are always mutable",
+            "The type can be pinned in memory"
+          ]
+        },
+        "q5": {
+          "question": "What does it mean for a type to implement `Sync`?",
+          "options": [
+            "The type can be copied bit-for-bit",
+            "A shared reference `&T` can be used from multiple threads safely",
+            "The type automatically uses a mutex",
+            "The type only works in synchronous code"
+          ]
+        }
+      }
+    },
+    "45_async_blocking": {
+      "title": "Blocking Work Inside Async",
+      "description": "Async executors rely on tasks yielding cooperatively.\n\n```rust\n// blocking work here can stall executor threads\n```\n\nA blocking call in the wrong place can damage latency and throughput assumptions.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why is blocking work inside async a design problem?",
+          "options": [
+            "Because async code cannot call ordinary functions.",
+            "Because blocking can starve executor threads and hurt latency or throughput.",
+            "Because blocked tasks become compile errors automatically."
+          ],
+          "explanations": [
+            "Async code can still call ordinary functions.",
+            "Correct. Blocking undermines cooperative progress.",
+            "This is a runtime architecture problem, not an automatic compile error."
+          ],
+          "answerReason": "Async structure depends on tasks not monopolizing executor threads with blocking work."
+        },
+        "q3": {
+          "question": "What is the broader lesson?",
+          "options": [
+            "Concurrency model assumptions matter when choosing APIs and runtime behavior.",
+            "Only syntax matters in async Rust.",
+            "Blocking always improves fairness."
+          ],
+          "explanations": [
+            "Correct. Runtime model and API choice are connected.",
+            "Syntax alone is not enough.",
+            "Blocking does not automatically improve fairness."
+          ],
+          "answerReason": "Architecture choices have to respect the executor’s concurrency model."
+        },
+        "q4": {
+          "question": "Why is blocking work inside async code a design problem?",
+          "options": [
+            "It can occupy an executor thread and delay unrelated async tasks",
+            "It turns every future into `None`",
+            "It disables `await` syntax permanently",
+            "It forces all values to become pinned"
+          ]
+        },
+        "q5": {
+          "question": "What is usually a better approach for CPU-heavy or blocking operations in an async program?",
+          "options": [
+            "Use async-aware nonblocking APIs or move blocking work to a dedicated blocking thread pool",
+            "Call `unwrap()` more aggressively",
+            "Replace `Future` with `Rc`",
+            "Add more match guards"
+          ]
+        }
+      }
+    },
+    "39_shadowing_basics": {
+      "title": "Shadowing Versus Mutation",
+      "description": "Shadowing creates a new binding instead of mutating an old one.\n\n```rust\nlet x = 1;\nlet x = x + 1;\n```\n\nThat is different from `let mut x = 1; x = 2;`.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "What is happening in `let x = x + 1;`?",
+          "options": [
+            "The old binding is mutated in place.",
+            "A new binding shadows the previous one.",
+            "`x` becomes a macro."
+          ],
+          "explanations": [
+            "Mutation would require a mutable binding assignment.",
+            "Correct. Shadowing creates a fresh binding.",
+            "`x` is still a variable binding."
+          ],
+          "answerReason": "Shadowing reuses the name for a new binding rather than mutating the old one."
+        },
+        "q3": {
+          "question": "Why does this distinction matter?",
+          "options": [
+            "Because ownership, type changes, and immutability reasoning depend on whether you shadow or mutate.",
+            "Because Rust cannot print mutable values.",
+            "Because shadowing only works in tests."
+          ],
+          "explanations": [
+            "Correct. The semantics are different even when the name is reused.",
+            "Printing is unrelated.",
+            "Shadowing is a normal language feature."
+          ],
+          "answerReason": "Shadowing and mutation affect how you reason about the binding and its lifetime."
+        },
+        "q4": {
+          "question": "What can shadowing do that ordinary mutation cannot?",
+          "options": [
+            "Reuse the same name for a new binding, even with a different type",
+            "Change an immutable variable in place",
+            "Bypass all ownership rules",
+            "Modify values through shared references"
+          ]
+        },
+        "q5": {
+          "question": "Why is shadowing often useful in transformation-heavy code?",
+          "options": [
+            "It lets you keep a meaningful name as a value is refined step by step",
+            "It guarantees zero allocations",
+            "It makes values global",
+            "It replaces the need for functions"
+          ]
+        }
+      }
+    },
+    "43_pin_basics": {
+      "title": "Pin and Stable Location",
+      "description": "`Pin` exists for abstractions that rely on values not being moved after they are pinned.\n\n```rust\nlet pinned = Pin::new(Box::new(value));\n```\n\nThis matters for some async and self-referential patterns.",
+      "quizzes": {
+        "q1": {
+          "question": "What does this program print? (Type the exact output.)"
+        },
+        "q2": {
+          "question": "Why does `Pin` exist?",
+          "options": [
+            "Because pinned values always run faster.",
+            "Because the stack cannot hold strings.",
+            "Because some abstractions rely on stable memory location for soundness."
+          ],
+          "explanations": [
+            "`Pin` is not a universal speed trick.",
+            "Strings can be held by values normally.",
+            "Correct. Stable location is the point."
+          ],
+          "answerReason": "Pin protects designs that would be unsound if values were moved freely."
+        },
+        "q3": {
+          "question": "Where does this show up often?",
+          "options": [
+            "Only in comments.",
+            "In async state machines and other move-sensitive abstractions.",
+            "Only when printing macros are used."
+          ],
+          "explanations": [
+            "Comments are unrelated.",
+            "Correct. Async internals are a common case.",
+            "Macros are unrelated."
+          ],
+          "answerReason": "Pinning becomes relevant when movement itself can break invariants."
+        },
+        "q4": {
+          "question": "What problem is `Pin` designed to address?",
+          "options": [
+            "Making values execute faster",
+            "Preventing certain values from being moved after they rely on a stable memory location",
+            "Sharing ownership across threads",
+            "Replacing lifetimes in all borrowed code"
+          ]
+        },
+        "q5": {
+          "question": "Where does this concern show up especially often in modern Rust?",
+          "options": [
+            "In async state machines and other self-referential patterns",
+            "Only in arithmetic code",
+            "Only inside declarative macros",
+            "In every `Copy` type"
+          ]
         }
       }
     }

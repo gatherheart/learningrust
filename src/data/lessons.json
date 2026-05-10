@@ -17,6 +17,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn main() {\n    let name = \"world\";\n    println!(\"Hello, {name}!\");\n}\n",
@@ -38,6 +48,16 @@
       },
       {
         "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
         "type": "multiple-choice",
         "answer": 1
       }
@@ -63,6 +83,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 3
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "fn takes_ownership(s: String) {\n    println!(\"got: {s}\");\n}\n\nfn borrows(s: &String) {\n    println!(\"borrowed: {s}\");\n}\n\nfn main() {\n    let owned = String::from(\"hello\");\n    borrows(&owned);\n    println!(\"still here: {owned}\");\n    takes_ownership(owned);\n    // owned cannot be used here — it has been moved.\n    println!(\"done\");\n}\n",
@@ -84,6 +114,16 @@
       },
       {
         "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
         "type": "multiple-choice",
         "answer": 0
       }
@@ -109,6 +149,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfn double(x: i32) -> i32 {\n    x * 2\n}\n\nfn main() {\n    let s = add(2, 3);\n    let d = double(s);\n    println!(\"s={s}, d={d}\");\n}\n",
@@ -132,6 +182,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn main() {\n    let s1: &str = \"hello\";\n    let s2: String = String::from(\"world\");\n    let combined = format!(\"{s1}, {s2}!\");\n    println!(\"{combined}\");\n    println!(\"len={}\", combined.len());\n}\n",
@@ -158,6 +218,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn main() {\n    let pair = (1, \"two\");\n    let (a, b) = pair;\n    println!(\"a={a} b={b}\");\n\n    let arr = [10, 20, 30];\n    println!(\"first={}\", arr[0]);\n    println!(\"len={}\", arr.len());\n}\n",
@@ -181,6 +251,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 3
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "enum Shape {\n    Circle(f64),\n    Square(f64),\n}\n\nfn area(s: &Shape) -> f64 {\n    match s {\n        Shape::Circle(r) => 3.14 * r * r,\n        Shape::Square(side) => side * side,\n    }\n}\n\nfn main() {\n    let c = Shape::Circle(2.0);\n    let s = Shape::Square(3.0);\n    println!(\"circle={}\", area(&c));\n    println!(\"square={}\", area(&s));\n}\n",
@@ -202,6 +282,16 @@
       },
       {
         "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
         "type": "multiple-choice",
         "answer": 1
       }
@@ -227,6 +317,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn main() {\n    let add = |a: i32, b: i32| a + b;\n    let square = |x: i32| x * x;\n    println!(\"{}\", add(2, 3));\n    println!(\"{}\", square(4));\n}\n",
@@ -250,6 +350,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    let x = 10;\n    let print_x = || println!(\"x={x}\");\n    print_x();\n    print_x();\n\n    let mut counter = 0;\n    let mut increment = || {\n        counter += 1;\n        println!(\"counter={counter}\");\n    };\n    increment();\n    increment();\n}\n",
@@ -276,6 +386,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "fn main() {\n    let nums = vec![1, 2, 3];\n    let doubled: Vec<i32> = nums.iter().map(|x| x * 2).collect();\n    println!(\"{:?}\", doubled);\n}\n",
@@ -299,6 +419,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5, 6];\n    let evens: Vec<i32> = nums.into_iter().filter(|x| x % 2 == 0).collect();\n    println!(\"{:?}\", evens);\n}\n",
@@ -322,6 +452,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    let nums = vec![1, 2, 3, 4];\n    let sum = nums.iter().fold(0, |acc, x| acc + x);\n    let product = nums.iter().fold(1, |acc, x| acc * x);\n    println!(\"sum={sum}\");\n    println!(\"product={product}\");\n}\n",
@@ -344,6 +484,16 @@
       },
       {
         "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
         "type": "multiple-choice",
         "answer": 0
       }
@@ -369,6 +519,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 3
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "trait Greet {\n    fn greet(&self) -> String;\n}\n\nstruct Person {\n    name: String,\n}\n\nimpl Greet for Person {\n    fn greet(&self) -> String {\n        format!(\"Hello, {}!\", self.name)\n    }\n}\n\nfn main() {\n    let p = Person { name: String::from(\"Alice\") };\n    println!(\"{}\", p.greet());\n}\n",
@@ -392,6 +552,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "trait Animal {\n    fn name(&self) -> String;\n    fn sound(&self) -> String {\n        String::from(\"...\")\n    }\n}\n\nstruct Cat;\nstruct Dog;\n\nimpl Animal for Cat {\n    fn name(&self) -> String {\n        String::from(\"cat\")\n    }\n    fn sound(&self) -> String {\n        String::from(\"meow\")\n    }\n}\n\nimpl Animal for Dog {\n    fn name(&self) -> String {\n        String::from(\"dog\")\n    }\n}\n\nfn main() {\n    let c = Cat;\n    let d = Dog;\n    println!(\"{}: {}\", c.name(), c.sound());\n    println!(\"{}: {}\", d.name(), d.sound());\n}\n",
@@ -415,6 +585,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 3
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "#[derive(Debug, Copy, Clone, PartialEq)]\nstruct Point {\n    x: i32,\n    y: i32,\n}\n\nfn main() {\n    let p1 = Point { x: 1, y: 2 };\n    let p2 = p1;\n\n    println!(\"p1 = {}, {}\", p1.x, p1.y);\n    println!(\"p2 = {}, {}\", p2.x, p2.y);\n    println!(\"equal={}\", p1 == p2);\n}\n",
@@ -436,6 +616,16 @@
       },
       {
         "id": "q3",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
         "type": "multiple-choice",
         "answer": 1
       }
@@ -461,6 +651,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() >= y.len() {\n        x\n    } else {\n        y\n    }\n}\n\nfn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = \"hi\";\n    let r = longest(&s1, s2);\n    println!(\"{r}\");\n}\n",
@@ -483,6 +683,16 @@
       },
       {
         "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
         "type": "multiple-choice",
         "answer": 0
       }
@@ -508,6 +718,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn divide(a: i32, b: i32) -> Result<i32, String> {\n    if b == 0 {\n        Err(String::from(\"div by zero\"))\n    } else {\n        Ok(a / b)\n    }\n}\n\nfn main() {\n    match divide(10, 2) {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n    match divide(10, 0) {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n}\n",
@@ -531,6 +751,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 3
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "fn first_word(s: &str) -> Option<&str> {\n    s.split_whitespace().next()\n}\n\nfn main() {\n    let s = \"hello world\";\n    let empty = \"\";\n    println!(\"{:?}\", first_word(s));\n    println!(\"{:?}\", first_word(empty));\n    println!(\"default: {}\", first_word(empty).unwrap_or(\"none\"));\n}\n",
@@ -559,6 +789,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "use std::num::ParseIntError;\n\nfn parse_and_double(s: &str) -> Result<i32, ParseIntError> {\n    let n: i32 = s.parse()?;\n    Ok(n * 2)\n}\n\nfn main() {\n    match parse_and_double(\"21\") {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n    match parse_and_double(\"xyz\") {\n        Ok(n) => println!(\"ok: {n}\"),\n        Err(e) => println!(\"err: {e}\"),\n    }\n}\n",
@@ -580,6 +820,16 @@
       },
       {
         "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
         "type": "multiple-choice",
         "answer": 0
       }
@@ -605,6 +855,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 2
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "async fn one() -> i32 {\n    1\n}\n\nasync fn two() -> i32 {\n    2\n}\n\nfn main() {\n    let result = pollster::block_on(async { one().await + two().await });\n    println!(\"result={result}\");\n}\n",
@@ -628,6 +888,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 3
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn main() {\n    let b: Box<i32> = Box::new(5);\n    println!(\"b={b}\");\n    println!(\"doubled={}\", *b * 2);\n}\n",
@@ -651,6 +921,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "use std::rc::Rc;\n\nfn main() {\n    let a = Rc::new(String::from(\"hello\"));\n    let b = Rc::clone(&a);\n    let c = Rc::clone(&a);\n    println!(\"count={}\", Rc::strong_count(&a));\n    println!(\"a={a}, b={b}, c={c}\");\n}\n",
@@ -679,6 +959,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "use std::cell::RefCell;\n\nfn main() {\n    let cell = RefCell::new(5);\n    {\n        let mut x = cell.borrow_mut();\n        *x += 10;\n    }\n    println!(\"value={}\", cell.borrow());\n}\n",
@@ -700,6 +990,16 @@
       },
       {
         "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
         "type": "multiple-choice",
         "answer": 0
       }
@@ -725,6 +1025,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "macro_rules! greet {\n    () => {\n        println!(\"Hello!\");\n    };\n    ($name:expr) => {\n        println!(\"Hello, {}!\", $name);\n    };\n}\n\nfn main() {\n    greet!();\n    greet!(\"Alice\");\n}\n",
@@ -748,6 +1058,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 2
       }
     ],
     "code": "fn main() {\n    let mut x = 10;\n    let p: *mut i32 = &mut x;\n    unsafe {\n        *p = *p + 5;\n    }\n    println!(\"x={x}\");\n}\n",
@@ -774,6 +1094,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    let mut nums = vec![1, 2];\n    nums.push(3);\n\n    println!(\"len={}\", nums.len());\n    println!(\"{:?}\", nums);\n}\n",
@@ -797,6 +1127,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "fn describe(value: Option<i32>) -> &'static str {\n    match value {\n        Some(n) if n > 10 => \"big\",\n        Some(_) => \"small\",\n        None => \"none\",\n    }\n}\n\nfn main() {\n    println!(\"{}\", describe(Some(3)));\n    println!(\"{}\", describe(Some(25)));\n    println!(\"{}\", describe(None));\n}\n",
@@ -825,6 +1165,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 3
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "use std::sync::{Arc, Mutex};\n\nfn main() {\n    let count = Arc::new(Mutex::new(0));\n    let shared = Arc::clone(&count);\n\n    {\n        let mut value = shared.lock().unwrap();\n        *value += 2;\n    }\n\n    println!(\"count={}\", count.lock().unwrap());\n}\n",
@@ -849,6 +1199,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    let names = [\"Ada\", \"Linus\", \"Grace\"];\n\n    for (index, name) in names.iter().enumerate() {\n        println!(\"{index}: {name}\");\n    }\n}\n",
@@ -872,6 +1232,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "use std::thread;\n\nfn main() {\n    let handle = thread::spawn(|| {\n        println!(\"worker thread\");\n    });\n\n    handle.join().unwrap();\n    println!(\"main thread\");\n}\n",
@@ -899,6 +1269,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "use std::sync::Mutex;\n\nfn main() {\n    let counter = Mutex::new(0);\n\n    {\n        let mut value = counter.lock().unwrap();\n        *value += 5;\n    }\n\n    println!(\"count={}\", *counter.lock().unwrap());\n}\n",
@@ -920,6 +1300,16 @@
       },
       {
         "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
         "type": "multiple-choice",
         "answer": 0
       }
@@ -945,6 +1335,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "#[derive(Copy, Clone)]\nstruct Point {\n    x: i32,\n    y: i32,\n}\n\nfn main() {\n    let p1 = Point { x: 1, y: 2 };\n    let p2 = p1;\n    println!(\"p1 = {}, {}\", p1.x, p1.y);\n    println!(\"p2 = {}, {}\", p2.x, p2.y);\n}\n",
@@ -968,6 +1368,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "trait Draw {\n    fn draw(&self);\n}\n\nstruct Button;\n\nimpl Draw for Button {\n    fn draw(&self) {\n        println!(\"button\");\n    }\n}\n\nfn render(item: &dyn Draw) {\n    item.draw();\n}\n\nfn main() {\n    let button = Button;\n    render(&button);\n}\n",
@@ -991,6 +1401,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 1
       }
     ],
     "code": "use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    let data = Arc::new(String::from(\"shared\"));\n    let cloned = Arc::clone(&data);\n    let handle = thread::spawn(move || {\n        println!(\"{cloned}\");\n    });\n    handle.join().unwrap();\n}\n",
@@ -1014,6 +1434,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "use std::pin::Pin;\n\nfn main() {\n    let value = String::from(\"pinned\");\n    let pinned = Pin::new(Box::new(value));\n    println!(\"{}\", pinned.as_ref().get_ref());\n}\n",
@@ -1037,6 +1467,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 2
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "use std::cell::RefCell;\n\nfn main() {\n    let value = RefCell::new(1);\n    *value.borrow_mut() += 1;\n    println!(\"{}\", value.borrow());\n}\n",
@@ -1058,6 +1498,16 @@
       },
       {
         "id": "q3",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
         "type": "multiple-choice",
         "answer": 0
       }
@@ -1083,6 +1533,16 @@
         "id": "q3",
         "type": "multiple-choice",
         "answer": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "answer": 0
       }
     ],
     "code": "fn main() {\n    println!(\"public api\");\n    println!(\"private implementation\");\n}\n",
